@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #abf7b1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentMainPageController">
+   <children>
+      <ListView fx:id="reportListView" layoutX="27.0" layoutY="56.0" prefHeight="691.0" prefWidth="182.0" />
+      <Label layoutX="82.0" layoutY="16.0" text="รายงาน">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="reporterNameLabel" layoutX="961.0" layoutY="42.0" text="reporterNameLabel" />
+      <Label layoutX="893.0" layoutY="38.0" text="ผู้รายงาน">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="893.0" layoutY="89.0" text="จำนวนโหวต">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="voteCountLabel" layoutX="971.0" layoutY="90.0" text="voteCountLabel" />
+      <Label layoutX="242.0" layoutY="195.0" text="เนื้อหา">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Separator layoutX="221.0" layoutY="31.0" orientation="VERTICAL" prefHeight="730.0" prefWidth="8.0" />
+      <Label layoutX="244.0" layoutY="27.0" text="หัวข้อ">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Label fx:id="headlineLabel" layoutX="245.0" layoutY="81.0" text="headlineLabel" />
+      <Label fx:id="contentLabel" layoutX="247.0" layoutY="257.0" text="contentLabel" />
+      <Button layoutX="895.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleVoteUpButton" text="Vote up" />
+   </children>
+</AnchorPane>
