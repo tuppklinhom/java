@@ -46,7 +46,7 @@ public class Report {
 
     @Override
     public String toString() {
-        return reporterName + " [" + voteCount +" vote]";
+        return headline + " [" + voteCount +" vote]";
     }
 
     //รอฟังก์ชันอื่น
