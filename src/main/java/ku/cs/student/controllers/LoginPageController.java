@@ -55,11 +55,32 @@ public class LoginPageController {
                 }
             }
         }
-        errorLabel.setText("Username or password incorrect");
+        errorLabel.setText("Username or Password incorrect.");
         usernameTextField.clear();
         passwordTextField.clear();
 
     }
+
+    public void handleGotoOfficerPage(){
+        try {
+            FXRouter.goTo("officer_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า officer page ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
+
+
+    //************** Don't have ADMIN LOGIN PAGE YET, so gonna use officer_page instead right now.
+    public void handleGotoAdminPage(){
+        try {
+            FXRouter.goTo("officer_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า officer page ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
+    //************** Don't have ADMIN LOGIN PAGE YET.
 
 
 

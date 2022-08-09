@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.LoginPageController">
    <children>
       <Label layoutX="219.0" layoutY="134.0" />
@@ -17,8 +16,8 @@
       <Label layoutX="556.0" layoutY="200.0" text="KU Login" />
       <Label layoutX="426.0" layoutY="278.0" text="username" />
       <Label layoutX="427.0" layoutY="330.0" text="password" />
-      <Button layoutX="982.0" layoutY="723.0" mnemonicParsing="false" text="Admin" />
-      <Button layoutX="1083.0" layoutY="723.0" mnemonicParsing="false" text="Jaonatee" />
+      <Button layoutX="982.0" layoutY="723.0" mnemonicParsing="false" onAction="#handleGotoAdminPage" text="Admin" />
+      <Button layoutX="1083.0" layoutY="723.0" mnemonicParsing="false" onAction="#handleGotoOfficerPage" text="Officer" />
       <Label fx:id="errorLabel" layoutX="525.0" layoutY="367.0" text="erorrLabal" textFill="#f70a0a" />
       <Label layoutX="1002.0" layoutY="676.0" text="สำหรับเจ้าหน้าที่">
          <font>
