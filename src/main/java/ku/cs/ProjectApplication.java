@@ -12,13 +12,15 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         com.github.saacsos.FXRouter.bind(this, stage, "Report Application", 1200, 800);
         configRoute();
-        com.github.saacsos.FXRouter.goTo("login_page"); //รอหน้า login
+        com.github.saacsos.FXRouter.goTo("admin_page"); //รอหน้า login
     }
 
     private static void configRoute() {
         String packageStr = "ku/cs/";
         com.github.saacsos.FXRouter.when("student_main_page", packageStr+"student_main_page.fxml");
         com.github.saacsos.FXRouter.when("login_page", packageStr+"login_page.fxml");
+        com.github.saacsos.FXRouter.when("admin_page", packageStr+"admin_page.fxml");
+
     }
 
 

@@ -7,5 +7,4 @@ module cs.ku {
     exports ku.cs;
     exports ku.cs.student.controllers to javafx.fxml;
     opens ku.cs.student.controllers to javafx.fxml;
-
 }

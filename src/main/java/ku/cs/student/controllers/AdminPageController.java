@@ -9,18 +9,19 @@ import ku.cs.student.models.Report;
 import ku.cs.student.models.ReportList;
 import ku.cs.student.service.ReportListHardCodeDataSource;
 
-public class StudentMainPageController {
+public class AdminPageController {
 
     @FXML
     private ListView<Report> reportListView;
+
+    @FXML
+    private Label statusLabel;
+
+    @FXML
+    private Label solutionLabel;
+
     @FXML
     private Label reporterNameLabel;
-    @FXML
-    private Label voteCountLabel;
-    @FXML
-    private Label headlineLabel;
-    @FXML
-    private Label contentLabel;
 
     private ReportListHardCodeDataSource dataSource;
 
@@ -42,6 +43,7 @@ public class StudentMainPageController {
 
     private void handleSelectedListView() {
         reportListView.getSelectionModel().selectedItemProperty().addListener(
+
                 new ChangeListener<Report>() {
                     @Override
                     public void changed(ObservableValue<? extends Report> observable, Report oldValue, Report newValue) {
@@ -55,24 +57,17 @@ public class StudentMainPageController {
 
     private void showSelectedReport(Report report){
         reporterNameLabel.setText(report.getReporterName());
-        headlineLabel.setText(report.getHeadline());
-        voteCountLabel.setText(String.valueOf(report.getVoteCount()));
-        contentLabel.setText(report.getContent());
     }
-
-
 
     public void clearSelectReport(){
         reporterNameLabel.setText("");
-        voteCountLabel.setText("");
-        headlineLabel.setText("");
-        contentLabel.setText("");
     }
 
-    public void handleVoteUpButton(){
-        tempReportForVote.addVoteCount();
-        //เดี๋ยวน่าจะทำตัวเช็คด้วยว่าโหวตซ้ำไหม
-        showSelectedReport(tempReportForVote);
+    public void handlePendingButton(){
+        statusLabel.setText("ดำเนินการ");
     }
-    // รอ button
+
+    public void handleSolvedButton(){
+        statusLabel.setText("เสร็จสิ้น");
+    }
 }
