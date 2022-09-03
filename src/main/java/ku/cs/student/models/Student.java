@@ -23,24 +23,6 @@ public class Student {
         return username;
     }
 
-    public boolean checkUsername(String username){
-        if (this.username == username){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public boolean checkPassword(String password) {
-        if (this.password == password){
-            return true;
-        }
-        else{
-            return false;
-        }
-
-    }
 
     public String getPassword() {
         return password;
