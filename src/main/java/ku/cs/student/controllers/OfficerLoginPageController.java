@@ -59,7 +59,7 @@ public class OfficerLoginPageController {
 
     public void handleBackButton(){
         try {
-            FXRouter.goTo("login_page");
+            FXRouter.goTo("student_login_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า login page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

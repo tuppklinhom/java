@@ -73,7 +73,7 @@ public class StudentLoginPageController {
     //************** Don't have ADMIN LOGIN PAGE YET, so gonna use officer_page instead right now.
     public void handleGotoAdminPage(){
         try {
-            FXRouter.goTo("admin_login_page");
+            FXRouter.goTo("officer_login_page");//แก้ด้วยหลังจากนี้
         } catch (IOException e) {
             System.err.println("ไปทีหน้า admin page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
