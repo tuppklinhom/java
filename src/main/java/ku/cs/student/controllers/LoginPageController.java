@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
+import ku.cs.student.service.DataSource;
+import ku.cs.student.service.StudentListFileDataSource;
 import ku.cs.student.service.StudentListHardCodeDataSource;
 import com.github.saacsos.FXRouter;
 
@@ -18,21 +20,20 @@ public class LoginPageController {
     @FXML
     private Label errorLabel;
 
-    private StudentListHardCodeDataSource dataSource;
+    private String usernameInput;
+    private String passwordInput;
+//    private StudentListHardCodeDataSource dataSource;
+    private DataSource<StudentList> dataSource;
 
     private StudentList studentList;
 
-    // **************************
-    //ทำตัวเช็คล็อคอิน
-    private String usernameInput;
-    private String passwordInput;
-    //***************************
 
     public void initialize(){
-        dataSource = new StudentListHardCodeDataSource();
-        studentList = dataSource.getStudentList();
+//        dataSource = new StudentListHardCodeDataSource();
+        dataSource = new StudentListFileDataSource("data","Student.csv");
+//        studentList = dataSource.getStudentList()
+        studentList = dataSource.readData();
         clearErrorLabel();
-
     }
 
     private void clearErrorLabel(){
@@ -74,9 +75,9 @@ public class LoginPageController {
     //************** Don't have ADMIN LOGIN PAGE YET, so gonna use officer_page instead right now.
     public void handleGotoAdminPage(){
         try {
-            FXRouter.goTo("officer_page");
+            FXRouter.goTo("admin_page");
         } catch (IOException e) {
-            System.err.println("ไปทีหน้า officer page ไม่ได้");
+            System.err.println("ไปทีหน้า admin page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
     }
