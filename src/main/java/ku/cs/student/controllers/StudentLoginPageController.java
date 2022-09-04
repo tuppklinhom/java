@@ -3,16 +3,14 @@ package ku.cs.student.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
-import ku.cs.student.service.StudentListHardCodeDataSource;
 import com.github.saacsos.FXRouter;
 
 import java.io.IOException;
 
-public class LoginPageController {
+public class StudentLoginPageController {
     @FXML
     private TextField usernameTextField;
     @FXML
@@ -64,7 +62,7 @@ public class LoginPageController {
 
     public void handleGotoOfficerPage(){
         try {
-            FXRouter.goTo("officer_page");
+            FXRouter.goTo("officer_login_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า officer page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
@@ -75,7 +73,7 @@ public class LoginPageController {
     //************** Don't have ADMIN LOGIN PAGE YET, so gonna use officer_page instead right now.
     public void handleGotoAdminPage(){
         try {
-            FXRouter.goTo("admin_page");
+            FXRouter.goTo("admin_login_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า admin page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

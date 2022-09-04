@@ -9,7 +9,7 @@ import ku.cs.student.service.OfficerListHardCodeDataSource;
 
 import java.io.IOException;
 
-public class OfficerPageController {
+public class OfficerLoginPageController {
     @FXML
     private TextField officerUsernameTextField;
     @FXML
@@ -43,7 +43,7 @@ public class OfficerPageController {
                 if (officerList.indexOf(i).getPassword().equals(officerPasswordInput)) {
                     //************************  OFFICER MAIN PAGE REQUIRE
                     try {
-                        FXRouter.goTo("admin_page");
+                        FXRouter.goTo("officer_main_page");
                         //********************  OFFICER MAIN PAGE REQUIRE
                     } catch (IOException e) {
                         System.err.println("ไปทีหน้า officer main page ไม่ได้");

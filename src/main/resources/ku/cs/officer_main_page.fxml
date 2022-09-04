@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.AdminPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerMainPageController">
    <children>
       <ListView fx:id="reportListView" layoutX="97.0" layoutY="113.0" prefHeight="624.0" prefWidth="445.0" />
       <Label layoutX="205.0" layoutY="58.0" text="รายงานเรื่องร้องเรียน">

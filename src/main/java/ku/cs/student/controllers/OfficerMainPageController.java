@@ -9,9 +9,8 @@ import ku.cs.student.models.Report;
 import ku.cs.student.models.ReportList;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
-import ku.cs.student.service.ReportListHardCodeDataSource;
 
-public class AdminPageController {
+public class OfficerMainPageController {
 
     @FXML
     private ListView<Report> reportListView;
