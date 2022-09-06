@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import com.github.saacsos.FXRouter;
 import ku.cs.student.models.OfficerList;
+import ku.cs.student.service.DataSource;
+import ku.cs.student.service.OfficerListFileDataSource;
 import ku.cs.student.service.OfficerListHardCodeDataSource;
 
 import java.io.IOException;
@@ -18,7 +20,7 @@ public class OfficerLoginPageController {
     private Label officerErrorLabel;
 
 
-    private OfficerListHardCodeDataSource dataSource;
+    private DataSource<OfficerList> dataSource;
 
 
     private OfficerList officerList;
@@ -27,8 +29,8 @@ public class OfficerLoginPageController {
     private String officerPasswordInput;
 
     public void initialize(){
-        dataSource = new OfficerListHardCodeDataSource();
-        officerList = dataSource.getOfficerList();
+        dataSource = new OfficerListFileDataSource("data", "Officer.csv");
+        officerList = dataSource.readData();
         clearErrorLabel();
     }
 

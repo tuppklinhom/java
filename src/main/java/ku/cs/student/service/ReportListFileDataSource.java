@@ -12,6 +12,7 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
     public ReportListFileDataSource(String directoryName, String filename) {
         this.directoryName = directoryName;
         this.fileName = filename;
+        checkFileExisted();
     }
 
     private void checkFileExisted() {
