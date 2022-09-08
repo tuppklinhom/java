@@ -5,11 +5,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import com.github.saacsos.FXRouter;
 import ku.cs.student.models.OfficerList;
+import ku.cs.student.service.DataSource;
+import ku.cs.student.service.OfficerListFileDataSource;
 import ku.cs.student.service.OfficerListHardCodeDataSource;
 
 import java.io.IOException;
 
-public class OfficerPageController {
+public class OfficerLoginPageController {
     @FXML
     private TextField officerUsernameTextField;
     @FXML
@@ -18,7 +20,7 @@ public class OfficerPageController {
     private Label officerErrorLabel;
 
 
-    private OfficerListHardCodeDataSource dataSource;
+    private DataSource<OfficerList> dataSource;
 
 
     private OfficerList officerList;
@@ -27,8 +29,8 @@ public class OfficerPageController {
     private String officerPasswordInput;
 
     public void initialize(){
-        dataSource = new OfficerListHardCodeDataSource();
-        officerList = dataSource.getOfficerList();
+        dataSource = new OfficerListFileDataSource("data", "Officer.csv");
+        officerList = dataSource.readData();
         clearErrorLabel();
     }
 
@@ -43,7 +45,7 @@ public class OfficerPageController {
                 if (officerList.indexOf(i).getPassword().equals(officerPasswordInput)) {
                     //************************  OFFICER MAIN PAGE REQUIRE
                     try {
-                        FXRouter.goTo("admin_page");
+                        FXRouter.goTo("officer_main_page");
                         //********************  OFFICER MAIN PAGE REQUIRE
                     } catch (IOException e) {
                         System.err.println("ไปทีหน้า officer main page ไม่ได้");
@@ -59,7 +61,7 @@ public class OfficerPageController {
 
     public void handleBackButton(){
         try {
-            FXRouter.goTo("login_page");
+            FXRouter.goTo("student_login_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า login page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.DropdownButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -67,9 +66,7 @@
                   <Font name="Cambria" size="14.0" />
                </font>
             </Label>
-            <FontAwesomeIconView glyphName="USER" layoutX="345.0" layoutY="78.0" size="16" />
-            <FontAwesomeIconView fill="#ec2727" glyphName="HEART" layoutX="345.0" layoutY="144.0" size="16" />
-            <FontAwesomeIconView glyphName="PENCIL" layoutX="179.0" layoutY="262.0" size="16" wrappingWidth="13.714285850524902" />
+
             <Pane layoutX="46.0" layoutY="303.0" prefHeight="390.0" prefWidth="606.0" style="-fx-background-color: #FFF;">
                <children>
                   <Label fx:id="contentLabel" layoutX="27.0" layoutY="25.0" prefHeight="22.0" prefWidth="92.0" text="contentLabel" textFill="#3b3838">
@@ -94,13 +91,7 @@
          <effect>
             <DropShadow />
          </effect></ListView>
-      <DropdownButton layoutX="185.0" layoutY="251.0" prefHeight="0.0" prefWidth="46.0">
-          <items>
-              <MenuItem text="Choice 1" />
-              <MenuItem text="Choice 2" />
-              <MenuItem text="Choice 3" />
-          </items>
-      </DropdownButton>
+
       <Label layoutX="63.0" layoutY="194.0" prefHeight="47.0" prefWidth="439.0" text="KU HELP FOR KASETSART UNIVERSITY" textFill="WHITE">
          <font>
             <Font name="Cambria Bold" size="18.0" />

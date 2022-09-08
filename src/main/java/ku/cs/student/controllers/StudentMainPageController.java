@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ku.cs.student.models.Report;
 import ku.cs.student.models.ReportList;
+import ku.cs.student.service.DataSource;
+import ku.cs.student.service.ReportListFileDataSource;
 import ku.cs.student.service.ReportListHardCodeDataSource;
 
 public class StudentMainPageController {
@@ -22,15 +24,17 @@ public class StudentMainPageController {
     @FXML
     private Label contentLabel;
 
-    private ReportListHardCodeDataSource dataSource;
+    private DataSource<ReportList> dataSource;
 
     private ReportList reportList;
 
     private Report tempReportForVote; //สำหรับ ไว้โหวต
 
     public void initialize(){
-        dataSource = new ReportListHardCodeDataSource();
-        reportList = dataSource.getReportList();
+        //dataSource = new ReportListHardCodeDataSource();
+
+        dataSource = new ReportListFileDataSource("data", "Report.csv");
+        reportList = dataSource.readData();
         showListView();
         clearSelectReport();
         handleSelectedListView();

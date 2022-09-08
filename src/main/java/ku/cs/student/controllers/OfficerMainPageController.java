@@ -7,9 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import ku.cs.student.models.Report;
 import ku.cs.student.models.ReportList;
-import ku.cs.student.service.ReportListHardCodeDataSource;
+import ku.cs.student.service.DataSource;
+import ku.cs.student.service.ReportListFileDataSource;
 
-public class AdminPageController {
+public class OfficerMainPageController {
 
     @FXML
     private ListView<Report> reportListView;
@@ -23,15 +24,17 @@ public class AdminPageController {
     @FXML
     private Label reporterNameLabel;
 
-    private ReportListHardCodeDataSource dataSource;
-
+//    private ReportListHardCodeDataSource dataSource;
+    private DataSource<ReportList> dataSource;
     private ReportList reportList;
 
     private Report tempReportForVote; //สำหรับ ไว้โหวต
 
     public void initialize(){
-        dataSource = new ReportListHardCodeDataSource();
-        reportList = dataSource.getReportList();
+//        dataSource = new ReportListHardCodeDataSource();
+        dataSource = new ReportListFileDataSource("data","Report.csv");
+//        reportList = dataSource.getReportList();
+        reportList = dataSource.readData();
         showListView();
         clearSelectReport();
         handleSelectedListView();
@@ -43,16 +46,13 @@ public class AdminPageController {
 
     private void handleSelectedListView() {
         reportListView.getSelectionModel().selectedItemProperty().addListener(
-
                 new ChangeListener<Report>() {
                     @Override
-                    public void changed(ObservableValue<? extends Report> observable, Report oldValue, Report newValue) {
+                    public void changed(ObservableValue<? extends Report> observableValue, Report oldValue, Report newValue) {
                         System.out.println(newValue + " is selected");
                         showSelectedReport(newValue);
-                        tempReportForVote = newValue;
                     }
-                }
-        );
+                });
     }
 
     private void showSelectedReport(Report report){
