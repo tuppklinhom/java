@@ -12,7 +12,7 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         com.github.saacsos.FXRouter.bind(this, stage, "Report Application", 1200, 800);
         configRoute();
-        com.github.saacsos.FXRouter.goTo("login_page"); //รอหน้า login
+        com.github.saacsos.FXRouter.goTo("admin_page"); //รอหน้า login
     }
 
     private static void configRoute() {
