@@ -15,8 +15,8 @@
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentLoginPageController">
    <children>
       <Label layoutX="219.0" layoutY="134.0" />
-      <PasswordField fx:id="passwordTextField" layoutX="838.0" layoutY="405.0" promptText="password" />
       <TextField fx:id="usernameTextField" layoutX="838.0" layoutY="340.0" promptText="user name" />
+      <PasswordField fx:id="passwordTextField" layoutX="838.0" layoutY="405.0" promptText="password" />
       <Button graphicTextGap="8.0" layoutX="882.0" layoutY="515.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="30.0" prefWidth="63.0" style="-fx-background-color: #2E8B57;" text="login" textFill="#273e28" wrapText="true">
          <font>
             <Font size="14.0" />
