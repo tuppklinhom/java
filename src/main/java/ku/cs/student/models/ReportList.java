@@ -1,6 +1,8 @@
 package ku.cs.student.models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class ReportList {
 
@@ -20,7 +22,24 @@ public class ReportList {
         reports.add(newReport);
     }
 
+    public Report findReport(Report report){
+        Report found = null;
+        for (Report now : reports.toArray(new Report[0])){
+            if (now.equals(report)){
+                found = now;
+            }
+        }
+
+        if(found == null){
+            throw new RuntimeException(found + " not found in reportList");
+        }
+        return found;
+    }// for finding report in arraylist
+
+
+
     public ArrayList<Report> getAllReport(){
         return reports;
     }
+
 }

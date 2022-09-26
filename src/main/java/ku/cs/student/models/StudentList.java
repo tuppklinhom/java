@@ -1,27 +1,38 @@
 package ku.cs.student.models;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class StudentList {
-    private ArrayList<Student> students;
+    /**
+     ******* Change Arraylist to Map for storing student **********
+
+     */
+    private Map<String, Student> students;
 
     public StudentList(){
-        students = new ArrayList<>();
+        students = new TreeMap<String, Student>();
     }
 
-    public Student indexOf(int num){
-        return students.get(num);
-    }
 
     public int size(){
         return students.size();
     }
 
     public void addStudent(Student newStudent){
-        students.add(newStudent);
+        students.put(newStudent.getUsername(), newStudent);
     }
 
-    public ArrayList<Student> getAllStudent(){
-        return students;
+    public Set<String> getAllStudent(){
+        return students.keySet();
     }
+
+    public Student findStudent(String username) {
+        Student found = students.get(username);
+        return found;
+    }
+
+
 }

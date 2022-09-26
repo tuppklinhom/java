@@ -34,6 +34,9 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
 
     @Override
     public ReportList readData() {
+        /**
+         * Fixing readData for reading some old file in csv file
+         */
         ReportList reportList = new ReportList();
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
@@ -48,7 +51,18 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
             String line = "";
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(",");
-                Report r = new Report(data[0].trim(),data[1].trim(),data[2].trim());
+
+                Report r = null;
+                if (data.length == 4) { // normal report
+                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"), data[3].trim());
+                }
+                if (data.length == 5) { // report with vote count
+                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"),data[3].trim(), Integer.parseInt(data[4].trim()));
+                }
+                if (data.length == 6){
+                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"),data[3].trim(), Integer.parseInt(data[4].trim()), data[5].trim());
+                }
+
                 reportList.addReport(r);
             }
 
@@ -71,6 +85,9 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
     }
 
     public void writeData(ReportList reportList){
+        /**
+         * Fixing writeData to write old data that may have change voteCount and status
+         */
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -82,7 +99,14 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
             buffer = new BufferedWriter(writer);
 
             for(Report r : reportList.getAllReport()){
-                String line = r.getReporterName() + "," + r.getHeadline() + "," + r.getContent();
+                String content = r.getContent().replace("\n", ";");
+                String line = r.getReporterName() + "," + r.getHeadline() + "," + content + "," + r.getCategory();
+                if (r.getVoteCount() != 0){
+                    line = line + "," + r.getVoteCount();
+                }
+                if (r.getStatus() != "waiting"){
+                    line = line + "," + r.getStatus();
+                }
                 buffer.append(line);
                 buffer.newLine();
             }

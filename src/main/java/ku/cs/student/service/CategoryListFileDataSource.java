@@ -1,28 +1,28 @@
 package ku.cs.student.service;
 
-import ku.cs.student.models.Student;
-import ku.cs.student.models.StudentList;
+import ku.cs.student.models.CategoryList;
 
 import java.io.*;
 
-public class StudentListFileDataSource implements DataSource<StudentList>{
+public class CategoryListFileDataSource implements DataSource<CategoryList>{ // just read category data from csv file
     private String directoryName;
     private String fileName;
 
-    public StudentListFileDataSource(String directoryName, String fileName){
+    public CategoryListFileDataSource(String directoryName, String filename){
         this.directoryName = directoryName;
-        this.fileName = fileName;
-        checkFileIsExisted();
+        this.fileName = filename;
+        checkFileExisted();
     }
 
-    private void checkFileIsExisted(){
+    private void checkFileExisted() {
         File file = new File(directoryName);
-        if ( ! file.exists()){
+        if (!file.exists()) {
             file.mkdirs();
         }
+
         String filePath = directoryName + File.separator + fileName;
         file = new File(filePath);
-        if ( ! file.exists()){
+        if (!file.exists()) {
             try {
                 file.createNewFile();
             } catch (IOException e) {
@@ -31,9 +31,8 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
         }
     }
 
-
-    public StudentList readData(){
-        StudentList studentList = new StudentList();
+    public CategoryList readData(){
+        CategoryList categoryList = new CategoryList();
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -45,34 +44,30 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
             buffer = new BufferedReader(reader);
 
             String line = "";
-            while((line = buffer.readLine()) != null){
-                String[] data = line.split(","); // แยกด้วยคอมม่า
-                Student s = new Student(
-                        data[0].trim(),
-                        data[1].trim(),
-                        data[2].trim()
-                );
-                studentList.addStudent(s);
+            while ((line = buffer.readLine()) != null) {
+                categoryList.addCategory(line);
             }
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
+        }
+        finally {
             try {
                 buffer.close();
                 reader.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
 
-        return studentList;
+
+        return categoryList;
     }
 
-    public void writeData(StudentList studentList){
+
+    public void writeData(CategoryList categoryList){
         String filePath = directoryName + File.separator + fileName;
         File file = new File(filePath);
 
@@ -83,9 +78,7 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
             writer = new FileWriter(file);
             buffer = new BufferedWriter(writer);
 
-            for(String name : studentList.getAllStudent()){
-                Student s = studentList.findStudent(name);
-                String line = s.getName() + "," + s.getUsername() + "," + s.getPassword();
+            for(String line : categoryList.getAllCategories()){
                 buffer.append(line);
                 buffer.newLine();
             }

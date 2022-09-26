@@ -2,17 +2,25 @@ package ku.cs.student.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import ku.cs.student.models.Report;
 import ku.cs.student.models.ReportList;
+import ku.cs.student.models.Student;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
-import ku.cs.student.service.ReportListHardCodeDataSource;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentMainPageController {
 
+    private Student user;
     @FXML
     private ListView<Report> reportListView;
     @FXML
@@ -22,7 +30,7 @@ public class StudentMainPageController {
     @FXML
     private Label headlineLabel;
     @FXML
-    private Label contentLabel;
+    private TextArea contentTextArea;
 
     private DataSource<ReportList> dataSource;
 
@@ -35,14 +43,25 @@ public class StudentMainPageController {
 
         dataSource = new ReportListFileDataSource("data", "Report.csv");
         reportList = dataSource.readData();
+
+        user = (Student) com.github.saacsos.FXRouter.getData();
         showListView();
         clearSelectReport();
         handleSelectedListView();
     }
     private void showListView(){
+        sort();
         reportListView.getItems().addAll(reportList.getAllReport());
         reportListView.refresh();
     }
+    private void sort() {
+        Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+            @Override
+            public int compare(Report o1, Report o2) {
+                return o2.getVoteCount() - o1.getVoteCount();
+            }
+        });
+    }// sort list from ListView max to min
 
     private void handleSelectedListView() {
         reportListView.getSelectionModel().selectedItemProperty().addListener(
@@ -61,7 +80,7 @@ public class StudentMainPageController {
         reporterNameLabel.setText(report.getReporterName());
         headlineLabel.setText(report.getHeadline());
         voteCountLabel.setText(String.valueOf(report.getVoteCount()));
-        contentLabel.setText(report.getContent());
+        contentTextArea.setText(report.getContent());
     }
 
 
@@ -70,13 +89,27 @@ public class StudentMainPageController {
         reporterNameLabel.setText("");
         voteCountLabel.setText("");
         headlineLabel.setText("");
-        contentLabel.setText("");
+        contentTextArea.setText("");
     }
 
     public void handleVoteUpButton(){
-        tempReportForVote.addVoteCount();
-        //เดี๋ยวน่าจะทำตัวเช็คด้วยว่าโหวตซ้ำไหม
+        reportList.findReport(tempReportForVote).addVoteCount();
+        dataSource.writeData(reportList);
+        reportListView.getItems().clear();
+        showListView();
         showSelectedReport(tempReportForVote);
     }
+
+    public void handleNewReportButton(ActionEvent actionEvent) {
+        try {
+            com.github.saacsos.FXRouter.goTo("student_create_report",user);
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า student_create_report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+
+    }
+
+
     // รอ button
 }

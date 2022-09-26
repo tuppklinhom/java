@@ -3,6 +3,7 @@ package ku.cs.student.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
@@ -42,18 +43,18 @@ public class StudentLoginPageController {
         usernameInput = usernameTextField.getText();
         passwordInput = passwordTextField.getText();
 
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.indexOf(i).getUsername().equals(usernameInput)) {
-                if (studentList.indexOf(i).getPassword().equals(passwordInput)) {
-                    try {
-                        FXRouter.goTo("student_main_page");
-                    } catch (IOException e) {
-                        System.err.println("ไปทีหน้า student main page ไม่ได้");
-                        System.err.println("ให้ตรวจสอบการกําหนด route");
-                        }
+        Student user = studentList.findStudent(usernameInput);
+
+        if (user != null){
+            if(user.getPassword().equals(passwordInput)){
+                try {
+                    FXRouter.goTo("student_main_page", user);
+                } catch (IOException e) {
+                    System.err.println("ไปทีหน้า student main page ไม่ได้");
+                    System.err.println("ให้ตรวจสอบการกําหนด route");
                 }
             }
-        }
+        }// new login method due to change how to store student data
         errorLabel.setText("Username or Password incorrect.");
         usernameTextField.clear();
         passwordTextField.clear();
