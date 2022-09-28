@@ -12,8 +12,8 @@ public class ProjectApplication extends Application {
     public void start(Stage stage) throws IOException {
         com.github.saacsos.FXRouter.bind(this, stage, "Report Application", 1200, 800);
         configRoute();
-        com.github.saacsos.FXRouter.goTo("student_login_page"); //รอหน้า login
-
+        com.github.saacsos.FXRouter.goTo("admin_change_password_page"); //รอหน้า login
+//student_login_page
     }
 
     private static void configRoute() {
@@ -23,6 +23,8 @@ public class ProjectApplication extends Application {
         com.github.saacsos.FXRouter.when("officer_main_page", packageStr+"officer_main_page.fxml");
         com.github.saacsos.FXRouter.when("officer_login_page", packageStr+"officer_login_page.fxml");
         com.github.saacsos.FXRouter.when("student_create_report", packageStr+"student_create_report.fxml");
+        com.github.saacsos.FXRouter.when("admin_change_password_page", packageStr+"admin_change_password_page.fxml");
+
 
 
 
