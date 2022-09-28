@@ -5,39 +5,50 @@ import java.util.Comparator;
 public class Report implements Comparable<Report> {
     private String reporterName;
     private String status; // waiting, pending , solved ประมานนี้มั้ง
-    private String content;
-
     private String headline;
-
+    private String content;
     private String category;
 
     private int voteCount;
 
-    public Report(String reporterName,String headline,String content, String category){// for use to create noe report
-        this.content = content;
+    /*
+    Constructor ทุกตัวจะ assign ค่าของข้อมูลหมดทุกตัว
+    หมายเหตุ : vote count ค่า default = 0 / status ค่า default = "ดำเนินการ"
+     */
+    public Report(String reporterName, String headline, String content, String category) {
         this.reporterName = reporterName;
+        this.status = "ดำเนินการ";
+        this.content = content;
         this.headline = headline;
         this.category = category;
         this.voteCount = 0;
-        status = "waiting";
     }
 
-    public Report(String reporterName, String headline, String content,String category , int voteCount) { // for read data
+    public Report(String reporterName, String headline, String content, String category, int voteCount) {
         this.reporterName = reporterName;
-        this.voteCount = voteCount;
+        this.status = "ดำเนินการ";
         this.content = content;
         this.headline = headline;
         this.category = category;
-        status = "waiting";
+        this.voteCount = voteCount;
     }
 
-    public Report(String reporterName, String headline, String content,String category , int voteCount, String status) { // for read fata
+    public Report(String reporterName, String status, String headline, String content, String category) {
         this.reporterName = reporterName;
         this.status = status;
         this.content = content;
         this.headline = headline;
-        this.voteCount = voteCount;
         this.category = category;
+        this.voteCount = 0;
+    }
+
+    public Report(String reporterName, String status, String headline, String content, String category, int voteCount) {
+        this.reporterName = reporterName;
+        this.status = status;
+        this.content = content;
+        this.headline = headline;
+        this.category = category;
+        this.voteCount = voteCount;
     }
 
     public void addVoteCount(){
@@ -78,6 +89,9 @@ public class Report implements Comparable<Report> {
         return voteCount - o.voteCount;
     }
 
-    //รอฟังก์ชันอื่น
+    public void updateStatus(String status) {
+        this.status = status;
+    }
 
+    //รอฟังก์ชันอื่น
 }

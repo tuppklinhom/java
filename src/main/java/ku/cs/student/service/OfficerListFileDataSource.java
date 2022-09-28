@@ -48,11 +48,17 @@ public class OfficerListFileDataSource implements DataSource<OfficerList>{
             String line = "";
             while((line = buffer.readLine()) != null){
                 String[] data = line.split(","); // แยกด้วยคอมม่า
+                // data ลำดับที่ 1 - 3 ( Index : 0 - 1 ) ควรจะกำหนดไว้อยู่แล้วเพราะ Officer จะถูกเพิ่มด้วย Admin ดังนั้น ข้อมูลอันดับที่ 1 - 3 จึงจะมีอยู่แล้ว
                 Officer f = new Officer(
                         data[0].trim(),
                         data[1].trim(),
                         data[2].trim()
                 );
+                // รับหมวดหมู่เข้ามาจนกว่าจะหมดหมวดหมู่ที่เจ้าหน้าที่รับผิดชอบ ( หมวดหมู่สามารถเพิ่มได้เรื่อย ๆ )
+                for (int i = 3;i < data.length;i++) {
+                    f.addCategory(data[i].trim());
+                }
+
                 officerList.addOfficer(f);
             }
 
@@ -85,6 +91,9 @@ public class OfficerListFileDataSource implements DataSource<OfficerList>{
 
             for(Officer officer : officerList.getOfficers()){
                 String line = officer.getName() + "," + officer.getUsername() + "," + officer.getPassword();
+                for (String category : officer.getCategory()) { // loop เพื่อที่จะเข้าถึงข้อมูล category ของ officer เพราะ officer คนนึงอาจมีหลาย categories
+                    line = line + "," + category;
+                }
                 buffer.append(line);
                 buffer.newLine();
             }

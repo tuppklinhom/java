@@ -52,16 +52,24 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(",");
 
-                Report r = null;
-                if (data.length == 4) { // normal report
-                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"), data[3].trim());
-                }
-                if (data.length == 5) { // report with vote count
-                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"),data[3].trim(), Integer.parseInt(data[4].trim()));
-                }
-                if (data.length == 6){
-                    r = new Report(data[0].trim(), data[1].trim(), data[2].replace(";", "\n"),data[3].trim(), Integer.parseInt(data[4].trim()), data[5].trim());
-                }
+                Report r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()));
+                /* Date : 29.09.2022
+                Report r จะอ่านข้อมูลที่มีทั้งหมด 6 ตัวแน่นอน เพราะเนื่องจาก constructor ของ Class Report จะ assign ค่าทุกค่าของข้อมูลไว้อยู่แล้ว
+                แม้จะรับข้อมูลเพื่อสร้าง Object แค่ 4 ตัว ก็ยังมีข้อมูลทั้งหมด 6 ตัว เพราะอีก 2 ตัวได้กำหนดค่าของมันเอาไว้แล้ว
+                ปล1. โค้ดข้างล่างที่ comment ไว้ @Tupp มาดูว่าจะทำแบบนี้ใหม่ ( บรรทัดที่ 55 ) หรือจะทำแบบข้างล่างไปเลย
+                ปล2. ไปเปลื่ยนลำดับการ assign ค่าของข้อมูลใน constructor มา ถ้าอยากใช้โค้ดข้างล่างอาจจะต้องเปลื่ยนลำดับการ assign ข้อมูลก่อน
+                 */
+
+//                Report r = null;
+//                if (data.length == 4) { // normal report
+//                    r = new Report(data[0].trim(), data[1].replace(";", "\n"), data[2].trim(), data[3].trim());
+//                }
+//                if (data.length == 5) { // report with vote count
+//                    r = new Report(data[0].trim(), data[1].replace(";", "\n"), data[2].trim(), data[3].trim(), data[4].trim());
+//                }
+//                if (data.length == 6){
+//                    r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()));
+//                }
 
                 reportList.addReport(r);
             }
@@ -100,13 +108,20 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
 
             for(Report r : reportList.getAllReport()){
                 String content = r.getContent().replace("\n", ";");
-                String line = r.getReporterName() + "," + r.getHeadline() + "," + content + "," + r.getCategory();
-                if (r.getVoteCount() != 0){
-                    line = line + "," + r.getVoteCount();
-                }
-                if (r.getStatus() != "waiting"){
-                    line = line + "," + r.getStatus();
-                }
+
+                /* Date : 29.09.2022
+                เปลื่ยนตำแหน่งการ assign ข้อมูล และข้อความข้างบนเลยเปลื่ยนโค้ดเป็นโค้ดนิดหน่อย ( บรรทัดที่ 124 ) @Tupp อยากจะแก้อะไรเพิ่มเติมมาแก้ได้เลย
+                 */
+
+//                String line = r.getReporterName() + "," + r.getHeadline() + "," + content + "," + r.getCategory();
+//                if (r.getVoteCount() != 0){
+//                    line = line + "," + r.getVoteCount();
+//                }
+//                if (r.getStatus() != "waiting"){
+//                    line = line + "," + r.getStatus();
+//                }
+
+                String line = r.getReporterName() + "," + r.getStatus() + "," + r.getHeadline() + "," + content + "," + r.getCategory() + "," + r.getVoteCount();
                 buffer.append(line);
                 buffer.newLine();
             }
