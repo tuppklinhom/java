@@ -1,5 +1,6 @@
 package ku.cs.student.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -71,6 +72,7 @@ public class StudentLoginPageController {
     }
 
 
+
     public void handleGotoAdminPage(){
         try {
             FXRouter.goTo("admin_login_page");
@@ -78,6 +80,17 @@ public class StudentLoginPageController {
             System.err.println("ไปทีหน้า admin page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
+
+    }
+
+    public void handleRegistrationButton(ActionEvent actionEvent){
+        try {
+            FXRouter.goTo("student_registration_page");//แก้ด้วยหลังจากนี้
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า admin page ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+
     }
 
 
