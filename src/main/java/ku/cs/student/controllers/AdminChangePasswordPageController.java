@@ -1,11 +1,16 @@
 package ku.cs.student.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import ku.cs.student.AlertBox;
+import ku.cs.student.models.Admin;
+import ku.cs.student.models.AdminList;
+import ku.cs.student.service.AdminListFileDataSource;
+import ku.cs.student.service.DataSource;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class AdminChangePasswordPageController {
     @FXML
@@ -18,17 +23,35 @@ public class AdminChangePasswordPageController {
     private PasswordField conNewPassAdminPasswordField;
     @FXML
     private Label errorLabel;
+    @FXML
+    private Label successLabel;
+//    @FXML
+//    void showAlert(ActionEvent event){
+//        Alert alert = new Alert(Alert.AlertType.ERROR);
+//        alert.setTitle("Oh mai na");
+//        alert.setContentText("TTTTT");
+//        Optional<ButtonType> result = alert.showAndWait();
+//    }
 
+    // เป็น ALERT อีกเเบบที่ไม่รู้ว่าจะ custom มันยังไงถ้าอยากรู้ว่าเป็นยังไงก็ลองเอาคอมเเม้นของ เเล้วลองใช้ดูนะ (เลื่อนไปเอาด้านล่างออกด้วยนะ)
+    private DataSource<AdminList> dataSource;
+    private AdminList adminList;
     private String adminUsernameInput;
     private String adminPasswordInput;
+    private String adminNewPassInput;
+    private String adminNewConPassInput;
 
     public void initialize(){
+        dataSource = new AdminListFileDataSource("data", "admin.csv");
+        adminList = dataSource.readData();
         clearErrorLabel();
+        clearSuccessLabel();
     }
 
     private void clearErrorLabel(){
         errorLabel.setText("");
     }
+    private void clearSuccessLabel(){ successLabel.setText("");}
 
     public void handleBackButton(){
         try {
@@ -42,5 +65,34 @@ public class AdminChangePasswordPageController {
     public void handleResetPasswordAdmin(){
         adminUsernameInput = userNameAdminResetTextField.getText();
         adminPasswordInput = oldPasswordResetAdminPasswordField.getText();
+        adminNewPassInput = newPassAdminPasswordField.getText();
+        adminNewConPassInput = conNewPassAdminPasswordField.getText();
+
+
+        for (Admin A : adminList.getAllAdmin()) {
+            if (A.getUsername().equals(adminUsernameInput)){
+                if (A.getPassword().equals(adminPasswordInput)){
+                    if (adminNewPassInput.equals(adminNewConPassInput)){
+                        A.changePassword(adminNewPassInput);
+                        dataSource.writeData(adminList);
+                        errorLabel.setText("");
+                        successLabel.setText("Successfully change password");
+
+
+                    }
+                    else{errorLabel.setText("New Password doesn't match.");}
+                }
+                else{errorLabel.setText("Username or Password Incorrect.");}
+            }
+            else {errorLabel.setText("Username or Password Incorrect.");
+//                Alert alert = new Alert(Alert.AlertType.WARNING);
+//                alert.setTitle("Oh oh");
+//                alert.setContentText("TT");                   นี่ออกด้วยนะ**
+//                alert.showAndWait();
+                AlertBox.display("Alert", "Username or Password Incorrect.");
+
+            }
+
+        }
     }
 }
