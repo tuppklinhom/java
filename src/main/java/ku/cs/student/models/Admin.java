@@ -11,6 +11,13 @@ public class Admin {
         this.password = password;
     }
 
+    public boolean isUsername(String username) {
+        return this.username.equals(username);
+    }
+
+    public boolean isPassword(String password) {
+        return this.password.equals(password);
+    }
 
     public String getUsername() {
         return username;
