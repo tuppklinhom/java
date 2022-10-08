@@ -1,6 +1,7 @@
 package ku.cs.student.models;
 
-import java.util.Comparator;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Report implements Comparable<Report> {
     private String reporterName;
@@ -8,6 +9,9 @@ public class Report implements Comparable<Report> {
     private String headline;
     private String content;
     private String category;
+
+    private String reportedTime;
+
 
     private int voteCount;
 
@@ -22,33 +26,19 @@ public class Report implements Comparable<Report> {
         this.headline = headline;
         this.category = category;
         this.voteCount = 0;
+        this.reportedTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
+    
 
-    public Report(String reporterName, String headline, String content, String category, int voteCount) {
-        this.reporterName = reporterName;
-        this.status = "ดำเนินการ";
-        this.content = content;
-        this.headline = headline;
-        this.category = category;
-        this.voteCount = voteCount;
-    }
-
-    public Report(String reporterName, String status, String headline, String content, String category) {
-        this.reporterName = reporterName;
-        this.status = status;
-        this.content = content;
-        this.headline = headline;
-        this.category = category;
-        this.voteCount = 0;
-    }
-
-    public Report(String reporterName, String status, String headline, String content, String category, int voteCount) {
+    public Report(String reporterName, String status, String headline, String content, String category, int voteCount, String reportedTime) {
         this.reporterName = reporterName;
         this.status = status;
         this.content = content;
         this.headline = headline;
         this.category = category;
         this.voteCount = voteCount;
+        this.reportedTime = reportedTime;
+
     }
 
     public void addVoteCount(){
@@ -91,6 +81,10 @@ public class Report implements Comparable<Report> {
 
     public void updateStatus(String status) {
         this.status = status;
+    }
+
+    public String getReportedTime() {
+        return reportedTime;
     }
 
     //รอฟังก์ชันอื่น

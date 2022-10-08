@@ -28,6 +28,13 @@ public class Student {
         return password;
     }
 
+    public boolean isPassword(String password) {
+        return this.password.equals(password);
+    }
+    public boolean isUsername(String username) {
+        return this.username.equals(username);
+    }
+
     public boolean changePassword(String oldPassword, String newPassword){
         if (oldPassword == this.password){
             this.password = newPassword;

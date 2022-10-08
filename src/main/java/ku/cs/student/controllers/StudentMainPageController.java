@@ -14,7 +14,6 @@ import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -108,6 +107,15 @@ public class StudentMainPageController {
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
 
+    }
+
+    public void handleLogoutButton(ActionEvent actionEvent){
+        try {
+            com.github.saacsos.FXRouter.goTo("student_login_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า student_create_report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
     }
 
 

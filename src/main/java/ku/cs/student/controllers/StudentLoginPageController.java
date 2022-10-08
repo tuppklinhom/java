@@ -47,7 +47,7 @@ public class StudentLoginPageController {
         Student user = studentList.findStudent(usernameInput);
 
         if (user != null){
-            if(user.getPassword().equals(passwordInput)){
+            if(user.isPassword(passwordInput)){
                 try {
                     FXRouter.goTo("student_main_page", user);
                 } catch (IOException e) {

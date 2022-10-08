@@ -21,22 +21,22 @@
       </ImageView>
       <Pane layoutX="459.0" layoutY="32.0" prefHeight="753.0" prefWidth="714.0" style="-fx-background-color: #F5F5DC;">
          <children>
-            <Label layoutX="62.0" layoutY="60.0" text="TOPIC">
+            <Label layoutX="52.0" layoutY="106.0" text="TOPIC">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="headlineLabel" layoutX="63.0" layoutY="129.0" text="headlineLabel">
+            <Label fx:id="headlineLabel" layoutX="52.0" layoutY="149.0" text="headlineLabel">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="242.0" text="CONTENT">
+            <Label layoutX="54.0" layoutY="228.0" text="CONTENT">
                <font>
                   <Font name="Cambria" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="575.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
+            <Button layoutX="54.0" layoutY="654.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,7 +44,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Pane layoutX="390.0" layoutY="31.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #FFFF;">
+            <Pane layoutX="357.0" layoutY="84.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #FFFF;">
                <children>
                   <Label layoutX="46.0" layoutY="34.0" text="ผู้รายงาน :">
                      <font>
@@ -68,11 +68,19 @@
                   </Label>
                </children></Pane>
 
-            <Pane layoutX="46.0" layoutY="303.0" prefHeight="390.0" prefWidth="606.0" style="-fx-background-color: #FFF;">
+            <Pane layoutX="46.0" layoutY="272.0" prefHeight="353.0" prefWidth="639.0" style="-fx-background-color: #FFF;">
                <children>
-                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="348.0" prefWidth="573.0" />
+                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="303.0" prefWidth="592.0" />
                </children>
             </Pane>
+            <Button layoutX="562.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
          <effect>
             <DropShadow />

@@ -53,7 +53,9 @@ public class StudentRegistrationPageController {
         passwordInput = passwordTextField.getText();
         confirmPasswordInput = confirmPasswordTextField.getText();
 
-        if(studentList.findStudent(usernameInput) == null){
+        Student S = studentList.findStudent(usernameInput);
+
+        if(S == null){
             if(passwordInput.equals(confirmPasswordInput)){
                 Student newStudent = new Student("NAME", usernameInput, passwordInput);
                 studentList.addStudent(newStudent);
