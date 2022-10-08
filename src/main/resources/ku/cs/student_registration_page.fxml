@@ -6,17 +6,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentRegistrationPageController">
+<AnchorPane fx:id="nameTextField" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentRegistrationPageController">
    <children>
       <Label layoutX="842.0" layoutY="96.0" text="Registration">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameTextField" layoutX="780.0" layoutY="191.0" prefHeight="30.0" prefWidth="255.0" promptText="username" />
-      <TextField fx:id="passwordTextField" layoutX="780.0" layoutY="257.0" prefHeight="30.0" prefWidth="262.0" promptText="passwords" />
-      <TextField fx:id="confirmPasswordTextField" layoutX="780.0" layoutY="320.0" prefHeight="30.0" prefWidth="262.0" promptText="confirm passwords" />
-      <Button layoutX="780.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="26.0" prefWidth="255.0" text="create account" textFill="#3dc91d" />
-      <Label fx:id="errorLabel" layoutX="873.0" layoutY="382.0" text="errorLabel" textFill="#a90a0a" />
+      <TextField fx:id="usernameTextField" layoutX="783.0" layoutY="232.0" prefHeight="30.0" prefWidth="255.0" promptText="username" />
+      <TextField fx:id="passwordTextField" layoutX="780.0" layoutY="300.0" prefHeight="30.0" prefWidth="262.0" promptText="passwords" />
+      <TextField fx:id="confirmPasswordTextField" layoutX="780.0" layoutY="361.0" prefHeight="30.0" prefWidth="262.0" promptText="confirm passwords" />
+      <Button layoutX="783.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="255.0" text="create account" textFill="#3dc91d" />
+      <Label fx:id="errorLabel" layoutX="880.0" layoutY="418.0" text="errorLabel" textFill="#a90a0a" />
+      <TextField fx:id="nameTextField" layoutX="782.0" layoutY="166.0" prefHeight="30.0" prefWidth="255.0" promptText="Name" />
+      <Button layoutX="298.0" layoutY="442.0" mnemonicParsing="false" text="เลือกรูปภาพ" />
    </children>
 </AnchorPane>

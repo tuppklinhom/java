@@ -15,6 +15,15 @@ public class AdminList {
         admins.add(admin);
     }
 
+    public Admin findByUsername(String username) {
+        for (Admin admin : admins) {
+            if (admin.isUsername(username)) {
+                return admin;
+            }
+        }
+        return null;
+    }
+
     public int size(){
         return admins.size();
     }

@@ -20,10 +20,17 @@ public class StudentRegistrationPageController {
     private Label errorLabel;
     @FXML
     private TextField confirmPasswordTextField;
+    @FXML
+    private TextField nameTextField;
+
 
     private String usernameInput;
     private String passwordInput;
     private String confirmPasswordInput;
+
+    private String nameInput;
+
+
 
     private DataSource<StudentList> dataSource;
 
@@ -41,6 +48,7 @@ public class StudentRegistrationPageController {
     }
 
     public void handleCreateAccountButton(ActionEvent actionEvent){
+        nameInput = nameTextField.getText();
         usernameInput = usernameTextField.getText();
         passwordInput = passwordTextField.getText();
         confirmPasswordInput = confirmPasswordTextField.getText();
