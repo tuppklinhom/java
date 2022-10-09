@@ -87,5 +87,20 @@ public class Report implements Comparable<Report> {
         return reportedTime;
     }
 
+    public boolean isReporter(String name){
+        return this.reporterName.equals(name);
+    }
+    public boolean isStatus(String status){
+        return this.status.equals(status);
+    }
+    public boolean isCategory(String category) {
+        return this.category.equals(category);
+    }
+
+    public String getTime() {
+        return reportedTime;
+    }
+
+
     //รอฟังก์ชันอื่น
 }

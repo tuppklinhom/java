@@ -56,8 +56,10 @@ public class ReportList {
 
     /*
     method filterCategory เอาไว้แยกหมวดหมู่ ( category ) ของข้อมูลใน Class category
+
+    Edit: 9.10.22 แก้ชื่อ เอาไปใช้กับอย่างอื่น
      */
-    public ReportList filterCategory(Filterer<Report> filterer) {
+    public ReportList filterBy(Filterer<Report> filterer) {
         ReportList filtered = new ReportList();
         for (Report report : getAllReport()) {
             if (filterer.filter(report)) {

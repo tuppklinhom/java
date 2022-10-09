@@ -145,12 +145,16 @@ public class OfficerMainPageController {
      */
     public void handleSelectedCategory(ActionEvent actionEvent) {
         String selected_category = categoryChoiceBox.getValue();
-        ReportList reportsListCategory = reportList.filterCategory(new Filterer<Report>() {
+        ReportList reportsListCategory = reportList.filterBy(new Filterer<Report>() {
             @Override
             public boolean filter(Report report) {
                 return report.getCategory().equals(selected_category);
             }
         });
+        /**
+         * แก้อันข้างบนด้วย ตรง return น่าจะต้องเอาไปไว้ใน class Report
+         *
+         */
 
         reportList = reportsListCategory; // list report ใหม่ แทน list report เก่า
         reportListView.getItems().clear(); // เคลียข้อมูลใน list view เก่าออก
