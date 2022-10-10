@@ -39,7 +39,8 @@ public class StudentMainPageController {
     private ComboBox<String> categoryComboBox;
     @FXML
     private ComboBox<String> statusComboBox;
-
+    @FXML
+    private ComboBox<String> voteSortComboBox;
     private DataSource<ReportList> reportListDataSource;
 
     private DataSource<CategoryList> categoryListDataSource;
@@ -61,11 +62,13 @@ public class StudentMainPageController {
         showListView();
         showCategoryComboBox();
         showStatusComboBox();
+        showVoteSortComboBox();
         clearSelectReport();
         handleSelectedListView();
     }
     private void showListView(){
         sortVote();
+        reportListView.getItems().clear();
         reportListView.getItems().addAll(reportList.getAllReport());
         reportListView.refresh();
     }
@@ -85,6 +88,15 @@ public class StudentMainPageController {
         statusComboBox.getItems().add("ทั้งหมด");
         statusComboBox.setOnAction(this::handleSearchCategoryAndStatusComboBox);
 
+    }
+    private void showVoteSortComboBox(){
+        String[] choice = {"มากไปน้อย", "น้อยไปมาก"};
+        voteSortComboBox.getItems().addAll(choice);
+        voteSortComboBox.setOnAction(this::handleVoteSortComboBox);
+    }
+
+    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+        showListView();
     }
 
     //เลือก combobox
@@ -124,19 +136,32 @@ public class StudentMainPageController {
             });
         }
 
-        reportListView.getItems().clear();
+
         showListView();
     }
 
 
     private void sortVote() {
-        Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
-            @Override
-            public int compare(Report o1, Report o2) {
-                return o2.getVoteCount() - o1.getVoteCount();
-            }
-        });
-    }// sort list from ListView max to min
+        String sort = voteSortComboBox.getValue();
+
+        if (sort == null || sort.equals("มากไปน้อย")){
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o2.getVoteCount() - o1.getVoteCount();
+                }
+            });
+        }
+        else{
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o1.getVoteCount() - o2.getVoteCount();
+                }
+            });
+        }
+
+    }// sort list from ListView depends on user choice
 
     public void handleYourReportCheck(ActionEvent actionEvent){
         if(yourReportCheckBox.isSelected()){
@@ -149,7 +174,7 @@ public class StudentMainPageController {
         }else{
             reportList = reportListDataSource.readData();
         }
-        reportListView.getItems().clear();
+
         showListView();
     }
     private void handleSelectedListView() {
@@ -189,7 +214,6 @@ public class StudentMainPageController {
     public void handleVoteUpButton(){
         reportList.findReport(tempReportForVote).addVoteCount();
         reportListDataSource.writeData(reportList);
-        reportListView.getItems().clear();
         showListView();
         showSelectedReport(tempReportForVote);
     }
