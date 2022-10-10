@@ -5,13 +5,15 @@ public class Student {
     private String username;
     private String password;
 
+    private String imagePath;
     private boolean active;
 
 
-    public Student(String name, String username, String password){
+    public Student(String name, String username, String password,String imagePath){
         this.name = name;
         this.username = username;
         this.password = password;
+        this.imagePath = imagePath;
         active = true;
     }
 
@@ -54,4 +56,7 @@ public class Student {
     }
 
 
+    public String getImagePath() {
+        return imagePath;
+    }
 }

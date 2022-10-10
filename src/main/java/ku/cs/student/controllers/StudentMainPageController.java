@@ -5,11 +5,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ku.cs.student.models.*;
 import ku.cs.student.service.CategoryListFileDataSource;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -40,6 +43,10 @@ public class StudentMainPageController {
     private ComboBox<String> voteSortComboBox;
     @FXML
     private ComboBox<String> dateSortComboBox;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private ImageView profileImageView;
     private DataSource<ReportList> reportListDataSource;
 
     private DataSource<CategoryList> categoryListDataSource;
@@ -58,6 +65,9 @@ public class StudentMainPageController {
         categoryList = categoryListDataSource.readData();
 
         user = (Student) com.github.saacsos.FXRouter.getData();
+        usernameLabel.setText(user.getName());
+
+        showProfile();
         showListView();
         showCategoryComboBox();
         showStatusComboBox();
@@ -70,6 +80,10 @@ public class StudentMainPageController {
         reportListView.getItems().clear();
         reportListView.getItems().addAll(reportList.getAllReport());
         reportListView.refresh();
+    }
+   private void showProfile(){
+        File imageFile = new File(user.getImagePath());
+        profileImageView.setImage(new Image(imageFile.toURI().toString()));
     }
     private void showCategoryComboBox(){
         categoryComboBox.getItems().addAll(categoryList.getAllCategories());

@@ -46,44 +46,44 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Pane layoutX="357.0" layoutY="84.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #FFFF;">
+            <Pane layoutX="393.0" layoutY="100.0" prefHeight="136.0" prefWidth="284.0" style="-fx-background-color: #FFFF;">
                <children>
-                  <Label layoutX="45.0" layoutY="24.0" text="ผู้รายงาน :">
+                  <Label layoutX="47.0" layoutY="16.0" text="ผู้รายงาน :">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="71.0" layoutY="106.0" text="VOTE :" textFill="#ec2727">
+                  <Label layoutX="73.0" layoutY="98.0" text="VOTE :" textFill="#ec2727">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="reporterNameLabel" layoutX="135.0" layoutY="26.0" text=" reporterNameLabel">
+                  <Label fx:id="reporterNameLabel" layoutX="137.0" layoutY="18.0" text=" reporterNameLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="voteCountLabel" layoutX="135.0" layoutY="108.0" text="voteCountLabel">
+                  <Label fx:id="voteCountLabel" layoutX="137.0" layoutY="100.0" text="voteCountLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="23.0" layoutY="49.0" text="วันที่รายงาน :">
+                  <Label layoutX="25.0" layoutY="41.0" text="วันที่รายงาน :">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="66.0" layoutY="73.0" text="สถานะ :">
+                  <Label layoutX="68.0" layoutY="65.0" text="สถานะ :">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="reportedDateLabel" layoutX="135.0" layoutY="51.0" text=" reportedDateLabel">
+                  <Label fx:id="reportedDateLabel" layoutX="137.0" layoutY="43.0" text=" reportedDateLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="statusLabel" layoutX="139.0" layoutY="77.0" text="statusLabel">
+                  <Label fx:id="statusLabel" layoutX="141.0" layoutY="69.0" text="statusLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
@@ -103,6 +103,21 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Pane layoutX="481.0" layoutY="17.0" prefHeight="64.0" prefWidth="197.0" style="-fx-background-color: #FFFF;">
+               <children>
+                  <Label layoutX="87.0" layoutY="32.0" text="นักเรียน">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLabel" layoutX="87.0" layoutY="14.0" text="usernameLabel">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="profileImageView" fitHeight="41.0" fitWidth="55.0" layoutX="20.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
          </children>
          <effect>
             <DropShadow />
