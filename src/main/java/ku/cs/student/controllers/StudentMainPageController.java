@@ -11,10 +11,7 @@ import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
+import java.util.*;
 
 public class StudentMainPageController {
 
@@ -41,6 +38,8 @@ public class StudentMainPageController {
     private ComboBox<String> statusComboBox;
     @FXML
     private ComboBox<String> voteSortComboBox;
+    @FXML
+    private ComboBox<String> dateSortComboBox;
     private DataSource<ReportList> reportListDataSource;
 
     private DataSource<CategoryList> categoryListDataSource;
@@ -63,11 +62,11 @@ public class StudentMainPageController {
         showCategoryComboBox();
         showStatusComboBox();
         showVoteSortComboBox();
+        showDateSortComboBox();
         clearSelectReport();
         handleSelectedListView();
     }
     private void showListView(){
-        sortVote();
         reportListView.getItems().clear();
         reportListView.getItems().addAll(reportList.getAllReport());
         reportListView.refresh();
@@ -94,10 +93,56 @@ public class StudentMainPageController {
         voteSortComboBox.getItems().addAll(choice);
         voteSortComboBox.setOnAction(this::handleVoteSortComboBox);
     }
+    private void showDateSortComboBox(){
+        String[] choice = {"เก่าที่สุด" , "ใหม่ที่สุด"};
+        dateSortComboBox.getItems().addAll(choice);
+        dateSortComboBox.setOnAction(this::handleDateSortComboBox);
+    }
 
-    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+    private void handleDateSortComboBox(ActionEvent actionEvent) {
+        String choice = dateSortComboBox.getValue();
+        if(choice.equals("ใหม่ที่สุด")){
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o2.compareTime(o1);
+                }
+            });
+        }
+        else {
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o1.compareTime(o2);
+                }
+            });
+        }
         showListView();
     }
+
+    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+        String sort = voteSortComboBox.getValue();
+
+        if (sort == null || sort.equals("มากไปน้อย")){
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o2.getVoteCount() - o1.getVoteCount();
+                }
+            });
+        }
+        else{
+            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o1.getVoteCount() - o2.getVoteCount();
+                }
+            });
+        }
+        showListView();
+    }
+
+
 
     //เลือก combobox
     private void handleSearchCategoryAndStatusComboBox(ActionEvent actionEvent) {
@@ -141,27 +186,9 @@ public class StudentMainPageController {
     }
 
 
-    private void sortVote() {
-        String sort = voteSortComboBox.getValue();
 
-        if (sort == null || sort.equals("มากไปน้อย")){
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
-                @Override
-                public int compare(Report o1, Report o2) {
-                    return o2.getVoteCount() - o1.getVoteCount();
-                }
-            });
-        }
-        else{
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
-                @Override
-                public int compare(Report o1, Report o2) {
-                    return o1.getVoteCount() - o2.getVoteCount();
-                }
-            });
-        }
 
-    }// sort list from ListView depends on user choice
+
 
     public void handleYourReportCheck(ActionEvent actionEvent){
         if(yourReportCheckBox.isSelected()){

@@ -139,5 +139,6 @@
       <ComboBox fx:id="statusComboBox" layoutX="229.0" layoutY="211.0" prefHeight="25.0" prefWidth="164.0" promptText="เลือกสถานะการดำเนินงาน" />
       <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="เลือกหมวดหมู่" />
       <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="251.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" />
+      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="251.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" />
    </children>
 </AnchorPane>

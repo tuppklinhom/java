@@ -96,6 +96,9 @@ public class Report implements Comparable<Report> {
     public boolean isCategory(String category) {
         return this.category.equals(category);
     }
+    public int compareTime(Report o2){
+        return this.reportedTime.compareTo(o2.reportedTime);
+    }
 
     public String getTime() {
         return reportedTime;
