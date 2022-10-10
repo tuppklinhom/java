@@ -71,8 +71,6 @@ public class StudentLoginPageController {
         }
     }
 
-
-
     public void handleGotoAdminPage(){
         try {
             FXRouter.goTo("admin_login_page");

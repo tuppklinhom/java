@@ -89,7 +89,5 @@ public class AdminChangePasswordPageController {
         } else {
             errorLabel.setText("New Password doesn't match.");
         }
-
-
     }
 }

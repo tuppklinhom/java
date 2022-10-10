@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -23,45 +24,58 @@
                   <Font name="Agency FB" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="849.0" layoutY="96.0" text="สถานะ : ">
+            <Label layoutX="883.0" layoutY="95.0" text="สถานะ : ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="statusLabel" layoutX="956.0" layoutY="102.0" text="statusLabel" />
-            <Label layoutX="832.0" layoutY="460.0" text="รายละเอียดวิธีการจัดการ">
+            <Label fx:id="statusLabel" layoutX="990.0" layoutY="101.0" text="statusLabel" />
+            <Label layoutX="555.0" layoutY="338.0" text="รายละเอียดวิธีการจัดการ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="631.0" layoutY="463.0" text="ผู้รายงาน">
+            <Label layoutX="617.0" layoutY="201.0" text="หน่วยงาน">
                <font>
-                  <Font size="16.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="reporterNameLabel" layoutX="610.0" layoutY="520.0" text="reporterNameLabel" />
-            <Label fx:id="solutionLabel" layoutX="897.0" layoutY="524.0" text="solutionLabel" />
+            <Label fx:id="solutionLabel" layoutX="624.0" layoutY="410.0" text="solutionLabel" />
             <ChoiceBox fx:id="categoryChoiceBox" layoutX="55.0" layoutY="98.0" prefWidth="150.0" />
-            <Label fx:id="categoryLabel" layoutX="341.0" layoutY="103.0" text="categoryLabel" />
-            <Label layoutX="888.0" layoutY="148.0" text="เลือกสถานะ">
+            <Label fx:id="categoryLabel" layoutX="621.0" layoutY="262.0" text="categoryLabel" />
+            <Label layoutX="922.0" layoutY="147.0" text="เลือกสถานะ">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="pendingButton" layoutX="888.0" layoutY="227.0" mnemonicParsing="false" onAction="#handlePendingButton" style="-fx-background-color: #2E8B57;" text="ตกลง">
+            <Button fx:id="pendingButton" layoutX="922.0" layoutY="226.0" mnemonicParsing="false" onAction="#handlePendingButton" style="-fx-background-color: #2E8B57;" text="ตกลง">
                <effect>
                   <DropShadow />
                </effect>
             </Button>
-            <Button fx:id="solvedButton" layoutX="888.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleSolvedButton" style="-fx-background-color: #2E8B57;" text="ตกลง">
+            <Button fx:id="solvedButton" layoutX="922.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleSolvedButton" style="-fx-background-color: #2E8B57;" text="ตกลง">
                <effect>
                   <DropShadow />
                </effect>
             </Button>
-            <Label layoutX="888.0" layoutY="198.0" text="ดำเนินการอยู่" />
-            <Label layoutX="888.0" layoutY="283.0" text="เสร็จสิ้น" />
-            <Label fx:id="headLineLabel" layoutX="599.0" layoutY="111.0" text="headLineLabel" />
-            <Button fx:id="selectedCategoryButton" layoutX="238.0" layoutY="98.0" mnemonicParsing="false" text="เลือก" onAction="#handleSelectedCategory"/>
+            <Label layoutX="922.0" layoutY="197.0" text="ดำเนินการอยู่" />
+            <Label layoutX="922.0" layoutY="282.0" text="เสร็จสิ้น" />
+            <Label fx:id="headLineLabel" layoutX="592.0" layoutY="96.0" text="headLineLabel">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
+            <Button fx:id="selectedCategoryButton" layoutX="238.0" layoutY="98.0" mnemonicParsing="false" onAction="#handleSelectedCategory" text="เลือก" />
+            <Label layoutX="618.0" layoutY="462.0" text="เจ้าหน้าที่">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="officerTextArea" editable="false" layoutX="540.0" layoutY="510.0" prefHeight="176.0" prefWidth="239.0" promptText="เจ้าหน้าที่..." />
+            <Button fx:id="logOutButton" layoutX="1020.0" layoutY="661.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
       </Pane>
       <Label layoutX="1033.0" layoutY="130.0">

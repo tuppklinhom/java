@@ -199,11 +199,6 @@ public class StudentMainPageController {
         showListView();
     }
 
-
-
-
-
-
     public void handleYourReportCheck(ActionEvent actionEvent){
         if(yourReportCheckBox.isSelected()){
             reportList = reportList.filterBy(new Filterer<Report>() {
