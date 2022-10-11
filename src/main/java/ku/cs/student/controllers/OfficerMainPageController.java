@@ -15,6 +15,7 @@ import ku.cs.student.service.ReportListFileDataSource;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class OfficerMainPageController {
@@ -52,10 +53,10 @@ public class OfficerMainPageController {
 
     public void initialize(){
         dataSource = new ReportListFileDataSource("data","Report.csv");
-        officer = (Officer) com.github.saacsos.FXRouter.getData();
+        officer = (Officer) com.github.saacsos.FXRouter.getData(); // ข้อมูลของเจ้าหน้าที่ที่ล็อกอินเข้ามา โดนส่งผ่าน FXRouter
         reportList = dataSource.readData();
 
-        reportList = reportList.filterBy(new Filterer<Report>() {
+        reportList = reportList.filterBy(new Filterer<Report>() { // กรองเรื่องร้องเรียนจากหมวดหมู่ที่เจ้าหน้าที่รับผิดชอบเท่านั้น
             @Override
             public boolean filter(Report report) {
                 return report.isCategory(officer.getCategory());
@@ -77,7 +78,7 @@ public class OfficerMainPageController {
     method ที่จะแสดงข้อมูลที่เราสามารถเลือกได้จาก ChoiceBox ( ข้อมูลที่เลือกได้มาจาก category ของ Class Report )
      */
     private void showCategoryChoiceBox() {
-        ArrayList<String> categoryListForChoiceBox = new ArrayList<String>();
+        Set<String> categoryListForChoiceBox = new TreeSet<String>();
         for (Report report : reportList.getAllReport()) {
             categoryListForChoiceBox.add(report.getCategory().trim());
         }
@@ -116,21 +117,38 @@ public class OfficerMainPageController {
 
 
     public void handlePendingButton(){
+        reportList = dataSource.readData();
         String headline = headLineLabel.getText(); // หา headline จาก String
         Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
-        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
-        reportList.getAllReport().get(index).updateStatus("ดำเนินการ"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
+        report.updateStatus("ดำเนินการ");
+//        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
+//        reportList.getAllReport().get(index).updateStatus("ดำเนินการ"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
         dataSource.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
-        statusLabel.setText("ดำเนินการ");
+        statusLabel.setText(report.getStatus());
+        reportList = reportList.filterBy(new Filterer<Report>() {
+            @Override
+            public boolean filter(Report report) {
+                return report.isCategory(officer.getCategory());
+            }
+        });
     }
 
     public void handleSolvedButton(){
+        reportList = dataSource.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
         String headline = headLineLabel.getText(); // หา headline จาก String
         Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
-        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
-        reportList.getAllReport().get(index).updateStatus("เสร็จสิ้น"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
+        report.updateStatus("เสร็จสิ้น");
+//        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
+//        reportList.getAllReport().get(index).updateStatus("เสร็จสิ้น"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
         dataSource.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
-        statusLabel.setText("เสร็จสิ้น");
+        statusLabel.setText(report.getStatus());
+
+        reportList = reportList.filterBy(new Filterer<Report>() {
+            @Override
+            public boolean filter(Report report) {
+                return report.isCategory(officer.getCategory());
+            }
+        });
     }
 
     /*
@@ -176,7 +194,7 @@ public class OfficerMainPageController {
 
     public void handleLogoutButton(ActionEvent actionEvent) {
         try {
-            com.github.saacsos.FXRouter.goTo("officer_login_page");
+            com.github.saacsos.FXRouter.goTo("student_login_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า student_create_report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

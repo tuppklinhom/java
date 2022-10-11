@@ -1,6 +1,7 @@
 package ku.cs.student.service;
 
 import ku.cs.student.models.CategoryList;
+import ku.cs.student.models.Officer;
 
 import java.io.*;
 
@@ -44,6 +45,7 @@ public class CategoryListFileDataSource implements DataSource<CategoryList>{ // 
             buffer = new BufferedReader(reader);
 
             String line = "";
+//            Officer officer = null;
             while ((line = buffer.readLine()) != null) {
                 categoryList.addCategory(line);
             }
