@@ -53,19 +53,26 @@ public class StudentMainPageController {
 
     private CategoryList categoryList;
     private ReportList reportList;
+    private ReportList tempReportList; // for fixing bug in voting with sort list
+                                       // this is for showListView Only
 
     private Report tempReportForVote; //สำหรับ ไว้โหวต
+
+    private boolean sortOption; // for sorting while vote; false = dateSort
+                                //                         true  = voteSort
 
     public void initialize(){
 
 
         reportListDataSource = new ReportListFileDataSource("data", "Report.csv");
         reportList = reportListDataSource.readData();
+        tempReportList = reportListDataSource.readData();
         categoryListDataSource = new CategoryListFileDataSource("data", "Category.csv");
         categoryList = categoryListDataSource.readData();
 
         user = (Student) com.github.saacsos.FXRouter.getData();
         usernameLabel.setText(user.getName());
+        sortOption = true;
 
         showProfile();
         showListView();
@@ -78,7 +85,7 @@ public class StudentMainPageController {
     }
     private void showListView(){
         reportListView.getItems().clear();
-        reportListView.getItems().addAll(reportList.getAllReport());
+        reportListView.getItems().addAll(tempReportList.getAllReport());
         reportListView.refresh();
     }
    private void showProfile(){
@@ -114,9 +121,27 @@ public class StudentMainPageController {
     }
 
     private void handleDateSortComboBox(ActionEvent actionEvent) {
+        dateSort();
+        sortOption = false;
+        showListView();
+    }
+
+    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+        voteSort();
+        sortOption = true;
+        showListView();
+    }
+
+    //เลือก combobox
+    private void handleSearchCategoryAndStatusComboBox(ActionEvent actionEvent) {
+        statusAndCategorySort();
+        showListView();
+    }
+
+    private void dateSort(){
         String choice = dateSortComboBox.getValue();
-        if(choice.equals("ใหม่ที่สุด")){
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+        if(choice == null || choice.equals("ใหม่ที่สุด")){
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
                 @Override
                 public int compare(Report o1, Report o2) {
                     return o2.compareTime(o1);
@@ -124,54 +149,47 @@ public class StudentMainPageController {
             });
         }
         else {
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
                 @Override
                 public int compare(Report o1, Report o2) {
                     return o1.compareTime(o2);
                 }
             });
         }
-        showListView();
     }
 
-    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+    private void voteSort(){
         String sort = voteSortComboBox.getValue();
 
         if (sort == null || sort.equals("มากไปน้อย")){
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
                 @Override
                 public int compare(Report o1, Report o2) {
                     return o2.getVoteCount() - o1.getVoteCount();
                 }
             });
         }
-        else{
-            Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
+        else if (sort.equals("น้อยไปมาก")){
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
                 @Override
                 public int compare(Report o1, Report o2) {
                     return o1.getVoteCount() - o2.getVoteCount();
                 }
             });
         }
-        showListView();
     }
 
-
-
-    //เลือก combobox
-    private void handleSearchCategoryAndStatusComboBox(ActionEvent actionEvent) {
+    private void statusAndCategorySort(){
         // ---- สำหรับเผื่อติ้กเฉพาะ report ของตัวเอง----
-        reportList = reportListDataSource.readData();
+        tempReportList = reportListDataSource.readData();
+        voteSort();
         if (yourReportCheckBox.isSelected()){
-            reportList = reportList.filterBy(new Filterer<Report>() {
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
                 @Override
                 public boolean filter(Report report) {
                     return report.isReporter(user.getName());
                 }
             });
-        }
-        else{
-            reportList = reportListDataSource.readData();
         }
         // -------------------------------------------
 
@@ -179,7 +197,7 @@ public class StudentMainPageController {
         String category = categoryComboBox.getValue();
 
         if (category != null && !category.equals("ทั้งหมด")){
-            reportList = reportList.filterBy(new Filterer<Report>() {
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
                 @Override
                 public boolean filter(Report report) {
                     return report.isCategory(category);
@@ -187,7 +205,7 @@ public class StudentMainPageController {
             });
         }
         if (status != null && !status.equals("ทั้งหมด")){
-            reportList = reportList.filterBy(new Filterer<Report>() {
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
                 @Override
                 public boolean filter(Report report) {
                     return report.isStatus(status);
@@ -195,20 +213,18 @@ public class StudentMainPageController {
             });
         }
 
-
-        showListView();
     }
 
     public void handleYourReportCheck(ActionEvent actionEvent){
         if(yourReportCheckBox.isSelected()){
-            reportList = reportList.filterBy(new Filterer<Report>() {
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
                 @Override
                 public boolean filter(Report report) {
                     return report.isReporter(user.getName());
                 }
             });
         }else{
-            reportList = reportListDataSource.readData();
+            updateTemp();
         }
 
         showListView();
@@ -248,10 +264,23 @@ public class StudentMainPageController {
     }
 
     public void handleVoteUpButton(){
-        reportList.findReport(tempReportForVote).addVoteCount();
+        reportList = reportListDataSource.readData();
+        reportList.find(tempReportForVote.getHeadline()).addVoteCount();
         reportListDataSource.writeData(reportList);
+        updateTemp();
         showListView();
         showSelectedReport(tempReportForVote);
+    }
+
+    private void updateTemp() {
+        statusAndCategorySort();
+        if (sortOption){
+            voteSort();
+        }
+        else{
+            dateSort();
+        }
+
     }
 
     public void handleNewReportButton(ActionEvent actionEvent) {
