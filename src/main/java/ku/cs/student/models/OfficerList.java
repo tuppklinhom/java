@@ -1,20 +1,26 @@
 package ku.cs.student.models;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class OfficerList {
 
-    private ArrayList<Officer> officers;
+    private Map<String, Officer> officers;
 
-    public OfficerList(){ officers = new ArrayList<>();}
-
-    public Officer indexOf(int num){return officers.get(num);}
+    public OfficerList(){ officers = new TreeMap<String, Officer>();}
 
     public int size() {return officers.size();}
 
-    public void addOfficer(Officer newOfficer) { officers.add(newOfficer);}
+    public void addOfficer(Officer newOfficer) { officers.put(newOfficer.getUsername(), newOfficer);}
 
-    public ArrayList<Officer> getOfficers() {
-        return officers;
+    public Set<String> getAllOfficers() {
+        return officers.keySet();
+    }
+
+    public Officer findOfficer(String username) {
+        Officer found = officers.get(username);
+        return found;
     }
 }

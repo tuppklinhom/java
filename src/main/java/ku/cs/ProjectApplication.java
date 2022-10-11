@@ -25,7 +25,7 @@ public class ProjectApplication extends Application {
         com.github.saacsos.FXRouter.when("admin_login_page", packageStr+"admin_login_page.fxml");
         com.github.saacsos.FXRouter.when("admin_main_page", packageStr+"admin_main_page.fxml");
         com.github.saacsos.FXRouter.when("student_registration_page", packageStr+"student_registration_page.fxml");
-
+        com.github.saacsos.FXRouter.when("officer_change_password_page", packageStr+"officer_change_password_page.fxml");
     }
 
 

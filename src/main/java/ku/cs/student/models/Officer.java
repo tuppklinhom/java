@@ -29,10 +29,22 @@ public class Officer {
 
     public String getPassword(){return password;}
 
+    public boolean isUsername(String username) {
+        return this.username.equals(username);
+    }
+
+    public boolean isPassword(String password) {
+        return this.password.equals(password);
+    }
+
     /*
     method เอาไว้เพิ่มหมวดหมู่ที่ Officer รับผิดชอบ
      */
     public void addCategory(String new_category) {
         category.add(new_category);
+    }
+
+    public void changePassword(String newPassword) {
+        this.password = newPassword;
     }
 }

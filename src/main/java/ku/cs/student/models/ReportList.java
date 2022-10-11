@@ -12,10 +12,6 @@ public class ReportList {
         reports = new ArrayList<>();
     }
 
-    public ReportList(ArrayList<Report> reports) {
-        this.reports = reports;
-    }
-
     public int size(){
         return reports.size();
     }

@@ -2,6 +2,7 @@ package ku.cs.student.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.TreeSet;
 
 public class Report implements Comparable<Report> {
     private String reporterName;
@@ -95,6 +96,10 @@ public class Report implements Comparable<Report> {
     }
     public boolean isCategory(String category) {
         return this.category.equals(category);
+    }
+
+    public boolean isCategory(TreeSet<String> category) {
+        return category.contains(this.category);
     }
     public int compareTime(Report o2){
         return this.reportedTime.compareTo(o2.reportedTime);

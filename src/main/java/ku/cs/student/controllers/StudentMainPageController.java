@@ -160,7 +160,6 @@ public class StudentMainPageController {
 
     private void voteSort(){
         String sort = voteSortComboBox.getValue();
-        System.out.println(sort);
 
         if (sort == null || sort.equals("มากไปน้อย")){
             Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
@@ -215,11 +214,6 @@ public class StudentMainPageController {
         }
 
     }
-
-
-
-
-
 
     public void handleYourReportCheck(ActionEvent actionEvent){
         if(yourReportCheckBox.isSelected()){
