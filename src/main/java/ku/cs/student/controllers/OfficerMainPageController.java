@@ -5,11 +5,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import ku.cs.student.models.Filterer;
-import ku.cs.student.models.Officer;
-import ku.cs.student.models.Report;
-import ku.cs.student.models.ReportList;
+import ku.cs.student.models.*;
 import ku.cs.student.service.DataSource;
+import ku.cs.student.service.OfficerListFileDataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
 import java.io.IOException;
@@ -48,6 +46,10 @@ public class OfficerMainPageController {
 
     private Officer officer;
 
+    private DataSource<OfficerList> dataSourceOfficerList;
+
+    private OfficerList officerList;
+
     @FXML
     private TextArea officerTextArea;
 
@@ -62,6 +64,9 @@ public class OfficerMainPageController {
                 return report.isCategory(officer.getCategory());
             }
         });
+
+        dataSourceOfficerList = new OfficerListFileDataSource("data","Officer.csv");
+        officerList = dataSourceOfficerList.readData();
 
         showListView();
         showCategoryChoiceBox();
@@ -97,6 +102,7 @@ public class OfficerMainPageController {
                     public void changed(ObservableValue<? extends Report> observableValue, Report oldValue, Report newValue) {
                         System.out.println(newValue + " is selected");
                         showSelectedReport(newValue);
+                        showOfficerSortCategory();
                     }
                 });
     }
@@ -171,7 +177,10 @@ public class OfficerMainPageController {
         reportListView.getItems().clear(); // เคลียข้อมูลใน list view เก่าออก
         showListView(); // แสดงข้อมูลใน list view ด้วยข้อมูล list report ใหม่
 
+//        showOfficerSortCategory(selected_category); // แสดงข้อมูลของเจ้าหน้าที่ที่รับผิดชอบหมวดหมู่นี่ทั้งหมด
+
         reportList = dataSource.readData(); // อ่านข้อมูล reportList อันเดิม ( ทั้งหมด )
+
         /*
         filter ข้อมูลที่ officer รับผิดชอบ
          */
@@ -183,6 +192,7 @@ public class OfficerMainPageController {
         });
 
         clearSelectReport(); // เคลีย Label ก่อนเลือกหมวดหมู่อื่น ๆ
+        clearShowOfficerSortCategory(); // เคลีย TextArea ของเจ้าหน้าที่
 
         // ถ้าเลือกหมวดหมู่ทั้งหมด จะแสดงหมวดหมู่ทั้งหมด
         if (selected_category.equals("หมวดหมู่ทั้งหมด")) {
@@ -190,6 +200,29 @@ public class OfficerMainPageController {
             showListView();
             clearSelectReport();
         }
+    }
+
+    public void showOfficerSortCategory() {
+        String selected_category = categoryLabel.getText();
+        officerList = dataSourceOfficerList.readData();
+        officerList = officerList.filterBy(new Filterer<Officer>() {
+            @Override
+            public boolean filter(Officer officer) {
+                return officer.isCategory(selected_category);
+            }
+        });
+
+        String line = "";
+        for (String username : officerList.getAllOfficers()) {
+            Officer found = officerList.findOfficer(username);
+            line = line + found.getName() + "\n";
+        }
+
+        officerTextArea.setText(line);
+    }
+
+    public void clearShowOfficerSortCategory() {
+        officerTextArea.clear();
     }
 
     public void handleLogoutButton(ActionEvent actionEvent) {

@@ -1,5 +1,6 @@
 package ku.cs.student.models;
 
+import java.util.Set;
 import java.util.TreeSet;
 
 public class Officer {
@@ -10,7 +11,7 @@ public class Officer {
     /*
     Date : 29.09.2022 >> เพิ่ม field ชื่อ category เอาไว้บอกว่า หมวดหมู่ของ Officer คนนี้รับผิดชอบหมวดหมู่อะไรบ้าง
      */
-    private TreeSet<String> category;
+    private TreeSet<String>  category;
 
     public Officer(String name, String username, String password) {
         this.name = name;
@@ -35,6 +36,10 @@ public class Officer {
 
     public boolean isPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean isCategory(String category) {
+        return this.category.contains(category);
     }
 
     /*
