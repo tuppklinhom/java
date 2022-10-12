@@ -13,6 +13,8 @@ public class Report implements Comparable<Report> {
 
     private String reportedTime;
 
+    private String solution;
+
 
     private int voteCount;
 
@@ -22,24 +24,25 @@ public class Report implements Comparable<Report> {
      */
     public Report(String reporterName, String headline, String content, String category) {
         this.reporterName = reporterName;
-        this.status = "ดำเนินการ";
+        this.status = "รอดำเนินการ";
         this.content = content;
         this.headline = headline;
         this.category = category;
         this.voteCount = 0;
+        this.solution = "ไม่ระบุ";
         this.reportedTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
     
 
-    public Report(String reporterName, String status, String headline, String content, String category, int voteCount, String reportedTime) {
+    public Report(String reporterName, String status, String headline, String content, String category, int voteCount, String reportedTime, String sulution) {
         this.reporterName = reporterName;
         this.status = status;
         this.content = content;
         this.headline = headline;
         this.category = category;
         this.voteCount = voteCount;
+        this.solution = sulution;
         this.reportedTime = reportedTime;
-
     }
 
     public void addVoteCount(){
@@ -70,9 +73,13 @@ public class Report implements Comparable<Report> {
         return reporterName;
     }
 
+    public String getSolution() {
+        return solution;
+    }
+
     @Override
     public String toString() {
-        return headline + " [" + voteCount +" vote]";
+        return headline + " [" + voteCount +" vote]" + " " + "[ " + status + " ]";
     }
 
     @Override
@@ -109,6 +116,8 @@ public class Report implements Comparable<Report> {
         return reportedTime;
     }
 
-
+    public void addSolution(String solution) {
+        this.solution = solution;
+    }
     //รอฟังก์ชันอื่น
 }

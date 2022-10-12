@@ -8,15 +8,18 @@ public class Officer {
     private String username;
     private String password;
 
+    private String pictureProfile;
+
     /*
     Date : 29.09.2022 >> เพิ่ม field ชื่อ category เอาไว้บอกว่า หมวดหมู่ของ Officer คนนี้รับผิดชอบหมวดหมู่อะไรบ้าง
      */
     private TreeSet<String>  category;
 
-    public Officer(String name, String username, String password) {
+    public Officer(String name, String username, String password, String pictureProfile) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.pictureProfile = pictureProfile;
         this.category = new TreeSet<String>();
     }
 
@@ -51,5 +54,9 @@ public class Officer {
 
     public void changePassword(String newPassword) {
         this.password = newPassword;
+    }
+
+    public String getPictureProfilePath() {
+        return this.pictureProfile;
     }
 }

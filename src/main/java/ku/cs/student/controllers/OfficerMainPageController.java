@@ -5,12 +5,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import ku.cs.student.models.*;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.OfficerListFileDataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -29,18 +33,35 @@ public class OfficerMainPageController {
     private Label categoryLabel;
 
     @FXML
-    private ChoiceBox<String> categoryChoiceBox;
+    private Label headLineLabel;
 
     @FXML
-    private Label headLineLabel;
+    private Label contentLabel;
+
+    @FXML
+    private ChoiceBox<String> categoryChoiceBox;
 
     @FXML
     private Button selectedCategoryButton;
 
-    private DataSource<ReportList> dataSource;
-    private ReportList reportList;
+    @FXML
+    private TextField solutionTextField;
+
+    @FXML
+    private ChoiceBox<String> statusChoiceBox;
+
+    @FXML
+    private ImageView officerImageView;
+
+    @FXML
+    private Label officerNameLabel;
 
     private Report tempReportForVote; //สำหรับการโหวต
+
+    private DataSource<ReportList> dataSourceReportList;
+
+    private ReportList reportList;
+
 
     private Officer officer;
 
@@ -52,9 +73,9 @@ public class OfficerMainPageController {
     private TextArea officerTextArea;
 
     public void initialize(){
-        dataSource = new ReportListFileDataSource("data","Report.csv");
+        dataSourceReportList = new ReportListFileDataSource("data","Report.csv");
+        reportList = dataSourceReportList.readData();
         officer = (Officer) com.github.saacsos.FXRouter.getData(); // ข้อมูลของเจ้าหน้าที่ที่ล็อกอินเข้ามา โดนส่งผ่าน FXRouter
-        reportList = dataSource.readData();
 
         reportList = reportList.filterBy(new Filterer<Report>() { // กรองเรื่องร้องเรียนจากหมวดหมู่ที่เจ้าหน้าที่รับผิดชอบเท่านั้น
             @Override
@@ -68,6 +89,9 @@ public class OfficerMainPageController {
 
         showListView();
         showCategoryChoiceBox();
+        showStatusChoiceBox();
+        showOfficerName();
+        showOfficerImage();
         clearSelectReport();
         handleSelectedListView();
     }
@@ -89,10 +113,13 @@ public class OfficerMainPageController {
         categoryChoiceBox.getItems().addAll(categoryListForChoiceBox);
 
         // *มาลบ comment นี้ทีหลัง : โค้ดนี้อาจใช้หรือไม่ใช้ก็ได้ อาจเอามาใช้ในอนาคต
-//        categoryChoiceBox.setValue(categoryListForChoiceBox.get(categoryListForChoiceBox.size()-1));
-//        categoryChoiceBox.setOnAction(this::handleSelectedCategory);
+        categoryChoiceBox.setOnAction(this::handleSelectedCategory);
     }
 
+    private void showStatusChoiceBox() {
+        String[] status = {"ดำเนินการ", "เสร็จสิ้น"};
+        statusChoiceBox.getItems().addAll(status);
+    }
     private void handleSelectedListView() {
         reportListView.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<Report>() {
@@ -101,15 +128,26 @@ public class OfficerMainPageController {
                         System.out.println(newValue + " is selected");
                         showSelectedReport(newValue);
                         showOfficerSortCategory();
+                        System.out.println(newValue.getStatus());
                     }
                 });
     }
 
+    private void showOfficerImage() {
+        File imageFile = new File(officer.getPictureProfilePath());
+        officerImageView.setImage(new Image(imageFile.toURI().toString()));
+    }
+
+    private void showOfficerName() {
+        officerNameLabel.setText(officer.getName());
+    }
+
     private void showSelectedReport(Report report){
         headLineLabel.setText(report.getHeadline());
-        solutionLabel.setText(report.getContent());
         statusLabel.setText(report.getStatus());
         categoryLabel.setText(report.getCategory());
+        contentLabel.setText(report.getContent());
+        solutionLabel.setText(report.getSolution());
     }
 
     public void clearSelectReport(){
@@ -117,42 +155,7 @@ public class OfficerMainPageController {
         solutionLabel.setText("");
         statusLabel.setText("");
         categoryLabel.setText("");
-    }
-
-
-    public void handlePendingButton(){
-        reportList = dataSource.readData();
-        String headline = headLineLabel.getText(); // หา headline จาก String
-        Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
-        report.updateStatus("ดำเนินการ");
-//        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
-//        reportList.getAllReport().get(index).updateStatus("ดำเนินการ"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
-        dataSource.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
-        statusLabel.setText(report.getStatus());
-        reportList = reportList.filterBy(new Filterer<Report>() {
-            @Override
-            public boolean filter(Report report) {
-                return report.isCategory(officer.getCategory());
-            }
-        });
-    }
-
-    public void handleSolvedButton(){
-        reportList = dataSource.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
-        String headline = headLineLabel.getText(); // หา headline จาก String
-        Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
-        report.updateStatus("เสร็จสิ้น");
-//        int index = reportList.getAllReport().indexOf(report); // หา index ของ report
-//        reportList.getAllReport().get(index).updateStatus("เสร็จสิ้น"); // อัปเดตสถานะด้วยการเข้าถึงข้อมูลใน arraylist<Report> ด้วย index ที่ report ที่ต้องการอยู่ และอัปเดตสถานะ
-        dataSource.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
-        statusLabel.setText(report.getStatus());
-
-        reportList = reportList.filterBy(new Filterer<Report>() {
-            @Override
-            public boolean filter(Report report) {
-                return report.isCategory(officer.getCategory());
-            }
-        });
+        contentLabel.setText("");
     }
 
     /*
@@ -175,9 +178,10 @@ public class OfficerMainPageController {
         reportListView.getItems().clear(); // เคลียข้อมูลใน list view เก่าออก
         showListView(); // แสดงข้อมูลใน list view ด้วยข้อมูล list report ใหม่
 
-//        showOfficerSortCategory(selected_category); // แสดงข้อมูลของเจ้าหน้าที่ที่รับผิดชอบหมวดหมู่นี่ทั้งหมด
+        clearSelectReport(); // เคลีย Label ก่อนเลือกหมวดหมู่อื่น ๆ
+        clearShowOfficerSortCategory(); // เคลีย TextArea ของเจ้าหน้าที่
 
-        reportList = dataSource.readData(); // อ่านข้อมูล reportList อันเดิม ( ทั้งหมด )
+        reportList = dataSourceReportList.readData(); // อ่านข้อมูล reportList อันเดิม ( ทั้งหมด )
 
         /*
         filter ข้อมูลที่ officer รับผิดชอบ
@@ -189,15 +193,15 @@ public class OfficerMainPageController {
             }
         });
 
-        clearSelectReport(); // เคลีย Label ก่อนเลือกหมวดหมู่อื่น ๆ
-        clearShowOfficerSortCategory(); // เคลีย TextArea ของเจ้าหน้าที่
-
         // ถ้าเลือกหมวดหมู่ทั้งหมด จะแสดงหมวดหมู่ทั้งหมด
         if (selected_category.equals("หมวดหมู่ทั้งหมด")) {
             reportListView.getItems().clear();
             showListView();
             clearSelectReport();
+            clearShowOfficerSortCategory(); // เคลีย TextArea ของเจ้าหน้าที่
         }
+
+//        categoryChoiceBox.setOnAction(this::handleSelectedCategory);
     }
 
     public void showOfficerSortCategory() {
@@ -230,5 +234,30 @@ public class OfficerMainPageController {
             System.err.println("ไปทีหน้า student_create_report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
+    }
+
+    public void handleAddSolutionAndUpdateStatus(ActionEvent actionEvent) {
+        reportList = dataSourceReportList.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
+        String solution = solutionTextField.getText(); // หา headline จาก String
+        String headline = headLineLabel.getText();
+        String status = statusChoiceBox.getValue();
+        Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
+        report.addSolution(solution);
+        report.updateStatus(status);
+        dataSourceReportList.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
+        solutionLabel.setText(report.getSolution());
+
+        reportList = dataSourceReportList.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
+        solutionTextField.clear();
+        reportListView.getItems().clear();
+        showListView();
+        showSelectedReport(report);
+
+        reportList = reportList.filterBy(new Filterer<Report>() {
+            @Override
+            public boolean filter(Report report) {
+                return report.isCategory(officer.getCategory());
+            }
+        });
     }
 }
