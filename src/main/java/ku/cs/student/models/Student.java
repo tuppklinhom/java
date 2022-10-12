@@ -5,13 +5,15 @@ public class Student {
     private String username;
     private String password;
 
+    private String imagePath;
     private boolean active;
 
 
-    public Student(String name, String username, String password){
+    public Student(String name, String username, String password,String imagePath){
         this.name = name;
         this.username = username;
         this.password = password;
+        this.imagePath = imagePath;
         active = true;
     }
 
@@ -28,12 +30,15 @@ public class Student {
         return password;
     }
 
-    public boolean changePassword(String oldPassword, String newPassword){
-        if (oldPassword == this.password){
-            this.password = newPassword;
-            return true;
-        }
-        return false;
+    public boolean isPassword(String password) {
+        return this.password.equals(password);
+    }
+    public boolean isUsername(String username) {
+        return this.username.equals(username);
+    }
+
+    public void changePassword(String newPassword){
+        password = newPassword;
     }
 
     public void getBanned(){
@@ -46,5 +51,10 @@ public class Student {
         return active;
     }
 
-
+    public void setImagePath(String imagePath){
+        this.imagePath = imagePath;
+    }
+    public String getImagePath() {
+        return imagePath;
+    }
 }

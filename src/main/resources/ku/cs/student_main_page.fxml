@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Separator?>
@@ -10,6 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #3CB371;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentMainPageController">
@@ -21,22 +24,22 @@
       </ImageView>
       <Pane layoutX="459.0" layoutY="32.0" prefHeight="753.0" prefWidth="714.0" style="-fx-background-color: #F5F5DC;">
          <children>
-            <Label layoutX="62.0" layoutY="60.0" text="TOPIC">
+            <Label layoutX="52.0" layoutY="106.0" text="TOPIC">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="headlineLabel" layoutX="63.0" layoutY="129.0" text="headlineLabel">
+            <Label fx:id="headlineLabel" layoutX="52.0" layoutY="149.0" text="headlineLabel">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="242.0" text="CONTENT">
+            <Label layoutX="54.0" layoutY="228.0" text="CONTENT">
                <font>
                   <Font name="Cambria" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="575.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
+            <Button layoutX="54.0" layoutY="654.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,33 +47,83 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Pane layoutX="390.0" layoutY="31.0" prefHeight="150.0" prefWidth="295.0" style="-fx-background-color: #FFFF;">
+            <Pane layoutX="393.0" layoutY="100.0" prefHeight="136.0" prefWidth="284.0" style="-fx-background-color: #FFFF;">
                <children>
-                  <Label layoutX="46.0" layoutY="34.0" text="ผู้รายงาน :">
+                  <Label layoutX="47.0" layoutY="16.0" text="ผู้รายงาน :">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="64.0" layoutY="96.0" text="VOTE :" textFill="#ec2727">
+                  <Label layoutX="73.0" layoutY="98.0" text="VOTE :" textFill="#ec2727">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="reporterNameLabel" layoutX="135.0" layoutY="36.0" text=" reporterNameLabel">
+                  <Label fx:id="reporterNameLabel" layoutX="137.0" layoutY="18.0" text=" reporterNameLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="voteCountLabel" layoutX="128.0" layoutY="98.0" text="voteCountLabel">
+                  <Label fx:id="voteCountLabel" layoutX="137.0" layoutY="100.0" text="voteCountLabel">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="41.0" text="วันที่รายงาน :">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="68.0" layoutY="65.0" text="สถานะ :">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="reportedDateLabel" layoutX="137.0" layoutY="43.0" text=" reportedDateLabel">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusLabel" layoutX="141.0" layoutY="69.0" text="statusLabel">
                      <font>
                         <Font name="Cambria" size="14.0" />
                      </font>
                   </Label>
                </children></Pane>
 
-            <Pane layoutX="46.0" layoutY="303.0" prefHeight="390.0" prefWidth="606.0" style="-fx-background-color: #FFF;">
+            <Pane layoutX="46.0" layoutY="272.0" prefHeight="353.0" prefWidth="639.0" style="-fx-background-color: #FFF;">
                <children>
-                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="348.0" prefWidth="573.0" />
+                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="303.0" prefWidth="592.0" />
+               </children>
+            </Pane>
+            <Button layoutX="562.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Pane layoutX="481.0" layoutY="17.0" prefHeight="64.0" prefWidth="197.0" style="-fx-background-color: #FFFF;">
+               <children>
+                  <Label fx:id="usernameLabel" layoutX="87.0" layoutY="14.0" text="usernameLabel">
+                     <font>
+                        <Font name="Cambria" size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="profileImageView" fitHeight="41.0" fitWidth="55.0" layoutX="20.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button layoutX="77.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleAccountButton" style="-fx-background-color: transparent;" text="จัดการบัญชี" textFill="#050505">
+                     <font>
+                        <Font name="Cambria Italic" size="14.0" />
+                     </font>
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color opacity="0.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
                </children>
             </Pane>
          </children>
@@ -101,5 +154,14 @@
             <DropShadow />
          </effect>
       </Button>
+      <CheckBox fx:id="yourReportCheckBox" layoutX="57.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleYourReportCheck" text="เรื่องที่ท่านร้องเรียน">
+         <font>
+            <Font name="Cambria" size="14.0" />
+         </font>
+      </CheckBox>
+      <ComboBox fx:id="statusComboBox" layoutX="229.0" layoutY="211.0" prefHeight="25.0" prefWidth="164.0" promptText="เลือกสถานะการดำเนินงาน" />
+      <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="เลือกหมวดหมู่" />
+      <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="251.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" />
+      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="251.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" />
    </children>
 </AnchorPane>

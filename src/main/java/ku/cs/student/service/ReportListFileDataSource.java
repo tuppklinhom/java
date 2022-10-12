@@ -52,12 +52,15 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(",");
 
-                Report r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()));
+                Report r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()), data[6].trim());
                 /* Date : 29.09.2022
                 Report r จะอ่านข้อมูลที่มีทั้งหมด 6 ตัวแน่นอน เพราะเนื่องจาก constructor ของ Class Report จะ assign ค่าทุกค่าของข้อมูลไว้อยู่แล้ว
                 แม้จะรับข้อมูลเพื่อสร้าง Object แค่ 4 ตัว ก็ยังมีข้อมูลทั้งหมด 6 ตัว เพราะอีก 2 ตัวได้กำหนดค่าของมันเอาไว้แล้ว
                 ปล1. โค้ดข้างล่างที่ comment ไว้ @Tupp มาดูว่าจะทำแบบนี้ใหม่ ( บรรทัดที่ 55 ) หรือจะทำแบบข้างล่างไปเลย
                 ปล2. ไปเปลื่ยนลำดับการ assign ค่าของข้อมูลใน constructor มา ถ้าอยากใช้โค้ดข้างล่างอาจจะต้องเปลื่ยนลำดับการ assign ข้อมูลก่อน
+
+                   Date : 8.10.2022
+                 เพิ่มตัวเก็บเวลาเอาไว้ เลยต้องเพิ่ม readData อีกตัว
                  */
 
 //                Report r = null;
@@ -121,7 +124,7 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
 //                    line = line + "," + r.getStatus();
 //                }
 
-                String line = r.getReporterName() + "," + r.getStatus() + "," + r.getHeadline() + "," + content + "," + r.getCategory() + "," + r.getVoteCount();
+                String line = r.getReporterName() + "," + r.getStatus() + "," + r.getHeadline() + "," + content + "," + r.getCategory() + "," + r.getVoteCount() + "," + r.getReportedTime();
                 buffer.append(line);
                 buffer.newLine();
             }

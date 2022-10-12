@@ -4,19 +4,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import ku.cs.student.models.Report;
-import ku.cs.student.models.ReportList;
-import ku.cs.student.models.Student;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import ku.cs.student.models.*;
+import ku.cs.student.service.CategoryListFileDataSource;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.ReportListFileDataSource;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class StudentMainPageController {
 
@@ -26,43 +24,211 @@ public class StudentMainPageController {
     @FXML
     private Label reporterNameLabel;
     @FXML
+    private Label reportedDateLabel;
+    @FXML
+    private Label statusLabel;
+    @FXML
     private Label voteCountLabel;
     @FXML
     private Label headlineLabel;
     @FXML
     private TextArea contentTextArea;
+    @FXML
+    private CheckBox yourReportCheckBox;
+    @FXML
+    private ComboBox<String> categoryComboBox;
+    @FXML
+    private ComboBox<String> statusComboBox;
+    @FXML
+    private ComboBox<String> voteSortComboBox;
+    @FXML
+    private ComboBox<String> dateSortComboBox;
+    @FXML
+    private Label usernameLabel;
+    @FXML
+    private ImageView profileImageView;
+    private DataSource<ReportList> reportListDataSource;
 
-    private DataSource<ReportList> dataSource;
+    private DataSource<CategoryList> categoryListDataSource;
 
+    private CategoryList categoryList;
     private ReportList reportList;
+    private ReportList tempReportList; // for fixing bug in voting with sort list
+                                       // this is for showListView Only
 
     private Report tempReportForVote; //สำหรับ ไว้โหวต
 
-    public void initialize(){
-        //dataSource = new ReportListHardCodeDataSource();
+    private boolean sortOption; // for sorting while vote; false = dateSort
+                                //                         true  = voteSort
 
-        dataSource = new ReportListFileDataSource("data", "Report.csv");
-        reportList = dataSource.readData();
+    public void initialize(){
+
+
+        reportListDataSource = new ReportListFileDataSource("data", "Report.csv");
+        reportList = reportListDataSource.readData();
+        tempReportList = reportListDataSource.readData();
+        categoryListDataSource = new CategoryListFileDataSource("data", "Category.csv");
+        categoryList = categoryListDataSource.readData();
 
         user = (Student) com.github.saacsos.FXRouter.getData();
+        usernameLabel.setText(user.getName());
+        sortOption = true;
+
+        showProfile();
         showListView();
+        showCategoryComboBox();
+        showStatusComboBox();
+        showVoteSortComboBox();
+        showDateSortComboBox();
         clearSelectReport();
         handleSelectedListView();
     }
     private void showListView(){
-        sort();
-        reportListView.getItems().addAll(reportList.getAllReport());
+        reportListView.getItems().clear();
+        reportListView.getItems().addAll(tempReportList.getAllReport());
         reportListView.refresh();
     }
-    private void sort() {
-        Collections.sort(reportList.getAllReport(), new Comparator<Report>() {
-            @Override
-            public int compare(Report o1, Report o2) {
-                return o2.getVoteCount() - o1.getVoteCount();
-            }
-        });
-    }// sort list from ListView max to min
+   private void showProfile(){
+        File imageFile = new File(user.getImagePath());
+        profileImageView.setImage(new Image(imageFile.toURI().toString()));
+    }
+    private void showCategoryComboBox(){
+        categoryComboBox.getItems().addAll(categoryList.getAllCategories());
+        categoryComboBox.getItems().add("ทั้งหมด");
+        categoryComboBox.setOnAction(this::handleSearchCategoryAndStatusComboBox);
+    }
 
+    private void showStatusComboBox(){
+        ReportList temp = reportListDataSource.readData();
+        Collection<String> status = new HashSet<>();
+        for (Report r : temp.getAllReport()){
+            status.add(r.getStatus());
+        }
+        statusComboBox.getItems().addAll(status);
+        statusComboBox.getItems().add("ทั้งหมด");
+        statusComboBox.setOnAction(this::handleSearchCategoryAndStatusComboBox);
+
+    }
+    private void showVoteSortComboBox(){
+        String[] choice = {"มากไปน้อย", "น้อยไปมาก"};
+        voteSortComboBox.getItems().addAll(choice);
+        voteSortComboBox.setOnAction(this::handleVoteSortComboBox);
+    }
+    private void showDateSortComboBox(){
+        String[] choice = {"เก่าที่สุด" , "ใหม่ที่สุด"};
+        dateSortComboBox.getItems().addAll(choice);
+        dateSortComboBox.setOnAction(this::handleDateSortComboBox);
+    }
+
+    private void handleDateSortComboBox(ActionEvent actionEvent) {
+        dateSort();
+        sortOption = false;
+        showListView();
+    }
+
+    private void handleVoteSortComboBox(ActionEvent actionEvent) {
+        voteSort();
+        sortOption = true;
+        showListView();
+    }
+
+    //เลือก combobox
+    private void handleSearchCategoryAndStatusComboBox(ActionEvent actionEvent) {
+        statusAndCategorySort();
+        showListView();
+    }
+
+    private void dateSort(){
+        String choice = dateSortComboBox.getValue();
+        if(choice == null || choice.equals("ใหม่ที่สุด")){
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o2.compareTime(o1);
+                }
+            });
+        }
+        else {
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o1.compareTime(o2);
+                }
+            });
+        }
+    }
+
+    private void voteSort(){
+        String sort = voteSortComboBox.getValue();
+
+        if (sort == null || sort.equals("มากไปน้อย")){
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o2.getVoteCount() - o1.getVoteCount();
+                }
+            });
+        }
+        else if (sort.equals("น้อยไปมาก")){
+            Collections.sort(tempReportList.getAllReport(), new Comparator<Report>() {
+                @Override
+                public int compare(Report o1, Report o2) {
+                    return o1.getVoteCount() - o2.getVoteCount();
+                }
+            });
+        }
+    }
+
+    private void statusAndCategorySort(){
+        // ---- สำหรับเผื่อติ้กเฉพาะ report ของตัวเอง----
+        tempReportList = reportListDataSource.readData();
+        voteSort();
+        if (yourReportCheckBox.isSelected()){
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
+                @Override
+                public boolean filter(Report report) {
+                    return report.isReporter(user.getName());
+                }
+            });
+        }
+        // -------------------------------------------
+
+        String status = statusComboBox.getValue();
+        String category = categoryComboBox.getValue();
+
+        if (category != null && !category.equals("ทั้งหมด")){
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
+                @Override
+                public boolean filter(Report report) {
+                    return report.isCategory(category);
+                }
+            });
+        }
+        if (status != null && !status.equals("ทั้งหมด")){
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
+                @Override
+                public boolean filter(Report report) {
+                    return report.isStatus(status);
+                }
+            });
+        }
+
+    }
+
+    public void handleYourReportCheck(ActionEvent actionEvent){
+        if(yourReportCheckBox.isSelected()){
+            tempReportList = tempReportList.filterBy(new Filterer<Report>() {
+                @Override
+                public boolean filter(Report report) {
+                    return report.isReporter(user.getName());
+                }
+            });
+        }else{
+            updateTemp();
+        }
+
+        showListView();
+    }
     private void handleSelectedListView() {
         reportListView.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<Report>() {
@@ -76,11 +242,14 @@ public class StudentMainPageController {
         );
     }
 
+
     private void showSelectedReport(Report report){
         reporterNameLabel.setText(report.getReporterName());
         headlineLabel.setText(report.getHeadline());
         voteCountLabel.setText(String.valueOf(report.getVoteCount()));
         contentTextArea.setText(report.getContent());
+        reportedDateLabel.setText(report.getTime());
+        statusLabel.setText(report.getStatus());
     }
 
 
@@ -90,14 +259,28 @@ public class StudentMainPageController {
         voteCountLabel.setText("");
         headlineLabel.setText("");
         contentTextArea.setText("");
+        reportedDateLabel.setText("");
+        statusLabel.setText("");
     }
 
     public void handleVoteUpButton(){
-        reportList.findReport(tempReportForVote).addVoteCount();
-        dataSource.writeData(reportList);
-        reportListView.getItems().clear();
+        reportList = reportListDataSource.readData();
+        reportList.find(tempReportForVote.getHeadline()).addVoteCount();
+        reportListDataSource.writeData(reportList);
+        updateTemp();
         showListView();
         showSelectedReport(tempReportForVote);
+    }
+
+    private void updateTemp() {
+        statusAndCategorySort();
+        if (sortOption){
+            voteSort();
+        }
+        else{
+            dateSort();
+        }
+
     }
 
     public void handleNewReportButton(ActionEvent actionEvent) {
@@ -110,6 +293,23 @@ public class StudentMainPageController {
 
     }
 
+    public void handleLogoutButton(ActionEvent actionEvent){
+        try {
+            com.github.saacsos.FXRouter.goTo("student_login_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า student_create_report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
 
-    // รอ button
+    public void handleAccountButton(ActionEvent actionEvent){
+        try {
+            com.github.saacsos.FXRouter.goTo("student_account_management_page", user);
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า student_create_report ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
+
+
 }

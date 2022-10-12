@@ -9,3 +9,7 @@ Password: 123456
 Username: student
 Password: 654321
 =======================================
+--Admin account--
+Username: ADMIN1
+Password: 1234
+=======================================
