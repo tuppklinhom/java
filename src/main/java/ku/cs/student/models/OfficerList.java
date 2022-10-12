@@ -23,4 +23,15 @@ public class OfficerList {
         Officer found = officers.get(username);
         return found;
     }
+
+    public OfficerList filterBy(Filterer<Officer> filterer) {
+        OfficerList filtered = new OfficerList();
+        for (String key : getAllOfficers() ) {
+            Officer found = findOfficer(key);
+            if (filterer.filter(found)) {
+                filtered.addOfficer(found);
+            }
+        }
+        return filtered;
+    }
 }
