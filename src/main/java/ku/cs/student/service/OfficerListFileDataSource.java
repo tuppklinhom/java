@@ -92,7 +92,7 @@ public class OfficerListFileDataSource implements DataSource<OfficerList>{
 
             for(String username : officerList.getAllOfficers()){
                 Officer officer = officerList.findOfficer(username);
-                String line = officer.getName() + "," + officer.getUsername() + "," + officer.getPassword() + "," + officer.getPictureProfilePath();
+                String line = officer.getName() + "," + officer.getUsername() + "," + officer.getPassword() + "," + officer.getImagePath();
                 for (String category : officer.getCategory()) { // loop เพื่อที่จะเข้าถึงข้อมูล category ของ officer เพราะ officer คนนึงอาจมีหลาย categories
                     line = line + "," + category;
                 }

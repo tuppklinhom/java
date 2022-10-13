@@ -1,60 +1,25 @@
 package ku.cs.student.models;
 
-public class Student {
-    private String name;
-    private String username;
-    private String password;
-
-    private String imagePath;
+public class Student extends User{
     private boolean active;
 
 
     public Student(String name, String username, String password,String imagePath){
-        this.name = name;
-        this.username = username;
-        this.password = password;
-        this.imagePath = imagePath;
+        super(name, username, password, imagePath);
         active = true;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public String getUsername() {
-        return username;
-    }
-
-
-    public String getPassword() {
-        return password;
-    }
-
-    public boolean isPassword(String password) {
-        return this.password.equals(password);
-    }
-    public boolean isUsername(String username) {
-        return this.username.equals(username);
-    }
-
-    public void changePassword(String newPassword){
-        password = newPassword;
-    }
-
-    public void getBanned(){
-
+    public void banned(){
         active = false;
     }
 
-    public boolean isActive() {
+    public void unban(){
+        active = true;
+    }
 
+    public boolean isActive() {
         return active;
     }
 
-    public void setImagePath(String imagePath){
-        this.imagePath = imagePath;
-    }
-    public String getImagePath() {
-        return imagePath;
-    }
 }

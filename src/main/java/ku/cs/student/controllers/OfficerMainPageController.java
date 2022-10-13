@@ -134,7 +134,7 @@ public class OfficerMainPageController {
     }
 
     private void showOfficerImage() {
-        File imageFile = new File(officer.getPictureProfilePath());
+        File imageFile = new File(officer.getImagePath());
         officerImageView.setImage(new Image(imageFile.toURI().toString()));
     }
 

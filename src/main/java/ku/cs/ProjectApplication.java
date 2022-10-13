@@ -1,13 +1,17 @@
 package ku.cs;
 
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ProjectApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        File file = new File("images/icon.png");
+        stage.getIcons().add(new Image(file.toURI().toString()));
         com.github.saacsos.FXRouter.bind(this, stage, "Report Application", 1200, 800);
         configRoute();
         com.github.saacsos.FXRouter.goTo("student_login_page");
