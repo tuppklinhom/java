@@ -9,6 +9,12 @@ public class Student extends User{
         active = true;
     }
 
+    public Student(String name, String username, String password,String imagePath, String latestLoginDate){
+        super(name, username, password, imagePath, latestLoginDate);
+        active = true;
+    }
+
+
 
     public void banned(){
         active = false;
@@ -22,4 +28,8 @@ public class Student extends User{
         return active;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" + getName();
+    }
 }

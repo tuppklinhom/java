@@ -45,6 +45,8 @@ public class OfficerLoginPageController {
 
         if (officer != null){
             if(officer.isPassword(officerPasswordInput)){
+                officerList.findOfficer(officer.getUsername()).setLatestLoginDate();
+                dataSource.writeData(officerList);
                 try {
                     FXRouter.goTo("officer_main_page", officer);
                 } catch (IOException e) {

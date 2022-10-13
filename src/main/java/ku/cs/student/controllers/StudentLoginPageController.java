@@ -48,6 +48,8 @@ public class StudentLoginPageController {
 
         if (user != null){
             if(user.isPassword(passwordInput)){
+                studentList.findStudent(user.getUsername()).setLatestLoginDate();
+                dataSource.writeData(studentList);
                 try {
                     FXRouter.goTo("student_main_page", user);
                 } catch (IOException e) {

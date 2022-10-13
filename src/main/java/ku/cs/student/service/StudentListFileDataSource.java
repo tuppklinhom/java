@@ -51,7 +51,8 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
                         data[0].trim(),
                         data[1].trim(),
                         data[2].trim(),
-                        data[3].trim()
+                        data[3].trim(),
+                        data[4].trim()
                 );
                 studentList.addStudent(s);
             }
@@ -86,7 +87,7 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
 
             for(String name : studentList.getAllStudent()){
                 Student s = studentList.findStudent(name);
-                String line = s.getName() + "," + s.getUsername() + "," + s.getPassword() + "," + s.getImagePath();
+                String line = s.getName() + "," + s.getUsername() + "," + s.getPassword() + "," + s.getImagePath()+ ","+ s.getLatestLoginDate();
                 buffer.append(line);
                 buffer.newLine();
             }

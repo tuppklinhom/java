@@ -4,11 +4,6 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class Officer extends User{
-    private String name;
-    private String username;
-    private String password;
-
-    private String pictureProfile;
 
     /*
     Date : 29.09.2022 >> เพิ่ม field ชื่อ category เอาไว้บอกว่า หมวดหมู่ของ Officer คนนี้รับผิดชอบหมวดหมู่อะไรบ้าง
@@ -17,6 +12,11 @@ public class Officer extends User{
 
     public Officer(String name, String username, String password, String pictureProfile) {
         super(name, username, password, pictureProfile);
+        this.category = new TreeSet<String>();
+    }
+
+    public Officer(String name, String username, String password, String pictureProfile, String latestLoginDate) {
+        super(name, username, password, pictureProfile, latestLoginDate);
         this.category = new TreeSet<String>();
     }
 
@@ -37,5 +37,8 @@ public class Officer extends User{
         category.add(new_category);
     }
 
-
+    @Override
+    public String toString() {
+        return "Officer{" + "name='" + getName();
+    }
 }
