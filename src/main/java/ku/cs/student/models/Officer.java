@@ -39,6 +39,6 @@ public class Officer extends User{
 
     @Override
     public String toString() {
-        return "Officer{" + "name='" + getName();
+        return "[Officer]  " + getName() + "  |  " +"Last Login : " + getLatestLoginDate();
     }
 }

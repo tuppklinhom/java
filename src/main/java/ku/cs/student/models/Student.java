@@ -30,6 +30,6 @@ public class Student extends User{
 
     @Override
     public String toString() {
-        return "Student{" + getName();
+        return "[Student]  " + getName() + "  |  " +"Last Login : " + getLatestLoginDate();
     }
 }
