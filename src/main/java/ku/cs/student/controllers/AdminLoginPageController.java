@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import ku.cs.student.models.Admin;
 import ku.cs.student.models.AdminList;
 import ku.cs.student.service.AdminListFileDataSource;
 
@@ -32,21 +33,22 @@ public class AdminLoginPageController {
         adminUsernameInput = usernameAdminLoginTextField.getText();
         adminPasswordInput = passwordAdminLoginPasswordField.getText();
 
-        for (int i =0; i < adminList.size(); i++) {
-            if (adminList.indexOf(i).getUsername().equals(adminUsernameInput)){
-                if (adminList.indexOf(i).getPassword().equals(adminPasswordInput)) {
-                    try {
-                        com.github.saacsos.FXRouter.goTo("admin_main_page");
-                    } catch (IOException e) {
-                        System.err.println("ไปทีหน้า admin main page ไม่ได้");
-                        System.err.println("ให้ตรวจสอบการกําหนด route");
-                    }
+        Admin adminUser = adminList.findByUsername(adminUsernameInput);
+
+        if(adminUser != null) {
+            if(adminUser.isPassword(adminPasswordInput)){
+                try {
+                    com.github.saacsos.FXRouter.goTo("admin_main_page", adminUser);
+                } catch (IOException e) {
+                    System.err.println("ไปทีหน้า admin main page ไม่ได้");
+                    System.err.println("ให้ตรวจสอบการกําหนด route");
                 }
             }
+
+        }
             errorLabel.setText("Username or Password incorrect.");
             usernameAdminLoginTextField.clear();
             passwordAdminLoginPasswordField.clear();
-        }
     }
     public void handleBackButton(){
         try {
@@ -63,3 +65,6 @@ public class AdminLoginPageController {
         clearErrorLabel();
     }
 }
+
+
+

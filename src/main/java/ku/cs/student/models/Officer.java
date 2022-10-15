@@ -39,6 +39,6 @@ public class Officer extends User{
 
     @Override
     public String toString() {
-        return "[Officer]  " + getName() + "  |  " +"Last Login : " + getLatestLoginDate();
+        return "[เจ้าหน้าที่]  " + getName() + "  |  " +"เข้าใช้งานล่าสุด : " + getLatestLoginDate()+"  |  "+"{หน่วยงาน }" + category.toString();
     }
 }

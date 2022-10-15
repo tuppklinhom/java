@@ -10,11 +10,10 @@
    <children>
       <Button layoutX="1075.0" layoutY="732.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
       <Button layoutX="991.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleChangePassword" text="Change Password" />
-      <ListView fx:id="allUserListView" layoutX="25.0" layoutY="400.0" prefHeight="277.0" prefWidth="416.0" />
+      <ListView fx:id="allUserListView" layoutX="25.0" layoutY="400.0" prefHeight="277.0" prefWidth="694.0" />
       <ImageView fx:id="allUserImageView" fitHeight="210.0" fitWidth="200.0" layoutX="132.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="usernameLabel" layoutX="192.0" layoutY="286.0" text="usernameLabel" />
       <Label fx:id="categoryLabel" layoutX="195.0" layoutY="325.0" text="categoryLabel" />
-      <ImageView fx:id="adminImageView" fitHeight="210.0" fitWidth="200.0" layoutX="500.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="adminUsernameLabel" layoutX="543.0" layoutY="342.0" text="adminUsernameLabel" />
+      <Label fx:id="adminUsernameLabel" layoutX="543.0" layoutY="145.0" text="adminUsernameLabel" />
    </children>
 </AnchorPane>

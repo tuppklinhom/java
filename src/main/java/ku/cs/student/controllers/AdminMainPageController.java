@@ -1,8 +1,11 @@
 package ku.cs.student.controllers;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.student.models.*;
 import ku.cs.student.service.AdminListFileDataSource;
@@ -27,8 +30,7 @@ public class AdminMainPageController {
     private Label adminUsernameLabel;
     @FXML
     private ImageView allUserImageView;
-    @FXML
-    private ImageView adminImageView;
+
 
     private OfficerList officerList;
     private StudentList studentList;
@@ -36,12 +38,12 @@ public class AdminMainPageController {
     private OfficerListFileDataSource officerListDataSource;
     private StudentListFileDataSource studentListFileDataSource;
     private DataSource<AdminList> adminListDataSource;
-    private AdminList adminUser;
+    private Admin adminUser;
 
 
     public void handleChangePassword(){
         try {
-            com.github.saacsos.FXRouter.goTo("admin_change_password");
+            com.github.saacsos.FXRouter.goTo("admin_change_password_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า login page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
@@ -65,11 +67,35 @@ public class AdminMainPageController {
     }
 
 
-    private void cleaUsernameLabel(){
+    private void clearSelectUser(){
         usernameLabel.setText("");
-    }
-    private void clearCategoryLabel(){
         categoryLabel.setText("");
+    }
+
+    private void showSelectedUser(User selectUser) {
+        usernameLabel.setText(selectUser.getUsername());
+        if (selectUser instanceof Officer) {
+            categoryLabel.setText(((Officer) selectUser).getCategory().toString());
+        } else {
+            categoryLabel.setText("");
+        }
+        File imageFile = new File(selectUser.getImagePath());
+        allUserImageView.setImage(new Image(imageFile.toURI().toString()));
+    }
+
+
+
+    private void handleSelectListview(){
+        allUserListView.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<User>() {
+                    @Override
+                    public void changed(ObservableValue<? extends User> observableValue, User oldValue, User newValue) {
+                        System.out.println(newValue + " is selected");
+                        showSelectedUser(newValue);
+//                        showOfficerSortCategory();
+//                        System.out.println(newValue.getStatus());
+                    }
+                });
     }
 
 
@@ -79,8 +105,8 @@ public class AdminMainPageController {
 
         studentListFileDataSource = new StudentListFileDataSource("data", "Student.csv");
         studentList = studentListFileDataSource.readData();
-        adminListDataSource = new AdminListFileDataSource("data", "admin.csv");
 
+        adminUser = (Admin) com.github.saacsos.FXRouter.getData();
 
 
         userList = new UserList();
@@ -92,9 +118,12 @@ public class AdminMainPageController {
                 return o2.compareTime(o1);
             }
         });
-        clearCategoryLabel();
-        cleaUsernameLabel();
+        adminUsernameLabel.setText(adminUser.getUsername());
+
+        clearSelectUser();
         showListView();
+
+        handleSelectListview();
 
     }
 
