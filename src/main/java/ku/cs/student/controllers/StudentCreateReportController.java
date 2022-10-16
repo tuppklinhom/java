@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class StudentCreateReportController {
-    private Student user;
+    private User user;
     @FXML
     private TextField headlineTextField;
     @FXML
@@ -38,7 +38,7 @@ public class StudentCreateReportController {
         categoryList = categoryDataSource.readData(); // read category
         reportDataSource = new ReportListFileDataSource("data", "Report.csv");// read report for add later
         reportList = reportDataSource.readData();
-        user = (Student) com.github.saacsos.FXRouter.getData();// get user who reported
+        user = (User) com.github.saacsos.FXRouter.getData();// get user who reported
         showChoiceBoxView();
     }
 

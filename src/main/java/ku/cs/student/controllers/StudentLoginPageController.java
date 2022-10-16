@@ -4,8 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
+import ku.cs.student.models.User;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
 import com.github.saacsos.FXRouter;
@@ -44,7 +44,7 @@ public class StudentLoginPageController {
         usernameInput = usernameTextField.getText();
         passwordInput = passwordTextField.getText();
 
-        Student user = studentList.findStudent(usernameInput);
+        User user = studentList.findStudent(usernameInput);
 
         if (user != null){
             if(user.isPassword(passwordInput)){

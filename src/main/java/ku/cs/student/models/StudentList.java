@@ -10,10 +10,10 @@ public class StudentList {
      ******* Change Arraylist to Map for storing student **********
 
      */
-    private Map<String, Student> students;
+    private Map<String, User> students;
 
     public StudentList(){
-        students = new TreeMap<String, Student>();
+        students = new TreeMap<String, User>();
     }
 
 
@@ -21,7 +21,7 @@ public class StudentList {
         return students.size();
     }
 
-    public void addStudent(Student newStudent){
+    public void addStudent(User newStudent){
         students.put(newStudent.getUsername(), newStudent);
     }
 
@@ -29,8 +29,8 @@ public class StudentList {
         return students.keySet();
     }
 
-    public Student findStudent(String username) {
-        Student found = students.get(username);
+    public User findStudent(String username) {
+        User found = students.get(username);
         return found;
     }
 

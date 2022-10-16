@@ -45,6 +45,7 @@ public class Report implements Comparable<Report> {
         this.reportedTime = reportedTime;
     }
 
+
     public void addVoteCount(){
         voteCount += 1;
     }

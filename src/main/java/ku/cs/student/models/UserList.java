@@ -14,7 +14,7 @@ public class UserList {
 
     public void addAllUser(StudentList studentList){
         for(String name: studentList.getAllStudent()){
-            Student now = studentList.findStudent(name);
+            User now = studentList.findStudent(name);
             users.add(now);
         }
     }

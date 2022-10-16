@@ -1,7 +1,7 @@
 package ku.cs.student.service;
 
-import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
+import ku.cs.student.models.User;
 
 import java.io.*;
 
@@ -47,7 +47,7 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
             String line = "";
             while((line = buffer.readLine()) != null){
                 String[] data = line.split(","); // แยกด้วยคอมม่า
-                Student s = new Student(
+                User s = new User(
                         data[0].trim(),
                         data[1].trim(),
                         data[2].trim(),
@@ -86,7 +86,7 @@ public class StudentListFileDataSource implements DataSource<StudentList>{
             buffer = new BufferedWriter(writer);
 
             for(String name : studentList.getAllStudent()){
-                Student s = studentList.findStudent(name);
+                User s = studentList.findStudent(name);
                 String line = s.getName() + "," + s.getUsername() + "," + s.getPassword() + "," + s.getImagePath()+ ","+ s.getLatestLoginDate();
                 buffer.append(line);
                 buffer.newLine();

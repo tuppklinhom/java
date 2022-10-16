@@ -9,8 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
+import ku.cs.student.models.User;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
 
@@ -106,11 +106,11 @@ public class StudentRegistrationPageController {
         passwordInput = passwordField.getText();
         confirmPasswordInput = confirmPasswordField.getText();
 
-        Student S = studentList.findStudent(usernameInput);
+        User S = studentList.findStudent(usernameInput);
 
         if(S == null){
             if(passwordInput.equals(confirmPasswordInput)){
-                Student newStudent = new Student(nameInput, usernameInput, passwordInput, imagePath);
+                User newStudent = new User(nameInput, usernameInput, passwordInput, imagePath);
                 studentList.addStudent(newStudent);
                 dataSource.writeData(studentList);
                 errorLabel.setText("Successfully create account");

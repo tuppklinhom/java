@@ -18,7 +18,7 @@ import java.util.*;
 
 public class StudentMainPageController {
 
-    private Student user;
+    private User user;
     @FXML
     private ListView<Report> reportListView;
     @FXML
@@ -56,7 +56,7 @@ public class StudentMainPageController {
     private ReportList tempReportList; // for fixing bug in voting with sort list
                                        // this is for showListView Only
 
-    private Report tempReportForVote; //สำหรับ ไว้โหวต
+    private String tempReportHeadlineForVote; //สำหรับ ไว้โหวต
 
     private boolean sortOption; // for sorting while vote; false = dateSort
                                 //                         true  = voteSort
@@ -70,11 +70,12 @@ public class StudentMainPageController {
         categoryListDataSource = new CategoryListFileDataSource("data", "Category.csv");
         categoryList = categoryListDataSource.readData();
 
-        user = (Student) com.github.saacsos.FXRouter.getData();
+        user = (User) com.github.saacsos.FXRouter.getData();
         usernameLabel.setText(user.getName());
         sortOption = true;
 
         showProfile();
+        voteSort();
         showListView();
         showCategoryComboBox();
         showStatusComboBox();
@@ -234,9 +235,11 @@ public class StudentMainPageController {
                 new ChangeListener<Report>() {
                     @Override
                     public void changed(ObservableValue<? extends Report> observable, Report oldValue, Report newValue) {
-                        System.out.println(newValue + " is selected");
-                        showSelectedReport(newValue);
-                        tempReportForVote = newValue;
+                        if (newValue != null) {
+                            System.out.println(newValue + " is selected");
+                            showSelectedReport(newValue);
+                            tempReportHeadlineForVote = newValue.getHeadline();
+                        }
                     }
                 }
         );
@@ -244,12 +247,15 @@ public class StudentMainPageController {
 
 
     private void showSelectedReport(Report report){
-        reporterNameLabel.setText(report.getReporterName());
-        headlineLabel.setText(report.getHeadline());
-        voteCountLabel.setText(String.valueOf(report.getVoteCount()));
-        contentTextArea.setText(report.getContent());
-        reportedDateLabel.setText(report.getTime());
-        statusLabel.setText(report.getStatus());
+        if(report != null){
+            reporterNameLabel.setText(report.getReporterName());
+            headlineLabel.setText(report.getHeadline());
+            voteCountLabel.setText(String.valueOf(report.getVoteCount()));
+            contentTextArea.setText(report.getContent());
+            reportedDateLabel.setText(report.getTime());
+            statusLabel.setText(report.getStatus());
+        }
+
     }
 
 
@@ -265,11 +271,11 @@ public class StudentMainPageController {
 
     public void handleVoteUpButton(){
         reportList = reportListDataSource.readData();
-        reportList.find(tempReportForVote.getHeadline()).addVoteCount();
+        reportList.find(tempReportHeadlineForVote).addVoteCount();
         reportListDataSource.writeData(reportList);
         updateTemp();
         showListView();
-        showSelectedReport(tempReportForVote);
+        showSelectedReport(reportList.find(tempReportHeadlineForVote));
     }
 
     private void updateTemp() {

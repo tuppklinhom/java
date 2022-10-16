@@ -8,8 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import ku.cs.student.models.Student;
 import ku.cs.student.models.StudentList;
+import ku.cs.student.models.User;
 import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
 
@@ -34,14 +34,14 @@ public class StudentAccountManagementPageController {
     private Label errorLabel;
 
 
-    private Student user;
+    private User user;
     private DataSource<StudentList> dataSource;
     private StudentList studentList;
 
     public void initialize() {
         dataSource = new StudentListFileDataSource("data", "Student.csv");
         studentList = dataSource.readData();
-        user = (Student) com.github.saacsos.FXRouter.getData();
+        user = (User) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
         showProfileImageView();
     }
