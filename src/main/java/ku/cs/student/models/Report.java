@@ -29,7 +29,7 @@ public class Report implements Comparable<Report> {
         this.headline = headline;
         this.category = category;
         this.voteCount = 0;
-        this.solution = "ไม่ระบุ";
+        this.solution = "ยังไม่ระบุ";
         this.reportedTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
     }
     

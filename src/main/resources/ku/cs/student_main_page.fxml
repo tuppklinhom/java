@@ -39,7 +39,7 @@
                   <Font name="Cambria" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="54.0" layoutY="654.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
+            <Button layoutX="53.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
                <font>
                   <Font size="14.0" />
                </font>
@@ -91,9 +91,9 @@
                   </Label>
                </children></Pane>
 
-            <Pane layoutX="46.0" layoutY="272.0" prefHeight="353.0" prefWidth="639.0" style="-fx-background-color: #FFF;">
+            <Pane layoutX="46.0" layoutY="272.0" prefHeight="176.0" prefWidth="630.0" style="-fx-background-color: #FFF;">
                <children>
-                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="303.0" prefWidth="592.0" />
+                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="121.0" prefWidth="591.0" />
                </children>
             </Pane>
             <Button layoutX="562.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ" textFill="#fffdfd">
@@ -126,6 +126,16 @@
                   </Button>
                </children>
             </Pane>
+            <Pane layoutX="44.0" layoutY="488.0" prefHeight="145.0" prefWidth="635.0" style="-fx-background-color: #FFF;">
+               <children>
+                  <TextArea fx:id="solutionTextArea" editable="false" layoutX="19.0" layoutY="22.0" prefHeight="102.0" prefWidth="598.0" />
+               </children>
+            </Pane>
+            <Label layoutX="56.0" layoutY="457.0" text="SOLUTION">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow />

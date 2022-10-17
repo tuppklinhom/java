@@ -34,6 +34,8 @@ public class StudentMainPageController {
     @FXML
     private TextArea contentTextArea;
     @FXML
+    private  TextArea solutionTextArea;
+    @FXML
     private CheckBox yourReportCheckBox;
     @FXML
     private ComboBox<String> categoryComboBox;
@@ -254,6 +256,7 @@ public class StudentMainPageController {
             contentTextArea.setText(report.getContent());
             reportedDateLabel.setText(report.getTime());
             statusLabel.setText(report.getStatus());
+            solutionTextArea.setText(report.getSolution());
         }
 
     }
