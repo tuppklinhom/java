@@ -41,4 +41,8 @@ public class Officer extends User{
     public String toString() {
         return "[เจ้าหน้าที่]  " + getName() + "  |  " +"เข้าใช้งานล่าสุด : " + getLatestLoginDate()+"  |  "+"{หน่วยงาน }" + category.toString();
     }
+    public void addCategory(CategoryList categoryList) {
+        this.category = category;
+    }
+
 }

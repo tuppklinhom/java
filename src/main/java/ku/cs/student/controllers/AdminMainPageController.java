@@ -2,6 +2,7 @@ package ku.cs.student.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -58,6 +59,14 @@ public class AdminMainPageController {
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
     }
+    public void handleCreateOfficerAccount(){
+        try {
+            com.github.saacsos.FXRouter.goTo("admin_create_officer_account_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า login page ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
 
     private void showListView(){
         allUserListView.getItems().clear();
@@ -65,7 +74,6 @@ public class AdminMainPageController {
         allUserListView.refresh();
 
     }
-
 
     private void clearSelectUser(){
         usernameLabel.setText("");
@@ -84,7 +92,6 @@ public class AdminMainPageController {
     }
 
 
-
     private void handleSelectListview(){
         allUserListView.getSelectionModel().selectedItemProperty().addListener(
                 new ChangeListener<User>() {
@@ -92,8 +99,6 @@ public class AdminMainPageController {
                     public void changed(ObservableValue<? extends User> observableValue, User oldValue, User newValue) {
                         System.out.println(newValue + " is selected");
                         showSelectedUser(newValue);
-//                        showOfficerSortCategory();
-//                        System.out.println(newValue.getStatus());
                     }
                 });
     }
@@ -119,12 +124,9 @@ public class AdminMainPageController {
             }
         });
         adminUsernameLabel.setText(adminUser.getUsername());
-
         clearSelectUser();
         showListView();
-
         handleSelectListview();
-
     }
 
 

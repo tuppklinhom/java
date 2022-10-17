@@ -16,7 +16,18 @@ public class CategoryList { // list for categories in create report page
         return categories;
     }
 
-//    private Map<String, String> categoriesMap;
+    @Override
+    public String toString() {
+        return "CategoryList{" +
+                "categories=" + categories +
+                '}';
+    }
+
+    public void clearCategoryList(){
+        this.categories.clear();
+    }
+
+    //    private Map<String, String> categoriesMap;
 //
 //    public CategoryList() {
 //        categoriesMap = new TreeMap<String, String>();

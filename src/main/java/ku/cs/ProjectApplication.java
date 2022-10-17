@@ -14,7 +14,7 @@ public class ProjectApplication extends Application {
         stage.getIcons().add(new Image(file.toURI().toString()));
         com.github.saacsos.FXRouter.bind(this, stage, "Report Application", 1200, 800);
         configRoute();
-        com.github.saacsos.FXRouter.goTo("student_login_page");
+        com.github.saacsos.FXRouter.goTo("admin_create_officer_account_page");
 
     }
 
@@ -31,6 +31,7 @@ public class ProjectApplication extends Application {
         com.github.saacsos.FXRouter.when("student_registration_page", packageStr+"student_registration_page.fxml");
         com.github.saacsos.FXRouter.when("officer_change_password_page", packageStr+"officer_change_password_page.fxml");
         com.github.saacsos.FXRouter.when("student_account_management_page", packageStr+"student_account_management_page.fxml");
+        com.github.saacsos.FXRouter.when("admin_create_officer_account_page", packageStr+"admin_create_officer_account_page.fxml");
     }
 
 
