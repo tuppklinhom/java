@@ -71,15 +71,14 @@ public class AdminCreateOfficerAccountPageController {
     private void showCategoryChoiceBox() {
         categoryList = dataSourceCategoryList.readData();
         Set<String> categoryListForChoiceBox = new TreeSet<String>();
-        for (String category : categoryList.getAllCategories()) {
-            categoryListForChoiceBox.add(category);
-        }
+        categoryListForChoiceBox.addAll(categoryList.getAllCategories());
         categorySelectChoiceBox.getItems().addAll(categoryListForChoiceBox);
     }
 
     public void initialize(){
         dataSource = new OfficerListFileDataSource("data","Officer.csv");
         dataSourceCategoryList = new CategoryListFileDataSource("data", "Category.csv");
+        newCategory = new CategoryList();
         officerList = dataSource.readData();
         imagePath = "images/default.jpg";
         showImageProfile();
@@ -135,7 +134,7 @@ public class AdminCreateOfficerAccountPageController {
         if(S == null){
             if(passwordInput.equals(confirmPasswordInput)){
                 Officer newOfficer = new Officer(nameInput, usernameInput, passwordInput, imagePath);
-                newOfficer.addCategory(newCategory);
+                newOfficer.addCategoryList(newCategory);
                 newCategory.clearCategoryList();
                 officerList.addOfficer(newOfficer);
                 dataSource.writeData(officerList);

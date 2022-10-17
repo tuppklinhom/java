@@ -15,6 +15,7 @@ import ku.cs.student.service.ReportListFileDataSource;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -125,10 +126,12 @@ public class OfficerMainPageController {
                 new ChangeListener<Report>() {
                     @Override
                     public void changed(ObservableValue<? extends Report> observableValue, Report oldValue, Report newValue) {
-                        System.out.println(newValue + " is selected");
-                        showSelectedReport(newValue);
-                        showOfficerSortCategory();
-                        System.out.println(newValue.getStatus());
+                        if (newValue!= null) {
+                            System.out.println(newValue + " is selected");
+                            showSelectedReport(newValue);
+                            showOfficerSortCategory();
+                            System.out.println(newValue.getStatus());
+                        }
                     }
                 });
     }
@@ -143,11 +146,13 @@ public class OfficerMainPageController {
     }
 
     private void showSelectedReport(Report report){
-        headLineLabel.setText(report.getHeadline());
-        statusLabel.setText(report.getStatus());
-        categoryLabel.setText(report.getCategory());
-        contentLabel.setText(report.getContent());
-        solutionLabel.setText(report.getSolution());
+        if(report != null){
+            headLineLabel.setText(report.getHeadline());
+            statusLabel.setText(report.getStatus());
+            categoryLabel.setText(report.getCategory());
+            contentLabel.setText(report.getContent());
+            solutionLabel.setText(report.getSolution());
+        }
     }
 
     public void clearSelectReport(){
@@ -238,19 +243,22 @@ public class OfficerMainPageController {
 
     public void handleAddSolutionAndUpdateStatus(ActionEvent actionEvent) {
         reportList = dataSourceReportList.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
-        String solution = solutionTextField.getText(); // หา headline จาก String
+        String solution = solutionTextField.getText();// หา headline จาก String
         String headline = headLineLabel.getText();
         String status = statusChoiceBox.getValue();
         Report report = reportList.find(headline); // หา report ที่มี headline ตรงกันกับ headline ของ report
+        if (solution.equals("")){
+            solution = "-";
+        }
         report.addSolution(solution);
         report.updateStatus(status);
         dataSourceReportList.writeData(reportList); // เขียนไฟล์ลงไป เพื่อบันทักสถานะของ report ( report.status )
         solutionLabel.setText(report.getSolution());
 
+
         reportList = dataSourceReportList.readData(); // นำข้อมูลทั้งหมดมา และเขียนลงไปเพื่อข้อมูลใหม่จะไม่ไปลบข้อมูลเก่าออกไป
         solutionTextField.clear();
         reportListView.getItems().clear();
-        showListView();
         showSelectedReport(report);
 
         reportList = reportList.filterBy(new Filterer<Report>() {
@@ -259,5 +267,6 @@ public class OfficerMainPageController {
                 return report.isCategory(officer.getCategory());
             }
         });
+        showListView();
     }
 }

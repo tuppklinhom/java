@@ -70,4 +70,9 @@ public class User {
     public int compareTime(User o2){
         return this.latestLoginDate.compareTo(o2.latestLoginDate);
     }
+
+    @Override
+    public String toString() {
+        return "[นักเรียน] " + name + "| วันที่เข้าใช้งานล่าสุด : " + latestLoginDate;
+    }
 }

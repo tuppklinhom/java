@@ -37,6 +37,10 @@ public class Officer extends User{
         category.add(new_category);
     }
 
+    public void addCategoryList(CategoryList categoryList){
+        category.addAll(categoryList.getAllCategories());
+    }
+
     @Override
     public String toString() {
         return "[เจ้าหน้าที่]  " + getName() + "  |  " +"เข้าใช้งานล่าสุด : " + getLatestLoginDate()+"  |  "+"{หน่วยงาน }" + category.toString();
