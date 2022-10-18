@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #3CB371;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerMainPageController">
    <children>
-      <Pane layoutX="32.0" layoutY="32.0" prefHeight="738.0" prefWidth="1138.0" style="-fx-background-color: #FFFF;">
+      <Pane layoutX="32.0" layoutY="32.0" prefHeight="738.0" prefWidth="1138.0" style="-fx-background-color: #FFFF; -fx-background-radius: 20;">
          <children>
-            <ListView fx:id="reportListView" layoutX="55.0" layoutY="148.0" prefHeight="536.0" prefWidth="445.0" style="-fx-background-color: #F5F5DC;">
+            <ListView fx:id="reportListView" layoutX="72.0" layoutY="247.0" prefHeight="437.0" prefWidth="411.0" style="-fx-background-color: #F5F5DC; -fx-background-radius: 20;">
                <effect>
                   <DropShadow />
                </effect>
@@ -44,7 +44,7 @@
                </font>
             </Label>
             <Label fx:id="solutionLabel" layoutX="623.0" layoutY="274.0" text="solutionLabel" />
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="55.0" layoutY="98.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="569.0" layoutY="39.0" prefWidth="150.0" />
             <Label fx:id="categoryLabel" layoutX="621.0" layoutY="189.0" text="categoryLabel" />
             <Label layoutX="879.0" layoutY="187.0" text="เลือกสถานะ">
                <font>
@@ -80,12 +80,13 @@
             </Label>
             <Label fx:id="contentLabel" layoutX="624.0" layoutY="361.0" text="contentLabel" />
             <ChoiceBox fx:id="statusChoiceBox" layoutX="879.0" layoutY="234.0" prefWidth="150.0" />
-            <Pane layoutX="879.0" layoutY="20.0" prefHeight="73.0" prefWidth="200.0" style="-fx-background-color: A8E890;">
+            <Pane layoutX="887.0" layoutY="20.0" prefHeight="73.0" prefWidth="192.0" style="-fx-background-color: A8E890; -fx-background-radius: 20;">
                <children>
-                  <Label fx:id="officerNameLabel" layoutX="90.0" layoutY="14.0" text="officerNameLabel" />
+                  <Label fx:id="officerNameLabel" layoutX="92.0" layoutY="28.0" text="officerNameLabel" />
                   <ImageView fx:id="officerImageView" fitHeight="48.0" fitWidth="69.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
       <Label layoutX="1033.0" layoutY="130.0">

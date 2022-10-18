@@ -1,6 +1,7 @@
 module cs.ku {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens ku.cs to javafx.fxml;

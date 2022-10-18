@@ -2,6 +2,9 @@ package ku.cs.student.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.TreeSet;
 
 public class Report implements Comparable<Report> {
@@ -14,6 +17,8 @@ public class Report implements Comparable<Report> {
     private String reportedTime;
 
     private String solution;
+    private List<String> likedUserList;
+
 
 
     private int voteCount;
@@ -31,10 +36,12 @@ public class Report implements Comparable<Report> {
         this.voteCount = 0;
         this.solution = "ยังไม่ระบุ";
         this.reportedTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        this.likedUserList = new ArrayList<>();
+        this.likedUserList.add("-");
     }
     
 
-    public Report(String reporterName, String status, String headline, String content, String category, int voteCount, String reportedTime, String sulution) {
+    public Report(String reporterName, String status, String headline, String content, String category, int voteCount, String reportedTime, String sulution, String likedUserList) {
         this.reporterName = reporterName;
         this.status = status;
         this.content = content;
@@ -43,11 +50,30 @@ public class Report implements Comparable<Report> {
         this.voteCount = voteCount;
         this.solution = sulution;
         this.reportedTime = reportedTime;
+        this.likedUserList = new ArrayList<>();
+        Collections.addAll(this.likedUserList, likedUserList.split("\\|"));
+
     }
 
 
-    public void addVoteCount(){
-        voteCount += 1;
+    public void addVoteCount(String userName){
+        boolean userLikePost = false;
+        for (String temp: likedUserList){
+            if(userName.equals(temp))
+                userLikePost = true;
+        }
+        if(userLikePost){
+            voteCount -=1;
+            likedUserList.remove(userName);
+            if(voteCount<0)
+                voteCount=0;
+
+        }
+        else {
+            voteCount +=1;
+            likedUserList.add(userName);
+
+        }
     }
 
     public String getCategory(){
@@ -119,6 +145,10 @@ public class Report implements Comparable<Report> {
 
     public void addSolution(String solution) {
         this.solution = solution;
+    }
+
+    public List<String> getLikedUserList() {
+        return likedUserList;
     }
     //รอฟังก์ชันอื่น
 }

@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentRegistrationPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentRegistrationPageController">
    <children>
-      <Label layoutX="850.0" layoutY="97.0" text="สมัครใช้งาน">
+
+
+      <TextField fx:id="usernameTextField" layoutX="694.0" layoutY="322.0" prefHeight="30.0" prefWidth="344.0" promptText="Username" />
+      <Button layoutX="694.0" layoutY="563.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="344.0" text="สร้างบัญชี" textFill="#3dc91d" />
+      <Label fx:id="errorLabel" layoutX="883.0" layoutY="502.0" text="errorLabel" textFill="#a90a0a" />
+      <TextField fx:id="nameTextField" layoutX="694.0" layoutY="252.0" prefHeight="30.0" prefWidth="344.0" promptText="Name" />
+      <Button layoutX="234.0" layoutY="563.0" mnemonicParsing="false" onAction="#handleUploadPictureButton" prefHeight="30.0" prefWidth="247.0" text="เลือกรูปภาพ" />
+      <ImageView fx:id="profileImageView" fitHeight="230.0" fitWidth="247.0" layoutX="241.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" />
+      <PasswordField fx:id="passwordField" layoutX="694.0" layoutY="385.0" prefHeight="30.0" prefWidth="344.0" promptText="Password" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="694.0" layoutY="452.0" prefHeight="30.0" prefWidth="344.0" promptText="Confirm password" />
+      <Button layoutX="1038.0" layoutY="712.0" mnemonicParsing="false" onAction="#handleBackButton" text="ย้อนกลับ" />
+      <Label layoutX="694.0" layoutY="154.0" prefHeight="56.0" prefWidth="142.0" text="Sign up">
          <font>
-            <Font size="26.0" />
+            <Font name="Cambria" size="24.0" />
          </font>
       </Label>
-
-
-      <TextField fx:id="usernameTextField" layoutX="783.0" layoutY="232.0" prefHeight="30.0" prefWidth="255.0" promptText="Username" />
-      <Button layoutX="783.0" layoutY="478.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="255.0" text="สร้างบัญชี" textFill="#3dc91d" />
-      <Label fx:id="errorLabel" layoutX="880.0" layoutY="418.0" text="errorLabel" textFill="#a90a0a" />
-      <TextField fx:id="nameTextField" layoutX="782.0" layoutY="166.0" prefHeight="30.0" prefWidth="255.0" promptText="Name" />
-      <Button layoutX="298.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleUploadPictureButton" text="เลือกรูปภาพ" />
-      <ImageView fx:id="profileImageView" fitHeight="230.0" fitWidth="202.0" layoutX="234.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true" />
-      <PasswordField fx:id="passwordField" layoutX="783.0" layoutY="296.0" prefHeight="30.0" prefWidth="255.0" promptText="Password" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="783.0" layoutY="358.0" prefHeight="30.0" prefWidth="255.0" promptText="Confirm password" />
-      <Button layoutX="986.0" layoutY="694.0" mnemonicParsing="false" onAction="#handleBackButton" text="ย้อนกลับ" />
 
    </children>
 </AnchorPane>

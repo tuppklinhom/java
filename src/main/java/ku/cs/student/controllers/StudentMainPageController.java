@@ -274,7 +274,7 @@ public class StudentMainPageController {
 
     public void handleVoteUpButton(){
         reportList = reportListDataSource.readData();
-        reportList.find(tempReportHeadlineForVote).addVoteCount();
+        reportList.find(tempReportHeadlineForVote).addVoteCount(user.getUsername());
         reportListDataSource.writeData(reportList);
         updateTemp();
         showListView();

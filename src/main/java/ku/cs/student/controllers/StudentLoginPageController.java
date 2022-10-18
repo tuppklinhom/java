@@ -10,8 +10,9 @@ import ku.cs.student.service.DataSource;
 import ku.cs.student.service.StudentListFileDataSource;
 import com.github.saacsos.FXRouter;
 
+import java.io.File;
 import java.io.IOException;
-
+import java.awt.Desktop;
 public class StudentLoginPageController {
     @FXML
     private TextField usernameTextField;
@@ -19,6 +20,10 @@ public class StudentLoginPageController {
     private TextField passwordTextField;
     @FXML
     private Label errorLabel;
+
+
+
+
 
     private String usernameInput;
     private String passwordInput;
@@ -90,6 +95,29 @@ public class StudentLoginPageController {
             System.err.println("ไปทีหน้า admin page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
+
+    }
+    @FXML
+    public void handleHowToUseButton(ActionEvent actionEvent){
+        String fs = File.separator;
+        try{
+            File file = new File( "data/CS211-651-Project.pdf");
+            if(file.exists()){
+                if(Desktop.isDesktopSupported()){
+                    Desktop.getDesktop().open(file);
+                }
+                else {
+                    System.out.println("Not Supported");
+                }
+            }
+            else {
+                System.out.println("File Not Exist");
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
 
     }
 

@@ -17,123 +17,16 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentMainPageController">
    <children>
-      <ImageView fitHeight="298.0" fitWidth="439.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@kuuni/kuku.jpg" />
-         </image>
-      </ImageView>
-      <Pane layoutX="459.0" layoutY="32.0" prefHeight="753.0" prefWidth="714.0" style="-fx-background-color: #F5F5DC;">
+      <Pane layoutX="533.0" layoutY="204.0" prefHeight="64.0" prefWidth="332.0" style="-fx-background-color: eceff1; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="52.0" layoutY="106.0" text="TOPIC">
-               <font>
-                  <Font name="Cambria Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label fx:id="headlineLabel" layoutX="52.0" layoutY="149.0" text="headlineLabel">
+            <Label fx:id="headlineLabel" layoutX="190.0" layoutY="25.0" text="headlineLabel">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="54.0" layoutY="228.0" text="CONTENT">
+            <Label layoutX="32.0" layoutY="19.0" prefHeight="30.0" prefWidth="81.0" text="TOPIC">
                <font>
-                  <Font name="Cambria" size="24.0" />
-               </font>
-            </Label>
-            <Button layoutX="53.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #2E8B57;" text="เพิ่มโหวต" textFill="#fffdfd">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Pane layoutX="393.0" layoutY="100.0" prefHeight="136.0" prefWidth="284.0" style="-fx-background-color: #FFFF;">
-               <children>
-                  <Label layoutX="47.0" layoutY="16.0" text="ผู้รายงาน :">
-                     <font>
-                        <Font name="Cambria Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="73.0" layoutY="98.0" text="VOTE :" textFill="#ec2727">
-                     <font>
-                        <Font name="Cambria Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="reporterNameLabel" layoutX="137.0" layoutY="18.0" text=" reporterNameLabel">
-                     <font>
-                        <Font name="Cambria" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="voteCountLabel" layoutX="137.0" layoutY="100.0" text="voteCountLabel">
-                     <font>
-                        <Font name="Cambria" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="25.0" layoutY="41.0" text="วันที่รายงาน :">
-                     <font>
-                        <Font name="Cambria Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="68.0" layoutY="65.0" text="สถานะ :">
-                     <font>
-                        <Font name="Cambria Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="reportedDateLabel" layoutX="137.0" layoutY="43.0" text=" reportedDateLabel">
-                     <font>
-                        <Font name="Cambria" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="statusLabel" layoutX="141.0" layoutY="69.0" text="statusLabel">
-                     <font>
-                        <Font name="Cambria" size="14.0" />
-                     </font>
-                  </Label>
-               </children></Pane>
-
-            <Pane layoutX="46.0" layoutY="272.0" prefHeight="176.0" prefWidth="630.0" style="-fx-background-color: #FFF;">
-               <children>
-                  <TextArea fx:id="contentTextArea" editable="false" layoutX="19.0" layoutY="25.0" prefHeight="121.0" prefWidth="591.0" />
-               </children>
-            </Pane>
-            <Button layoutX="562.0" layoutY="669.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ" textFill="#fffdfd">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Pane layoutX="481.0" layoutY="17.0" prefHeight="64.0" prefWidth="197.0" style="-fx-background-color: #FFFF;">
-               <children>
-                  <Label fx:id="usernameLabel" layoutX="87.0" layoutY="14.0" text="usernameLabel">
-                     <font>
-                        <Font name="Cambria" size="14.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="profileImageView" fitHeight="41.0" fitWidth="55.0" layoutX="20.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button layoutX="77.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleAccountButton" style="-fx-background-color: transparent;" text="จัดการบัญชี" textFill="#050505">
-                     <font>
-                        <Font name="Cambria Italic" size="14.0" />
-                     </font>
-                     <effect>
-                        <DropShadow>
-                           <color>
-                              <Color opacity="0.0" />
-                           </color>
-                        </DropShadow>
-                     </effect>
-                  </Button>
-               </children>
-            </Pane>
-            <Pane layoutX="44.0" layoutY="488.0" prefHeight="145.0" prefWidth="635.0" style="-fx-background-color: #FFF;">
-               <children>
-                  <TextArea fx:id="solutionTextArea" editable="false" layoutX="19.0" layoutY="22.0" prefHeight="102.0" prefWidth="598.0" />
-               </children>
-            </Pane>
-            <Label layoutX="56.0" layoutY="457.0" text="SOLUTION">
-               <font>
-                  <Font name="Cambria" size="24.0" />
+                  <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
          </children>
@@ -141,37 +34,160 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Separator layoutX="439.0" orientation="VERTICAL" prefHeight="811.0" prefWidth="3.0" />
-      <ImageView fitHeight="91.0" fitWidth="92.0" layoutX="178.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@kuuni/ku_logo.jpg" />
-         </image>
-      </ImageView>
-      <ListView fx:id="reportListView" layoutX="24.0" layoutY="303.0" prefHeight="390.0" prefWidth="379.0" style="-fx-background-color: #F5F5DC;">
-         <effect>
-            <DropShadow />
-         </effect></ListView>
-
-      <Label layoutX="57.0" layoutY="123.0" prefHeight="41.0" prefWidth="423.0" text="KU HELP FOR KASETSART UNIVERSITY" textFill="WHITE">
-         <font>
-            <Font name="Cambria Bold" size="17.0" />
-         </font></Label>
-      <Button layoutX="157.0" layoutY="730.0" mnemonicParsing="false" onAction="#handleNewReportButton" style="-fx-background-color: #2E8B57;" text="สร้างรายงานใหม่" textFill="#fffdfd">
-         <font>
-            <Font size="14.0" />
-         </font>
+      <Pane layoutX="692.0" layoutY="21.0" prefHeight="64.0" prefWidth="197.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;">
+         <children>
+            <Label fx:id="usernameLabel" layoutX="87.0" layoutY="23.0" text="usernameLabel">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="profileImageView" fitHeight="41.0" fitWidth="55.0" layoutX="32.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
          <effect>
             <DropShadow />
          </effect>
-      </Button>
-      <CheckBox fx:id="yourReportCheckBox" layoutX="57.0" layoutY="183.0" mnemonicParsing="false" onAction="#handleYourReportCheck" text="เรื่องที่ท่านร้องเรียน">
+      </Pane>
+      <Pane layoutX="890.0" layoutY="175.0" prefHeight="122.0" prefWidth="276.0" style="-fx-background-color: #FFFF;">
+         <children>
+            <Label layoutX="47.0" layoutY="16.0" text="ผู้รายงาน :">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="70.0" layoutY="91.0" text="VOTE :" textFill="#ec2727">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="reporterNameLabel" layoutX="137.0" layoutY="18.0" text=" reporterNameLabel">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="voteCountLabel" layoutX="137.0" layoutY="92.0" text="voteCountLabel" textFill="#d40e0e">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="41.0" text="วันที่รายงาน :">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="65.0" text="สถานะ :">
+               <font>
+                  <Font name="Cambria Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="reportedDateLabel" layoutX="137.0" layoutY="43.0" text=" reportedDateLabel">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="statusLabel" layoutX="150.0" layoutY="67.0" text="statusLabel">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="518.0" layoutY="332.0" prefHeight="419.0" prefWidth="636.0" style="-fx-background-color: #eceff1; -fx-background-radius: 20;">
+         <children>
+            <Label layoutX="53.0" layoutY="35.0" text="CONTENT">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </Label>
+
+            <Pane layoutX="43.0" layoutY="81.0" prefHeight="129.0" prefWidth="578.0" style="-fx-background-color: #FFF; -fx-background-radius: 20;">
+               <children>
+                  <TextArea fx:id="contentTextArea" editable="false" layoutX="23.0" layoutY="14.0" prefHeight="102.0" prefWidth="533.0">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+            <Pane layoutX="39.0" layoutY="269.0" prefHeight="122.0" prefWidth="578.0" style="-fx-background-color: #FFF; -fx-background-radius: 20;">
+               <children>
+                  <TextArea fx:id="solutionTextArea" editable="false" layoutX="14.0" layoutY="10.0" prefHeight="102.0" prefWidth="556.0" style="-fx-background-radius: 20;">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+            <Label layoutX="50.0" layoutY="226.0" text="SOLUTION">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="519.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #00897b; -fx-background-radius: 20;" text="เพิ่มโหวต" textFill="#fffdfd">
+               <font>
+                  <Font name="Agency FB Bold" size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Separator layoutX="439.0" orientation="VERTICAL" prefHeight="811.0" prefWidth="3.0" />
+      <AnchorPane prefHeight="811.0" prefWidth="472.0" style="-fx-background-color: #eceff1;">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="43.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../images/icon.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="69.0" layoutY="714.0" mnemonicParsing="false" onAction="#handleNewReportButton" prefHeight="30.0" prefWidth="320.0" style="-fx-background-color: #2E8B57; -fx-background-radius: 30;" text="สร้างรายงานใหม่" textFill="#fffdfd">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <CheckBox fx:id="yourReportCheckBox" layoutX="69.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleYourReportCheck" text="เรื่องที่ท่านร้องเรียน">
+               <font>
+                  <Font name="Cambria" size="14.0" />
+               </font>
+            </CheckBox>
+         </children>
+      </AnchorPane>
+      <ListView fx:id="reportListView" layoutX="39.0" layoutY="332.0" prefHeight="369.0" prefWidth="379.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ListView>
+
+      <Label layoutX="67.0" layoutY="110.0" prefHeight="42.0" prefWidth="332.0" text="KU HELP FOR KASETSART UNIVERSITY" textFill="#101010">
          <font>
-            <Font name="Cambria" size="14.0" />
-         </font>
-      </CheckBox>
+            <Font name="Cambria Bold" size="17.0" />
+         </font></Label>
       <ComboBox fx:id="statusComboBox" layoutX="229.0" layoutY="211.0" prefHeight="25.0" prefWidth="164.0" promptText="เลือกสถานะการดำเนินงาน" />
       <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="เลือกหมวดหมู่" />
-      <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="251.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" />
-      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="251.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" />
+      <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="270.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" />
+      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="270.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" />
+      <Button layoutX="1057.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: tranparent;" text="ออกจากระบบ" textFill="#e40e0e">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="935.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButton" style="-fx-background-color: transparent;" text="จัดการบัญชี" textFill="#050505">
+         <font>
+            <Font name="Cambria Italic" size="14.0" />
+         </font>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color opacity="0.0" />
+               </color>
+            </DropShadow>
+         </effect>
+      </Button>
    </children>
 </AnchorPane>

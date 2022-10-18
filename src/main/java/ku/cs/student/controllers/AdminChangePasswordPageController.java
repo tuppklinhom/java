@@ -55,6 +55,12 @@ public class AdminChangePasswordPageController {
     private void clearSuccessLabel() {
         successLabel.setText("");
     }
+    private void clearTextField(){
+        userNameAdminResetTextField.clear();
+        oldPasswordResetAdminPasswordField.clear();
+        newPassAdminPasswordField.clear();
+        conNewPassAdminPasswordField.clear();
+    }
 
     public void handleBackButton() {
         try {
@@ -78,16 +84,19 @@ public class AdminChangePasswordPageController {
             if (admin == null) {
                 errorLabel.setText("Username or Password Incorrect.");
                 AlertBox.display("Alert", "Username or Password Incorrect.");
+                clearTextField();
             } else {
                 if (admin.isPassword(adminPasswordInput)) {
                     admin.changePassword(adminNewPassInput);
                     dataSource.writeData(adminList);
                     errorLabel.setText("");
                     successLabel.setText("Successfully change password");
+                    clearTextField();
                 }
             }
         } else {
             errorLabel.setText("New Password doesn't match.");
+            clearTextField();
         }
 
 

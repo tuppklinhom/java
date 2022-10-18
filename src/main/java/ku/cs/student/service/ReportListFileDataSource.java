@@ -52,7 +52,7 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
             while ((line = buffer.readLine()) != null) {
                 String[] data = line.split(",");
 
-                Report r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()), data[6].trim(), data[7].trim());
+                Report r = new Report(data[0].trim(), data[1].trim(), data[2].trim(), data[3].replace(";", "\n"), data[4].trim(), Integer.parseInt(data[5].trim()), data[6].trim(), data[7].trim(), data[8].trim());
                 /* Date : 29.09.2022
                 Report r จะอ่านข้อมูลที่มีทั้งหมด 8 ตัวแน่นอน เพราะเนื่องจาก constructor ของ Class Report จะ assign ค่าทุกค่าของข้อมูลไว้อยู่แล้ว
                 แม้จะรับข้อมูลเพื่อสร้าง Object แค่ 4 ตัว ก็ยังมีข้อมูลทั้งหมด 8 ตัว เพราะอีก 2 ตัวได้กำหนดค่าของมันเอาไว้แล้ว
@@ -106,8 +106,20 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
                 /* Date : 29.09.2022
                 เปลื่ยนตำแหน่งการ assign ข้อมูล และข้อความข้างบนเลยเปลื่ยนโค้ดเป็นโค้ดนิดหน่อย ( บรรทัดที่ 124 ) @Tupp อยากจะแก้อะไรเพิ่มเติมมาแก้ได้เลย
                  */
+                String userLikePost ="";
+                int count =0;
+                for (String temp:r.getLikedUserList()){
+                    if(count == 0){
+                        userLikePost+=temp;
+                    }
+                    else {
+                        userLikePost+="|"+temp;
+                    }
+                    count++;
+                }
 
-                String line = r.getReporterName() + "," + r.getStatus() + "," + r.getHeadline() + "," + content + "," + r.getCategory() + "," + r.getVoteCount() + "," + r.getReportedTime() + "," + r.getSolution();
+
+                String line = r.getReporterName() + "," + r.getStatus() + "," + r.getHeadline() + "," + content + "," + r.getCategory() + "," + r.getVoteCount() + "," + r.getReportedTime() + "," + r.getSolution() + "," + userLikePost;
                 buffer.append(line);
                 buffer.newLine();
             }
