@@ -35,9 +35,12 @@ public class OfficerChangePasswordPageController {
 
     private OfficerList officerList;
 
+    private Officer officer;
+
     public void initialize() {
         dataSource = new OfficerListFileDataSource("data", "Officer.csv");
         officerList = dataSource.readData();
+        officer = (Officer) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
         clearSuccessLabel();
     }
@@ -52,9 +55,9 @@ public class OfficerChangePasswordPageController {
 
     public void handleBackButton(ActionEvent actionEvent){
         try {
-            com.github.saacsos.FXRouter.goTo("officer_login_page");
+            com.github.saacsos.FXRouter.goTo("officer_main_page");
         } catch (IOException e) {
-            System.err.println("ไปทีหน้า student_login_report ไม่ได้");
+            System.err.println("ไปทีหน้า officer_main_page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
     }
@@ -75,6 +78,7 @@ public class OfficerChangePasswordPageController {
             } else {
                 if (officer.isPassword(officerOldPasswordInput)) {
                     officer.changePassword(officerNewPasswordInput);
+                    officerList.addOfficer(officer);
                     dataSource.writeData(officerList);
                     errorLabel.setText("");
                     successLabel.setText("Successfully change password");

@@ -68,15 +68,4 @@ public class OfficerLoginPageController {
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
     }
-
-    public void handleChangePasswordPageButton() {
-        try {
-            FXRouter.goTo("officer_change_password_page");
-        } catch (IOException e) {
-            System.err.println("ไปทีหน้า officer change password page ไม่ได้");
-            System.err.println("ให้ตรวจสอบการกําหนด route");
-        }
-    }
-
-
 }

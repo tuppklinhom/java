@@ -269,4 +269,13 @@ public class OfficerMainPageController {
         });
         showListView();
     }
+
+    public void handleChangePasswordPageButton(ActionEvent actionEvent) {
+        try {
+            com.github.saacsos.FXRouter.goTo("officer_change_password_page",officer);
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า officer change password page ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
 }

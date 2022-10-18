@@ -36,6 +36,8 @@ public class AdminChangePasswordPageController {
     // เป็น ALERT อีกเเบบที่ไม่รู้ว่าจะ custom มันยังไงถ้าอยากรู้ว่าเป็นยังไงก็ลองเอาคอมเเม้นของ เเล้วลองใช้ดูนะ (เลื่อนไปเอาด้านล่างออกด้วยนะ)
     private DataSource<AdminList> dataSource;
     private AdminList adminList;
+
+    private Admin admin;
     private String adminUsernameInput;
     private String adminPasswordInput;
     private String adminNewPassInput;
@@ -44,6 +46,7 @@ public class AdminChangePasswordPageController {
     public void initialize() {
         dataSource = new AdminListFileDataSource("data", "admin.csv");
         adminList = dataSource.readData();
+        admin = (Admin) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
         clearSuccessLabel();
     }
@@ -88,6 +91,7 @@ public class AdminChangePasswordPageController {
             } else {
                 if (admin.isPassword(adminPasswordInput)) {
                     admin.changePassword(adminNewPassInput);
+                    adminList.addAdmin(admin);
                     dataSource.writeData(adminList);
                     errorLabel.setText("");
                     successLabel.setText("Successfully change password");
