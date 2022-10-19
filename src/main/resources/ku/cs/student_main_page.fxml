@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentMainPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.StudentMainPageController">
    <children>
       <Pane layoutX="533.0" layoutY="204.0" prefHeight="64.0" prefWidth="332.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
          <children>

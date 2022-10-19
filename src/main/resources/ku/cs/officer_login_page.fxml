@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerLoginPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.OfficerLoginPageController">
    <children>
       <Button layoutX="846.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="37.0" prefWidth="162.0" styleClass="login_button" stylesheets="@style_page/stylee.css" text="Login" textFill="WHITE">
          <font>
@@ -51,5 +51,10 @@
             <Font name="Cambria" size="14.0" />
          </font>
       </Button>
+      <ImageView fitHeight="899.0" fitWidth="599.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@kuuni/Ku_help.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
