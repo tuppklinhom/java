@@ -24,7 +24,7 @@
          </font></PasswordField>
       <Button graphicTextGap="8.0" layoutX="817.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="30.0" prefWidth="214.0" stylesheets="@style_page/stylee.css" text="login" textFill="WHITE" wrapText="true">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Cambria Italic" size="18.0" />
          </font>
          <styleClass>
             <String fx:value="shadow" />
@@ -36,7 +36,7 @@
          </font></Label>
       <Button layoutX="985.0" layoutY="684.0" mnemonicParsing="false" onAction="#handleGotoAdminPage" prefHeight="40.0" prefWidth="144.0" stylesheets="@style_page/stylee.css" text="Admin login" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Cambria Bold" size="18.0" />
          </font>
          <styleClass>
             <String fx:value="shadow" />
@@ -44,7 +44,7 @@
          </styleClass></Button>
       <Button layoutX="985.0" layoutY="737.0" mnemonicParsing="false" onAction="#handleGotoOfficerPage" prefHeight="40.0" prefWidth="144.0" stylesheets="@style_page/stylee.css" text=" Officer login" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Cambria Bold" size="18.0" />
          </font>
          <styleClass>
             <String fx:value="shadow" />
@@ -70,9 +70,9 @@
             <Image url="@kuuni/ku_logo.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="1017.0" layoutY="578.0" mnemonicParsing="false" onAction="#handleRegistrationButton" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: tranparent;" stylesheets="@style_page/stylee.css" text="Sign up" textFill="#259b24">
+      <Button layoutX="978.0" layoutY="579.0" mnemonicParsing="false" onAction="#handleRegistrationButton" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: tranparent;" stylesheets="@style_page/stylee.css" text="Sign up" textFill="#259b24">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Cambria Italic" size="16.0" />
          </font>
          <styleClass>
             <String fx:value="shadow" />
@@ -90,17 +90,17 @@
       </Label>
       <Label layoutX="817.0" layoutY="584.0" text="Don't have an account ?">
          <font>
-            <Font name="System Bold" size="16.0" />
+            <Font name="Cambria Italic" size="16.0" />
          </font>
       </Label>
       <Hyperlink layoutX="981.0" layoutY="36.0" onAction="#handleHowToUseButton" text="How to use" textFill="#333335">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Cambria Italic" size="14.0" />
          </font>
       </Hyperlink>
       <Hyperlink layoutX="1094.0" layoutY="36.0" text="Creator" textFill="#333335">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Cambria Bold" size="14.0" />
          </font>
       </Hyperlink>
       <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="757.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">

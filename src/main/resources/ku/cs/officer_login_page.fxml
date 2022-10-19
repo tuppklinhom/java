@@ -14,7 +14,7 @@
    <children>
       <Button layoutX="846.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="37.0" prefWidth="162.0" styleClass="login_button" stylesheets="@style_page/stylee.css" text="Login" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="Cambria" size="14.0" />
          </font>
          <effect>
             <DropShadow />
@@ -48,7 +48,7 @@
             <DropShadow />
          </effect>
          <font>
-            <Font size="14.0" />
+            <Font name="Cambria" size="14.0" />
          </font>
       </Button>
    </children>

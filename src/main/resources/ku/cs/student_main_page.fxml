@@ -154,7 +154,7 @@
          <children>
             <Button layoutX="69.0" layoutY="714.0" mnemonicParsing="false" onAction="#handleNewReportButton" prefHeight="30.0" prefWidth="320.0" stylesheets="@style_page/stylee.css" text="Create new report" textFill="#fffdfd">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria" size="18.0" />
                </font>
                <styleClass>
                   <String fx:value="color_box" />
