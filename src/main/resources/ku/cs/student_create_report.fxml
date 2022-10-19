@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1168.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentCreateReportController">
+<AnchorPane prefHeight="800.0" prefWidth="1168.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.StudentCreateReportController">
    <children>
       <AnchorPane layoutX="541.0" layoutY="89.0" prefHeight="674.0" prefWidth="574.0" style="-fx-background-color: #FFFFF; -fx-background-radius: 20;">
          <children>
