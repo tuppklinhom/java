@@ -14,34 +14,34 @@
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <PasswordField fx:id="confirmNewPasswordField" layoutX="736.0" layoutY="435.0" prefHeight="40.0" prefWidth="262.0" promptText="Confirm new password" style="-fx-background-radius: 20;">
+      <PasswordField fx:id="confirmNewPasswordField" layoutX="732.0" layoutY="438.0" prefHeight="40.0" prefWidth="283.0" promptText="Confirm new password" style="-fx-background-radius: 20;">
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <Label layoutX="719.0" layoutY="146.0" text="ChangePassword">
+      <Label layoutX="719.0" layoutY="146.0" text="Manage MyAccount">
          <font>
             <Font name="Cambria Bold" size="36.0" />
          </font></Label>
       <ImageView fx:id="profileImageView" fitHeight="208.0" fitWidth="242.0" layoutX="268.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="739.0" layoutY="588.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="40.0" prefWidth="251.0" stylesheets="@style_page/stylee.css" text="Change password" textFill="WHITE">
+      <Button layoutX="737.0" layoutY="588.0" mnemonicParsing="false" onAction="#handleChangePasswordButton" prefHeight="40.0" prefWidth="283.0" stylesheets="@style_page/stylee.css" text="Change password" textFill="WHITE">
          <font>
-            <Font size="18.0" />
+            <Font name="Cambria" size="18.0" />
          </font>
          <styleClass>
             <String fx:value="upload_button" />
             <String fx:value="login_button" />
             <String fx:value="shadow" />
          </styleClass></Button>
-      <Button layoutX="268.0" layoutY="588.0" mnemonicParsing="false" onAction="#handleChangeProfileButton" prefHeight="40.0" prefWidth="241.0" stylesheets="@style_page/stylee.css" text="Change profile picture" textFill="#fffdfd">
+      <Button layoutX="268.0" layoutY="584.0" mnemonicParsing="false" onAction="#handleChangeProfileButton" prefHeight="44.0" prefWidth="251.0" stylesheets="@style_page/stylee.css" text="Change profile picture" textFill="#fffdfd">
          <styleClass>
             <String fx:value="login_button" />
             <String fx:value="upload_button" />
             <String fx:value="shadow" />
          </styleClass>
          <font>
-            <Font size="18.0" />
+            <Font name="Cambria" size="18.0" />
          </font></Button>
-      <Label fx:id="errorLabel" layoutX="821.0" layoutY="509.0" text="errorLabel" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="732.0" layoutY="515.0" text="errorLabel" textFill="RED">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -52,7 +52,7 @@
             <String fx:value="upload_button" />
          </styleClass>
          <font>
-            <Font size="18.0" />
+            <Font name="Cambria" size="18.0" />
          </font></Button>
       <Label layoutX="729.0" layoutY="235.0" text="New Password">
          <font>

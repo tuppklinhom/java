@@ -47,7 +47,7 @@
     -fx-border-radius: 50;
 }
 .upload_button:hover{
-    -fx-background-color: #ffa500;
+    -fx-background-color: #940808;
     -fx-background-radius: 50;
     -fx-border-radius: 50;
 }
@@ -63,7 +63,7 @@
     -fx-border-radius: 50;
 }
 .logout_button{
-    -fx-background-color: #d40e0e;
+    -fx-background-color: #b20909;
     -fx-background-radius: 50;
 }
 
