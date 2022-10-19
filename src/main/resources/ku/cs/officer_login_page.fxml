@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerLoginPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.OfficerLoginPageController">
    <children>
       <Button layoutX="846.0" layoutY="533.0" mnemonicParsing="false" onAction="#handleLoginButton" prefHeight="37.0" prefWidth="162.0" styleClass="login_button" stylesheets="@style_page/stylee.css" text="Login" textFill="WHITE">
          <font>

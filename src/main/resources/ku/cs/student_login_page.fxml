@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentLoginPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.StudentLoginPageController">
    <children>
       <Label layoutX="219.0" layoutY="134.0" />
       <TextField fx:id="usernameTextField" layoutX="817.0" layoutY="342.0" prefHeight="37.0" prefWidth="214.0" promptText="username" style="-fx-background-radius: 20;">
