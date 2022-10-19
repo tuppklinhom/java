@@ -51,5 +51,10 @@
             <Font name="Cambria" size="14.0" />
          </font>
       </Button>
+      <ImageView fitHeight="899.0" fitWidth="599.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@kuuni/Ku_help.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

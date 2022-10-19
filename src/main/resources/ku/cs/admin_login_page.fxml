@@ -51,5 +51,10 @@
       </Label>
       <TextField fx:id="usernameAdminLoginTextField" layoutX="864.0" layoutY="322.0" prefHeight="37.0" prefWidth="214.0" promptText="username" style="-fx-background-radius: 20;" />
       <PasswordField fx:id="passwordAdminLoginPasswordField" layoutX="864.0" layoutY="408.0" prefHeight="37.0" prefWidth="214.0" promptText="password" style="-fx-background-radius: 20;" />
+      <ImageView fitHeight="870.0" fitWidth="600.0" layoutY="-7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@kuuni/Ku_help.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

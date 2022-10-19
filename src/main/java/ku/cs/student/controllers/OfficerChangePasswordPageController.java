@@ -51,7 +51,7 @@ public class OfficerChangePasswordPageController {
 
     private void clearSuccessLabel() {
         successLabel.setText("");
-    }
+    }   
 
     public void handleBackButton(ActionEvent actionEvent){
         try {

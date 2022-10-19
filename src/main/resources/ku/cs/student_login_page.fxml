@@ -59,11 +59,6 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <ImageView fitHeight="853.0" fitWidth="643.0" layoutX="-8.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@kuuni/Ku_help.png" />
-         </image>
-      </ImageView>
 
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="850.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -116,6 +111,11 @@
       <ImageView fitHeight="32.0" fitWidth="63.0" layoutX="935.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@kuuni/icons8_document.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="842.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@kuuni/Ku_help.png" />
          </image>
       </ImageView>
 
