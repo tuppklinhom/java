@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CreatorDataPage"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #333335;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.CreatorPageController">
+   <children>
+      <Label layoutX="114.0" layoutY="30.0" prefHeight="60.0" prefWidth="230.0" stylesheets="@style_page/stylee.css" text="Creator" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="664.0" fitWidth="917.0" layoutX="64.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@kuuni/S__5038110.jpg" />
+         </image>
+      </ImageView>
+   </children>
 </AnchorPane>
