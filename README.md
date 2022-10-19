@@ -1,6 +1,7 @@
-CS211 - Project<br>
-วิธีทดสอบการ RUN<br>
-1. Main <br>
+<h2><ins>วิธีการติดตั้งและรันโปรแกรม KU Help</ins><br></h2>
+
+===============================
+1. ดาวน์โหลดไฟล์จากปุ่ม Code โดยกดลงมา และจะมีปุ่ม Download Zip<br>
 run Main Class
 2. javafx plugin<br>
 MVN Clean<br>
