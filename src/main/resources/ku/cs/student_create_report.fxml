@@ -40,7 +40,7 @@
                   <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="336.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="40.0" prefWidth="182.0" stylesheets="@style_page/stylee.css" text="ส่งเรื่องรายงาน" textFill="WHITE">
+            <Button layoutX="336.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="40.0" prefWidth="182.0" stylesheets="@style_page/stylee.css" text="Send report" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -68,7 +68,7 @@
          </children>
       </AnchorPane>
       <Pane layoutX="732.0" layoutY="70.0" prefHeight="92.0" prefWidth="256.0" />
-      <Button layoutX="1021.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="96.0" stylesheets="@style_page/stylee.css" text="ย้อนกลับ" textFill="WHITE">
+      <Button layoutX="1021.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="96.0" stylesheets="@style_page/stylee.css" text="Back" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

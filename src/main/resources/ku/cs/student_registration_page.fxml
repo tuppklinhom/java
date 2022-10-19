@@ -20,7 +20,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Button layoutX="694.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="344.0" stylesheets="@style_page/stylee.css" text="สร้างบัญชี" textFill="WHITE">
+      <Button layoutX="694.0" layoutY="655.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="344.0" stylesheets="@style_page/stylee.css" text="Create account" textFill="WHITE">
          <styleClass>
             <String fx:value="login_button" />
             <String fx:value="login_button" />
@@ -37,7 +37,7 @@
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <Button layoutX="187.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleUploadPictureButton" prefHeight="30.0" prefWidth="247.0" stylesheets="@style_page/stylee.css" text="เลือกรูปภาพ" textFill="WHITE">
+      <Button layoutX="187.0" layoutY="493.0" mnemonicParsing="false" onAction="#handleUploadPictureButton" prefHeight="30.0" prefWidth="247.0" stylesheets="@style_page/stylee.css" text="Choose Image" textFill="WHITE">
          <styleClass>
             <String fx:value="shadow" />
             <String fx:value="login_button" />
@@ -55,7 +55,7 @@
          <font>
             <Font size="18.0" />
          </font></PasswordField>
-      <Button layoutX="1059.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="30.0" prefWidth="90.0" stylesheets="@style_page/stylee.css" text="ย้อนกลับ" textFill="WHITE">
+      <Button layoutX="1059.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="30.0" prefWidth="90.0" stylesheets="@style_page/stylee.css" text="Back" textFill="WHITE">
          <styleClass>
             <String fx:value="shadow" />
             <String fx:value="logout_button" />

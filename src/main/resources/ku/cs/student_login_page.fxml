@@ -93,12 +93,12 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="981.0" layoutY="36.0" onAction="#handleHowToUseButton" text="วิธีการใช้งาน" textFill="#333335">
+      <Hyperlink layoutX="981.0" layoutY="36.0" onAction="#handleHowToUseButton" text="How to use" textFill="#333335">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="1094.0" layoutY="36.0" text="ผู้จัดทำ" textFill="#333335">
+      <Hyperlink layoutX="1094.0" layoutY="36.0" text="Creator" textFill="#333335">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
