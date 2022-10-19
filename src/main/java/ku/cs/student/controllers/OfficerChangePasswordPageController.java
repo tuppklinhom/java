@@ -68,25 +68,24 @@ public class OfficerChangePasswordPageController {
         String officerNewPasswordInput = newPassOfficerPasswordField.getText();
         String officerConfirmNewPasswordInput = conFirmNewPassOfficerPasswordField.getText();
 
-        if (officerNewPasswordInput.equals(officerConfirmNewPasswordInput)) {
-
-            Officer officer = officerList.findOfficer(officerOldUsernameInput);
-
-            if (officer == null) {
-                errorLabel.setText("Username or Password Incorrect.");
-                AlertBox.display("Alert", "Username or Password Incorrect.");
-            } else {
-                if (officer.isPassword(officerOldPasswordInput)) {
-                    officer.changePassword(officerNewPasswordInput);
-                    officerList.addOfficer(officer);
-                    dataSource.writeData(officerList);
-                    errorLabel.setText("");
-                    successLabel.setText("Successfully change password");
-                }
+        if (officer.isPassword(officerOldPasswordInput) || officer.isUsername(officerOldUsernameInput)) {
+            if (officerNewPasswordInput.equals(officerConfirmNewPasswordInput)){
+                clearErrorLabel();
+                clearSuccessLabel();
+                officerList.changePassword(officerOldUsernameInput, officerNewPasswordInput);
+                dataSource.writeData(officerList);
+                successLabel.setText("Successfully changed password.");
             }
-        } else {
-            errorLabel.setText("New Password doesn't match.");
+            else{
+                clearErrorLabel();
+                clearSuccessLabel();
+                errorLabel.setText("New Password does not match");
+            }
+        }
+        else {
+            clearErrorLabel();
+            clearSuccessLabel();
+            errorLabel.setText("Username or Password Incorrect.");
         }
     }
-
 }

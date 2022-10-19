@@ -34,4 +34,8 @@ public class OfficerList {
         }
         return filtered;
     }
+
+    public void changePassword(String username, String password) {
+        findOfficer(username).changePassword(password);
+    }
 }

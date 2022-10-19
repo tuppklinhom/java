@@ -33,6 +33,9 @@ public class StudentAccountManagementPageController {
     @FXML
     private Label errorLabel;
 
+    @FXML
+    private Label successLabel;
+
 
     private User user;
     private DataSource<StudentList> dataSource;
@@ -43,12 +46,16 @@ public class StudentAccountManagementPageController {
         studentList = dataSource.readData();
         user = (User) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
+        clearSuccessLabel();
         showProfileImageView();
     }
 
     private void clearErrorLabel() {
         errorLabel.setText("");
+    }
 
+    private void clearSuccessLabel() {
+        successLabel.setText("");
     }
 
     private void showProfileImageView(){
@@ -61,15 +68,18 @@ public class StudentAccountManagementPageController {
         String confirmPassword = confirmNewPasswordField.getText();
 
         if (newPassword.equals(confirmPassword)){
+            clearErrorLabel();
+            clearSuccessLabel();
             user.changePassword(newPassword);
             studentList.addStudent(user);
             dataSource.writeData(studentList);
-            errorLabel.setText("Successfully changed password.");
+            successLabel.setText("Successfully changed password.");
         }
         else{
-            errorLabel.setText("Password do not match");
+            clearErrorLabel();
+            clearSuccessLabel();
+            errorLabel.setText("New Password does not match");
         }
-
     }
 
     public void handleChangeProfileButton(ActionEvent event){

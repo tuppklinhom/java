@@ -32,6 +32,7 @@ public class AdminList {
         return admins.get(num);
     }
 
-
-
+    public void changePassword(String username, String password) {
+        findByUsername(username).changePassword(password);
+    }
 }
