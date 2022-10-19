@@ -1,0 +1,71 @@
+.color_box{
+    -fx-background-color : #ffffff;
+}
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+.cube_box{
+    -fx-background-radius: 20;
+}
+.cube_select_main{
+    -fx-background-radius: 20;
+}
+.cube_select_main:hover{
+    -fx-border-color: #5D9379;
+    -fx-background-color: #5D9379;
+    -fx-text-fill: linear-gradient(to right,white,white);
+    -fx-background-radius: 10px;
+    -fx-color-label-visible: #5D9379;
+    -fx-border-radius: 10px;
+}
+.cube_select_vocal{
+    -fx-background-radius: 20;
+}
+.cube_select_vocal:hover{
+    -fx-border-color: #D5D8DC;
+    -fx-background-color: #D5D8DC;
+    -fx-text-fill: linear-gradient(to right,white,white);
+    -fx-background-radius: 10px;
+    -fx-color-label-visible: #D5D8DC;
+    -fx-border-radius: 10px;
+}
+.color_theme_0{
+    -fx-background-color: #F7F9F9;
+}
+.color_theme_1{
+    -fx-background-color: #76BA9A;
+}
+.color_theme_2{
+    -fx-background-color: #05592f;
+}
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+.upload_button{
+    -fx-background-color: #259b24;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+.upload_button:hover{
+    -fx-background-color: #ffa500;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.login_button{
+    -fx-background-color: #259b24;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+.login_button:hover{
+    -fx-background-color: #3cb371;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+.logout_button{
+    -fx-background-color: #d40e0e;
+    -fx-background-radius: 50;
+}
+
+
+

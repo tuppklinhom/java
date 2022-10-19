@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -17,14 +18,14 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentMainPageController">
    <children>
-      <Pane layoutX="533.0" layoutY="204.0" prefHeight="64.0" prefWidth="332.0" style="-fx-background-color: eceff1; -fx-background-radius: 20;">
+      <Pane layoutX="533.0" layoutY="204.0" prefHeight="64.0" prefWidth="332.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
          <children>
-            <Label fx:id="headlineLabel" layoutX="190.0" layoutY="25.0" text="headlineLabel">
+            <Label fx:id="headlineLabel" layoutX="130.0" layoutY="25.0" styleClass="shadow" stylesheets="@style_page/stylee.css" text="headlineLabel">
                <font>
                   <Font name="Cambria" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="32.0" layoutY="19.0" prefHeight="30.0" prefWidth="81.0" text="TOPIC">
+            <Label layoutX="32.0" layoutY="19.0" prefHeight="30.0" prefWidth="81.0" text="TOPIC" textFill="#05592f">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
                </font>
@@ -34,9 +35,9 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="692.0" layoutY="21.0" prefHeight="64.0" prefWidth="197.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;">
+      <Pane layoutX="679.0" layoutY="22.0" prefHeight="64.0" prefWidth="217.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
          <children>
-            <Label fx:id="usernameLabel" layoutX="87.0" layoutY="23.0" text="usernameLabel">
+            <Label fx:id="usernameLabel" layoutX="87.0" layoutY="23.0" text="usernameLabel" textFill="#05592f">
                <font>
                   <Font name="Cambria" size="14.0" />
                </font>
@@ -91,7 +92,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="518.0" layoutY="332.0" prefHeight="419.0" prefWidth="636.0" style="-fx-background-color: #eceff1; -fx-background-radius: 20;">
+      <Pane layoutX="518.0" layoutY="332.0" prefHeight="419.0" prefWidth="653.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
          <children>
             <Label layoutX="53.0" layoutY="35.0" text="CONTENT">
                <font>
@@ -110,7 +111,7 @@
             </Pane>
             <Pane layoutX="39.0" layoutY="269.0" prefHeight="122.0" prefWidth="578.0" style="-fx-background-color: #FFF; -fx-background-radius: 20;">
                <children>
-                  <TextArea fx:id="solutionTextArea" editable="false" layoutX="14.0" layoutY="10.0" prefHeight="102.0" prefWidth="556.0" style="-fx-background-radius: 20;">
+                  <TextArea fx:id="solutionTextArea" editable="false" layoutX="14.0" layoutY="10.0" prefHeight="102.0" prefWidth="556.0">
                      <font>
                         <Font name="System Bold" size="17.0" />
                      </font>
@@ -122,62 +123,85 @@
                   <Font name="Cambria" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="519.0" layoutY="37.0" mnemonicParsing="false" onAction="#handleVoteUpButton" style="-fx-background-color: #00897b; -fx-background-radius: 20;" text="เพิ่มโหวต" textFill="#fffdfd">
+            <Button layoutX="521.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleVoteUpButton" stylesheets="@style_page/stylee.css" text="VOTE" textFill="WHITE">
                <font>
-                  <Font name="Agency FB Bold" size="14.0" />
+                  <Font name="Cambria Bold" size="16.0" />
                </font>
-               <effect>
-                  <DropShadow />
-               </effect>
+               <styleClass>
+                  <String fx:value="color_theme_2" />
+                  <String fx:value="upload_button" />
+                  <String fx:value="login_button" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </Button>
+            <ImageView fitHeight="40.0" fitWidth="31.0" layoutX="171.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/icons8_support.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="42.0" fitWidth="31.0" layoutX="171.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/icons8_opened.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
             <DropShadow />
          </effect>
       </Pane>
       <Separator layoutX="439.0" orientation="VERTICAL" prefHeight="811.0" prefWidth="3.0" />
-      <AnchorPane prefHeight="811.0" prefWidth="472.0" style="-fx-background-color: #eceff1;">
+      <AnchorPane prefHeight="811.0" prefWidth="472.0" style="-fx-background-color: #FFFFF;">
          <children>
-            <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="43.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../images/icon.png" />
-               </image>
-            </ImageView>
-            <Button layoutX="69.0" layoutY="714.0" mnemonicParsing="false" onAction="#handleNewReportButton" prefHeight="30.0" prefWidth="320.0" style="-fx-background-color: #2E8B57; -fx-background-radius: 30;" text="สร้างรายงานใหม่" textFill="#fffdfd">
+            <Button layoutX="69.0" layoutY="714.0" mnemonicParsing="false" onAction="#handleNewReportButton" prefHeight="30.0" prefWidth="320.0" stylesheets="@style_page/stylee.css" text="สร้างรายงานใหม่" textFill="#fffdfd">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="color_box" />
+                  <String fx:value="color_theme_2" />
+                  <String fx:value="upload_button" />
+                  <String fx:value="login_button" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+            <CheckBox fx:id="yourReportCheckBox" layoutX="69.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleYourReportCheck" stylesheets="@style_page/stylee.css" text="เรื่องที่ท่านร้องเรียน" textFill="#0d5302">
+               <font>
+                  <Font name="Cambria" size="16.0" />
+               </font>
+            </CheckBox>
+            <ListView fx:id="reportListView" layoutX="39.0" layoutY="334.0" prefHeight="369.0" prefWidth="379.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 30;" styleClass="shadow" stylesheets="@style_page/stylee.css">
                <effect>
                   <DropShadow />
                </effect>
-            </Button>
-            <CheckBox fx:id="yourReportCheckBox" layoutX="69.0" layoutY="165.0" mnemonicParsing="false" onAction="#handleYourReportCheck" text="เรื่องที่ท่านร้องเรียน">
-               <font>
-                  <Font name="Cambria" size="14.0" />
-               </font>
-            </CheckBox>
+            </ListView>
+            <ImageView fitHeight="90.0" fitWidth="104.0" layoutX="23.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/ku_logo.jpg" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <ListView fx:id="reportListView" layoutX="39.0" layoutY="332.0" prefHeight="369.0" prefWidth="379.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;">
-         <effect>
-            <DropShadow />
-         </effect>
-      </ListView>
 
-      <Label layoutX="67.0" layoutY="110.0" prefHeight="42.0" prefWidth="332.0" text="KU HELP FOR KASETSART UNIVERSITY" textFill="#101010">
+      <Label layoutX="67.0" layoutY="110.0" prefHeight="42.0" prefWidth="332.0" text="KU HELP FOR KASETSART UNIVERSITY">
          <font>
             <Font name="Cambria Bold" size="17.0" />
          </font></Label>
-      <ComboBox fx:id="statusComboBox" layoutX="229.0" layoutY="211.0" prefHeight="25.0" prefWidth="164.0" promptText="เลือกสถานะการดำเนินงาน" />
-      <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="เลือกหมวดหมู่" />
-      <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="270.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" />
-      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="270.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" />
-      <Button layoutX="1057.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: tranparent;" text="ออกจากระบบ" textFill="#e40e0e">
+      <ComboBox fx:id="statusComboBox" layoutX="229.0" layoutY="211.0" prefHeight="25.0" prefWidth="164.0" promptText="เลือกสถานะการดำเนินงาน" style="-fx-background-radius: 20;" />
+      <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="เลือกหมวดหมู่" style="-fx-background-radius: 20;" />
+      <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="270.0" prefHeight="25.0" prefWidth="150.0" promptText="เรียงลำดับจากโหวต" style="-fx-background-radius: 20;" />
+      <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="270.0" prefHeight="25.0" prefWidth="164.0" promptText="เรียงลำดับจากวันที่" style="-fx-background-radius: 20;" />
+      <Button layoutX="1057.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleLogoutButton" stylesheets="@style_page/stylee.css" text="ออกจากระบบ" textFill="WHITE">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
+         <styleClass>
+            <String fx:value="logout_button" />
+            <String fx:value="color_theme_2" />
+            <String fx:value="login_button" />
+            <String fx:value="shadow" />
+         </styleClass>
       </Button>
-      <Button layoutX="935.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButton" style="-fx-background-color: transparent;" text="จัดการบัญชี" textFill="#050505">
+      <Button layoutX="935.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButton" prefHeight="30.0" prefWidth="90.0" stylesheets="@style_page/stylee.css" text="จัดการบัญชี" textFill="WHITE">
          <font>
             <Font name="Cambria Italic" size="14.0" />
          </font>
@@ -188,6 +212,12 @@
                </color>
             </DropShadow>
          </effect>
+         <styleClass>
+            <String fx:value="color_theme_2" />
+            <String fx:value="login_button" />
+            <String fx:value="shadow" />
+         </styleClass>
       </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="472.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

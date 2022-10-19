@@ -1,51 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1168.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.StudentCreateReportController">
    <children>
-      <AnchorPane layoutX="654.0" layoutY="172.0" prefHeight="566.0" prefWidth="418.0" style="-fx-background-color: #eceff1; -fx-background-radius: 20;">
-         <effect>
-            <DropShadow />
-         </effect>
+      <AnchorPane layoutX="541.0" layoutY="89.0" prefHeight="674.0" prefWidth="574.0" style="-fx-background-color: #FFFFF; -fx-background-radius: 20;">
          <children>
-            <Label layoutX="33.0" layoutY="251.0" text="รายละเอียด">
+            <Label layoutX="38.0" layoutY="271.0" prefHeight="30.0" prefWidth="118.0" text="CONTENT">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="37.0" layoutY="216.0" prefHeight="30.0" prefWidth="346.0" style="-fx-background-radius: 20;" />
+            <Label layoutX="37.0" layoutY="164.0" text="INSTITUTE">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="headlineTextField" layoutX="33.0" layoutY="99.0" prefHeight="40.0" prefWidth="478.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextArea fx:id="contentTextArea" layoutX="33.0" layoutY="316.0" prefHeight="233.0" prefWidth="478.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <Label layoutX="38.0" layoutY="44.0" prefHeight="17.0" prefWidth="110.0" text="TOPIC">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <Button layoutX="336.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="40.0" prefWidth="182.0" stylesheets="@style_page/stylee.css" text="ส่งเรื่องรายงาน" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
-            </Label>
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="33.0" layoutY="202.0" prefHeight="26.0" prefWidth="338.0" />
-            <Label layoutX="38.0" layoutY="150.0" text="หน่วยงาน">
+               <styleClass>
+                  <String fx:value="login_button" />
+                  <String fx:value="color_theme_2" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+            <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="118.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/icons8_stack_exchange.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="38.0" layoutX="164.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/usericon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="38.0" layoutX="159.0" layoutY="271.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@kuuni/icons8_opened.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="732.0" layoutY="70.0" prefHeight="92.0" prefWidth="256.0" />
+      <Button layoutX="1021.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="37.0" prefWidth="96.0" stylesheets="@style_page/stylee.css" text="ย้อนกลับ" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <styleClass>
+            <String fx:value="logout_button" />
+            <String fx:value="shadow" />
+            <String fx:value="login_button" />
+         </styleClass></Button>
+      <Pane layoutX="-1.0" layoutY="-2.0" prefHeight="806.0" prefWidth="510.0" style="-fx-background-color: #05592f;">
+         <children>
+            <Label layoutX="70.0" layoutY="385.0" prefHeight="92.0" prefWidth="371.0" styleClass="shadow" stylesheets="@style_page/stylee.css" text=" you can create new post here !" textFill="#fbfbff">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="headlineTextField" layoutX="33.0" layoutY="99.0" prefHeight="26.0" prefWidth="337.0" />
-            <TextArea fx:id="contentTextArea" layoutX="33.0" layoutY="283.0" prefHeight="202.0" prefWidth="338.0" />
-            <Label layoutX="33.0" layoutY="58.0" prefHeight="17.0" prefWidth="102.0" text="หัวข้อเรื่อง">
+            <Label layoutX="70.0" layoutY="325.0" styleClass="shadow" stylesheets="@style_page/stylee.css" text="Hello , Student !" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Cambria Bold" size="48.0" />
                </font>
             </Label>
          </children>
-      </AnchorPane>
-      <Label layoutX="799.0" layoutY="93.0" text="รายงานใหม่">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="691.0" layoutY="667.0" mnemonicParsing="false" onAction="#handleSubmitButton" prefHeight="30.0" prefWidth="338.0" text="ส่งเรื่องรายงาน">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="1061.0" layoutY="739.0" mnemonicParsing="false" onAction="#handleBackButton" text="ย้อนกลับ" />
+      </Pane>
    </children>
 </AnchorPane>

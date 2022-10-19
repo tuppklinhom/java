@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Hyperlink?>
@@ -14,81 +15,166 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #3CB371;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerMainPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.student.controllers.OfficerMainPageController">
    <children>
-      <Pane layoutX="32.0" layoutY="32.0" prefHeight="738.0" prefWidth="1138.0" style="-fx-background-color: #FFFF; -fx-background-radius: 20;">
+      <Pane layoutX="-6.0" prefHeight="816.0" prefWidth="1200.0" style="-fx-background-color: #FFFF; -fx-background-radius: 20;">
          <children>
-            <ListView fx:id="reportListView" layoutX="72.0" layoutY="247.0" prefHeight="437.0" prefWidth="411.0" style="-fx-background-color: #F5F5DC; -fx-background-radius: 20;">
+            <Pane layoutX="840.0" layoutY="145.0" prefHeight="622.0" prefWidth="353.0" style="-fx-background-color: #F5F5DC; -fx-background-radius: 20;" stylesheets="@style_page/stylee.css">
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="cube_select_vocal" />
+               </styleClass>
+               <children>
+                  <Button fx:id="addSolutionButton" layoutX="211.0" layoutY="496.0" mnemonicParsing="false" onAction="#handleAddSolutionAndUpdateStatus" prefHeight="40.0" prefWidth="115.0" stylesheets="@style_page/stylee.css" text="ตกลง" textFill="#fffdfd">
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                     <styleClass>
+                        <String fx:value="login_button" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <ChoiceBox fx:id="statusChoiceBox" layoutX="37.0" layoutY="157.0" prefWidth="150.0" style="-fx-background-radius: 20;" />
+                  <Label layoutX="38.0" layoutY="112.0" text="เลือกสถานะ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="62.0" text="สถานะ : ">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="statusLabel" layoutX="146.0" layoutY="69.0" text="statusLabel" />
+               </children>
+            </Pane>
+            <ListView fx:id="reportListView" layoutX="49.0" layoutY="433.0" prefHeight="321.0" prefWidth="371.0" style="-fx-background-color: #F5F5DC; -fx-background-radius: 20;" stylesheets="@style_page/stylee.css">
                <effect>
                   <DropShadow />
                </effect>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="cube_select_vocal" />
+               </styleClass>
             </ListView>
-            <Label layoutX="163.0" layoutY="38.0" text="รายงานเรื่องร้องเรียน">
+            <Pane layoutX="476.0" layoutY="348.0" prefHeight="217.0" prefWidth="325.0" style="-fx-background-color: #F5F5DC; -fx-background-radius: 20;" stylesheets="@style_page/stylee.css">
+               <children>
+                  <Pane layoutX="28.0" layoutY="66.0" prefHeight="129.0" prefWidth="270.0" style="-fx-background-color: #FFFF; -fx-background-radius: 20;">
+                     <children>
+                        <Label fx:id="solutionLabel" layoutX="29.0" layoutY="17.0" text="solutionLabel">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label layoutX="43.0" layoutY="29.0" text="รายละเอียดวิธีการจัดการ">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="cube_select_vocal" />
+               </styleClass>
+            </Pane>
+            <Label layoutX="79.0" layoutY="75.0" text="รายงานเรื่องร้องเรียน">
                <font>
-                  <Font name="Agency FB" size="30.0" />
+                  <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="880.0" layoutY="135.0" text="สถานะ : ">
+            <Label layoutX="71.0" layoutY="309.0" text="หน่วยงาน">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="statusLabel" layoutX="987.0" layoutY="141.0" text="statusLabel" />
-            <Label layoutX="554.0" layoutY="226.0" text="รายละเอียดวิธีการจัดการ">
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="263.0" layoutY="314.0" prefWidth="150.0" />
+            <Label fx:id="categoryLabel" layoutX="76.0" layoutY="364.0" text="categoryLabel">
                <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="617.0" layoutY="147.0" text="หน่วยงาน">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="solutionLabel" layoutX="623.0" layoutY="274.0" text="solutionLabel" />
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="569.0" layoutY="39.0" prefWidth="150.0" />
-            <Label fx:id="categoryLabel" layoutX="621.0" layoutY="189.0" text="categoryLabel" />
-            <Label layoutX="879.0" layoutY="187.0" text="เลือกสถานะ">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="headLineLabel" layoutX="592.0" layoutY="96.0" text="headLineLabel">
+                  <Font size="14.0" />
+               </font></Label>
+            <Label fx:id="headLineLabel" layoutX="72.0" layoutY="226.0" text="headLineLabel">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Label>
-            <Label layoutX="618.0" layoutY="408.0" text="เจ้าหน้าที่">
+            <Label layoutX="476.0" layoutY="575.0" text="เจ้าหน้าที่">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <TextArea fx:id="officerTextArea" editable="false" layoutX="540.0" layoutY="461.0" prefHeight="176.0" prefWidth="239.0" promptText="เจ้าหน้าที่..." />
-            <Button fx:id="logOutButton" layoutX="1011.0" layoutY="672.0" mnemonicParsing="false" onAction="#handleLogoutButton" style="-fx-background-color: #2E8B57;" text="ออกจากระบบ">
+            <TextArea fx:id="officerTextArea" editable="false" layoutX="479.0" layoutY="623.0" prefHeight="129.0" prefWidth="306.0" promptText="เจ้าหน้าที่..." style="-fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
+               <font>
+                  <Font size="14.0" />
+               </font></TextArea>
+            <Button fx:id="logOutButton" layoutX="1019.0" layoutY="54.0" mnemonicParsing="false" onAction="#handleLogoutButton" stylesheets="@style_page/stylee.css" text="ออกจากระบบ" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="logout_button" />
+                  <String fx:value="upload_button" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
             </Button>
-            <TextField fx:id="solutionTextField" layoutX="879.0" layoutY="318.0" prefHeight="61.0" prefWidth="208.0" />
-            <Text layoutX="884.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="รายละเอียดการแก้ไข" />
-            <Button fx:id="addSolutionButton" layoutX="879.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleAddSolutionAndUpdateStatus" style="-fx-background-color: #2E8B57;" text="ตกลง">
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Label layoutX="554.0" layoutY="311.0" text="รายละเอียดของเรื่องร้องเรียน">
+            <TextField fx:id="solutionTextField" layoutX="879.0" layoutY="438.0" prefHeight="185.0" prefWidth="294.0" style="-fx-background-radius: 20;">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <Text layoutX="877.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="รายละเอียดการแก้ไข">
+               <font>
+                  <Font size="18.0" />
+               </font></Text>
+            <Label layoutX="479.0" layoutY="141.0" text="รายละเอียดของเรื่องร้องเรียน">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="contentLabel" layoutX="624.0" layoutY="361.0" text="contentLabel" />
-            <ChoiceBox fx:id="statusChoiceBox" layoutX="879.0" layoutY="234.0" prefWidth="150.0" />
-            <Pane layoutX="887.0" layoutY="20.0" prefHeight="73.0" prefWidth="192.0" style="-fx-background-color: A8E890; -fx-background-radius: 20;">
+            <Pane layoutX="557.0" layoutY="36.0" prefHeight="72.0" prefWidth="242.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
                <children>
-                  <Label fx:id="officerNameLabel" layoutX="83.0" layoutY="20.0" text="officerNameLabel" />
-                  <ImageView fx:id="officerImageView" fitHeight="48.0" fitWidth="69.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
-                  <Hyperlink layoutX="83.0" layoutY="37.0" onAction="#handleChangePasswordPageButton" text="เปลื่ยนรหัสผ่าน" />
+                  <Label fx:id="officerNameLabel" layoutX="83.0" layoutY="20.0" text="officerNameLabel">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <ImageView fx:id="officerImageView" fitHeight="49.0" fitWidth="74.0" layoutX="9.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="34.0" pickOnBounds="true" preserveRatio="true" />
+            <Pane layoutX="476.0" layoutY="202.0" prefHeight="97.0" prefWidth="325.0" style="-fx-background-color: #FFFF;" stylesheets="@style_page/stylee.css">
+               <children>
+                  <Label fx:id="contentLabel" layoutX="14.0" layoutY="14.0" text="contentLabel">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="cube_box" />
+                  <String fx:value="cube_select_vocal" />
+               </styleClass>
+            </Pane>
+            <Label layoutX="79.0" layoutY="156.0" text="หัวข้อ">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <Hyperlink layoutX="851.0" layoutY="55.0" onAction="#handleChangePasswordPageButton" prefHeight="40.0" prefWidth="128.0" stylesheets="@style_page/stylee.css" text="จัดการบัญชี" textFill="#fff8f8">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="shadow" />
+                  <String fx:value="login_button" />
+                  <String fx:value="upload_button" />
+               </styleClass>
+            </Hyperlink>
          </children>
       </Pane>
       <Label layoutX="1033.0" layoutY="130.0">
