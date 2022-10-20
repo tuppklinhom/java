@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ku.cs.ku_help.models.*;
@@ -24,12 +25,12 @@ public class AdminMainPageController {
     @FXML
     private Label usernameLabel;
     @FXML
-    private Label categoryLabel;
-    @FXML
     private Label adminUsernameLabel;
     @FXML
     private ImageView allUserImageView;
 
+    @FXML
+    private TextArea statusTextArea;
 
     private OfficerList officerList;
     private StudentList studentList;
@@ -75,15 +76,15 @@ public class AdminMainPageController {
 
     private void clearSelectUser(){
         usernameLabel.setText("");
-        categoryLabel.setText("");
+        statusTextArea.setText("");
     }
 
     private void showSelectedUser(User selectUser) {
         usernameLabel.setText(selectUser.getUsername());
         if (selectUser instanceof Officer) {
-            categoryLabel.setText(((Officer) selectUser).getCategory().toString());
+            statusTextArea.setText(((Officer) selectUser).getCategory().toString());
         } else {
-            categoryLabel.setText("");
+            statusTextArea.setText("");
         }
         File imageFile = new File(selectUser.getImagePath());
         allUserImageView.setImage(new Image(imageFile.toURI().toString()));
@@ -126,7 +127,5 @@ public class AdminMainPageController {
         showListView();
         handleSelectListview();
     }
-
-
 
 }

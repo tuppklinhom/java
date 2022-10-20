@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -18,11 +19,6 @@
                   <Font name="Cambria" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="categoryLabel" layoutX="223.0" layoutY="147.0" text="categoryLabel">
-               <font>
-                  <Font name="Cambria" size="18.0" />
-               </font>
-            </Label>
             <Label layoutX="90.0" layoutY="34.0" text="Name :">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
@@ -33,6 +29,7 @@
                   <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
+            <TextArea fx:id="statusTextArea" editable="false" layoutX="213.0" layoutY="137.0" prefHeight="62.0" prefWidth="230.0" />
          </children>
          <styleClass>
             <String fx:value="color_theme_0" />
