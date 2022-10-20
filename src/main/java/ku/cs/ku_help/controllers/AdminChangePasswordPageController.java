@@ -80,29 +80,24 @@ public class AdminChangePasswordPageController {
         adminNewPassInput = newPassAdminPasswordField.getText();
         adminNewConPassInput = conNewPassAdminPasswordField.getText();
 
-        if (adminNewPassInput.equals(adminNewConPassInput)) {
-
-            Admin admin = adminList.findByUsername(adminUsernameInput);
-
-            if (admin == null) {
-                errorLabel.setText("Username or Password Incorrect.");
-                AlertBox.display("Alert", "Username or Password Incorrect.");
-                clearTextField();
-            } else {
-                if (admin.isPassword(adminPasswordInput)) {
-                    admin.changePassword(adminNewPassInput);
-                    adminList.addAdmin(admin);
-                    dataSource.writeData(adminList);
-                    errorLabel.setText("");
-                    successLabel.setText("Successfully change password");
-                    clearTextField();
-                }
+        if (admin.isPassword(adminPasswordInput) || admin.isUsername(adminUsernameInput)) {
+            if (adminNewPassInput.equals(adminNewConPassInput)){
+                clearErrorLabel();
+                clearSuccessLabel();
+                adminList.changePassword(adminUsernameInput, adminNewPassInput);
+                dataSource.writeData(adminList);
+                successLabel.setText("Successfully changed password.");
             }
-        } else {
-            errorLabel.setText("New Password doesn't match.");
-            clearTextField();
+            else{
+                clearErrorLabel();
+                clearSuccessLabel();
+                errorLabel.setText("New Password does not match");
+            }
         }
-
-
+        else {
+            clearErrorLabel();
+            clearSuccessLabel();
+            errorLabel.setText("Username or Password Incorrect.");
+        }
     }
 }
