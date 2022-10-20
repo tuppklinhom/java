@@ -33,9 +33,9 @@ public class AdminCreateOfficerAccountPageController {
     @FXML
     private PasswordField confirmPasswordField;
     @FXML
-    private TextField institudeTextField;
-    @FXML
     private Label errorLabel;
+    @FXML
+    private Label successLabel;
     @FXML
     private ImageView profileImageView;
     @FXML
@@ -84,6 +84,7 @@ public class AdminCreateOfficerAccountPageController {
         imagePath = "images/default.jpg";
         adminUser = (Admin) com.github.saacsos.FXRouter.getData();
         showImageProfile();
+        clearSuccessLabel();
         clearErrorLabel();
         showCategoryChoiceBox();
     }
@@ -96,6 +97,7 @@ public class AdminCreateOfficerAccountPageController {
     private void clearErrorLabel() {
         errorLabel.setText("");
     }
+    private void clearSuccessLabel(){ successLabel.setText("");}
 
 
     public void handleUploadPictureButton(ActionEvent event){
@@ -128,7 +130,7 @@ public class AdminCreateOfficerAccountPageController {
         usernameInput = usernameTextField.getText();
         passwordInput = passwordField.getText();
         confirmPasswordInput = confirmPasswordField.getText();
-//        institudeInput = institudeTextField.getText();
+
 
 
         Officer S = officerList.findOfficer(usernameInput);
@@ -140,7 +142,7 @@ public class AdminCreateOfficerAccountPageController {
                 newCategory.clearCategoryList();
                 officerList.addOfficer(newOfficer);
                 dataSource.writeData(officerList);
-                errorLabel.setText("Successfully create account");
+                successLabel.setText("Successfully create account");
 
             }
             else{
