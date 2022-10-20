@@ -90,20 +90,20 @@
       </Label>
       <Hyperlink layoutX="981.0" layoutY="36.0" onAction="#handleHowToUseButton" text="How to use" textFill="#333335">
          <font>
-            <Font name="Cambria Italic" size="14.0" />
+            <Font name="Cambria Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="1094.0" layoutY="36.0" text="Creator" textFill="#333335">
+      <Hyperlink layoutX="1094.0" layoutY="36.0" onAction="#handleCreatorPage" text="Creater" textFill="#333335">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="757.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="754.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@kuuni/usericon.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="37.0" fitWidth="32.0" layoutX="757.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="37.0" fitWidth="32.0" layoutX="757.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@kuuni/icons8_lock_.png" />
          </image>

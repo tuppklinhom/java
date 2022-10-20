@@ -120,6 +120,17 @@ public class StudentLoginPageController {
 
 
     }
+    public void handleCreatorPage(){
+        try {
+            FXRouter.goTo("creator_data_page");
+        } catch (IOException e) {
+            System.err.println("ไปทีหน้า creator page  ไม่ได้");
+            System.err.println("ให้ตรวจสอบการกําหนด route");
+        }
+    }
+
+
+
 
 
 
