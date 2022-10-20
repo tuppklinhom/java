@@ -143,14 +143,17 @@ public class AdminCreateOfficerAccountPageController {
                 officerList.addOfficer(newOfficer);
                 dataSource.writeData(officerList);
                 successLabel.setText("Successfully create account");
+                errorLabel.setText("");
 
             }
             else{
-                errorLabel.setText("Password do not match.");
+                errorLabel.setText("Password doesn't match.");
+                successLabel.setText("");
             }
         }
         else{
             errorLabel.setText("This username is already in use.");
+            successLabel.setText("");
         }
 
 

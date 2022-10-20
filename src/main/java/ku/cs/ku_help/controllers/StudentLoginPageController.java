@@ -101,7 +101,7 @@ public class StudentLoginPageController {
     public void handleHowToUseButton(ActionEvent actionEvent){
         String fs = File.separator;
         try{
-            File file = new File( "data/CS211-651-Project.pdf");
+            File file = new File( "data/วิธีการใช้งานแอพพลิเคชั่น KU Help.pdf");
             if(file.exists()){
                 if(Desktop.isDesktopSupported()){
                     Desktop.getDesktop().open(file);
