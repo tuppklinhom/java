@@ -27,7 +27,7 @@
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Label fx:id="errorLabel" layoutX="747.0" layoutY="612.0" text="errorLabel" textFill="#a90a0a">
+      <Label fx:id="errorLabel" layoutX="784.0" layoutY="612.0" text="errorLabel" textFill="#a90a0a">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -100,7 +100,7 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="successLabel" layoutX="747.0" layoutY="612.0" text="successLabel" textFill="#19da00">
+      <Label fx:id="successLabel" layoutX="784.0" layoutY="612.0" text="successLabel" textFill="#19da00">
          <font>
             <Font size="14.0" />
          </font>

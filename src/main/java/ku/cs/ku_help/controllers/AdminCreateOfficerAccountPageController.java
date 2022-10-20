@@ -140,14 +140,17 @@ public class AdminCreateOfficerAccountPageController {
                 officerList.addOfficer(newOfficer);
                 dataSource.writeData(officerList);
                 successLabel.setText("Successfully create account");
+                errorLabel.setText("");
 
             }
             else{
-                errorLabel.setText("Password do not match.");
+                errorLabel.setText("Password doesn't match.");
+                successLabel.setText("");
             }
         }
         else{
             errorLabel.setText("This username is already in use.");
+            successLabel.setText("");
         }
 
 
@@ -155,7 +158,7 @@ public class AdminCreateOfficerAccountPageController {
 
     public void handleBackButton(ActionEvent actionEvent){
         try {
-            com.github.saacsos.FXRouter.goTo("student_login_page");
+            com.github.saacsos.FXRouter.goTo("admin_main_page");
         } catch (IOException e) {
             System.err.println("ไปทีหน้า student_login_report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
