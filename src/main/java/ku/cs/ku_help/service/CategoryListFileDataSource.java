@@ -3,6 +3,7 @@ package ku.cs.ku_help.service;
 import ku.cs.ku_help.models.CategoryList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class CategoryListFileDataSource implements DataSource<CategoryList>{ // just read category data from csv file
     private String directoryName;
@@ -40,7 +41,7 @@ public class CategoryListFileDataSource implements DataSource<CategoryList>{ // 
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file , StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -76,7 +77,7 @@ public class CategoryListFileDataSource implements DataSource<CategoryList>{ // 
         BufferedWriter buffer = null;
 
         try {
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for(String line : categoryList.getAllCategories()){

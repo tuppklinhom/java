@@ -83,7 +83,7 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="693.0" layoutY="496.0" text="Comfrim Password">
+      <Label layoutX="693.0" layoutY="496.0" text="Confirm Password">
          <font>
             <Font name="Cambria Bold" size="24.0" />
          </font>
