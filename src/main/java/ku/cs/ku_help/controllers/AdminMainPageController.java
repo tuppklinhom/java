@@ -60,7 +60,7 @@ public class AdminMainPageController {
     }
     public void handleCreateOfficerAccount(){
         try {
-            com.github.saacsos.FXRouter.goTo("admin_create_officer_account_page");
+            com.github.saacsos.FXRouter.goTo("admin_create_officer_account_page", adminUser);
         } catch (IOException e) {
             System.err.println("ไปทีหน้า login page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

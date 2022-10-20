@@ -14,10 +14,32 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.AdminCreateOfficerAccountPageController">
    <children>
+      <TextField fx:id="nameTextField" layoutX="744.0" layoutY="198.0" prefHeight="30.0" prefWidth="255.0" promptText="Name" style="-fx-background-radius: 20;" stylesheets="@style_page/stylee.css">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
       <TextField fx:id="usernameTextField" layoutX="744.0" layoutY="270.0" prefHeight="30.0" prefWidth="255.0" promptText="Username" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
          </font></TextField>
+      <PasswordField fx:id="passwordField" layoutX="744.0" layoutY="351.0" prefHeight="30.0" prefWidth="255.0" promptText="Password" style="-fx-background-radius: 20;">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="confirmPasswordField" layoutX="744.0" layoutY="437.0" prefHeight="30.0" prefWidth="255.0" promptText="Confirm password" style="-fx-background-radius: 20;">
+         <font>
+            <Font size="14.0" />
+         </font></PasswordField>
+      <ChoiceBox fx:id="categorySelectChoiceBox" layoutX="758.0" layoutY="570.0" prefWidth="150.0" style="-fx-background-radius: 20;" />
+      <Button layoutX="958.0" layoutY="570.0" mnemonicParsing="false" onAction="#handleAddNewCategory" stylesheets="@style_page/stylee.css" text="Add" textFill="WHITE">
+         <styleClass>
+            <String fx:value="login_button" />
+            <String fx:value="upload_button" />
+            <String fx:value="shadow" />
+         </styleClass>
+         <font>
+            <Font size="14.0" />
+         </font></Button>
       <Button layoutX="750.0" layoutY="668.0" mnemonicParsing="false" onAction="#handleCreateAccountButton" prefHeight="30.0" prefWidth="255.0" stylesheets="@style_page/stylee.css" text="Create Account" textFill="WHITE">
          <styleClass>
             <String fx:value="shadow" />
@@ -31,10 +53,13 @@
          <font>
             <Font size="14.0" />
          </font></Label>
-      <TextField fx:id="nameTextField" layoutX="744.0" layoutY="198.0" prefHeight="30.0" prefWidth="255.0" promptText="Name" style="-fx-background-radius: 20;" stylesheets="@style_page/stylee.css">
+
+      <TextArea fx:id="showCategoryTextArea" editable="false" layoutX="744.0" layoutY="489.0" prefHeight="37.0" prefWidth="255.0" style="-fx-background-radius: 20;">
          <font>
             <Font size="14.0" />
-         </font></TextField>
+         </font></TextArea>
+
+
       <Button layoutX="278.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleUploadPictureButton" prefHeight="40.0" prefWidth="138.0" style="-fx-background-radius: 20;" stylesheets="@style_page/stylee.css" text="Select Image" textFill="WHITE">
          <styleClass>
             <String fx:value="login_button" />
@@ -45,14 +70,7 @@
             <Font size="18.0" />
          </font></Button>
       <ImageView fx:id="profileImageView" fitHeight="230.0" fitWidth="275.0" layoutX="217.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-      <PasswordField fx:id="passwordField" layoutX="744.0" layoutY="351.0" prefHeight="30.0" prefWidth="255.0" promptText="Password" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="14.0" />
-         </font></PasswordField>
-      <PasswordField fx:id="confirmPasswordField" layoutX="744.0" layoutY="437.0" prefHeight="30.0" prefWidth="255.0" promptText="Confirm password" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="14.0" />
-         </font></PasswordField>
+
       <Button layoutX="1045.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="40.0" prefWidth="92.0" stylesheets="@style_page/stylee.css" text="Back" textFill="WHITE">
          <styleClass>
             <String fx:value="logout_button" />
@@ -66,20 +84,8 @@
             <Font name="Cambria Bold" size="36.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="categorySelectChoiceBox" layoutX="758.0" layoutY="570.0" prefWidth="150.0" style="-fx-background-radius: 20;" />
-      <Button layoutX="958.0" layoutY="570.0" mnemonicParsing="false" onAction="#handleAddNewCategory" stylesheets="@style_page/stylee.css" text="Add" textFill="WHITE">
-         <styleClass>
-            <String fx:value="login_button" />
-            <String fx:value="upload_button" />
-            <String fx:value="shadow" />
-         </styleClass>
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <TextArea fx:id="showCategoryTextArea" layoutX="744.0" layoutY="489.0" prefHeight="37.0" prefWidth="255.0" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="14.0" />
-         </font></TextArea>
+
+
       <Label layoutX="751.0" layoutY="162.0" text="Name">
          <font>
             <Font name="Cambria Bold" size="18.0" />

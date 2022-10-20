@@ -56,6 +56,8 @@ public class AdminCreateOfficerAccountPageController {
     private DataSource<CategoryList> dataSourceCategoryList;
     private CategoryList categoryList;
 
+    private Admin adminUser;
+
     public void handleAddNewCategory(){
         String ChoiceBox = categorySelectChoiceBox.getValue();
         newCategory.addCategory(ChoiceBox);
@@ -80,6 +82,7 @@ public class AdminCreateOfficerAccountPageController {
         newCategory = new CategoryList();
         officerList = dataSource.readData();
         imagePath = "images/default.jpg";
+        adminUser = (Admin) com.github.saacsos.FXRouter.getData();
         showImageProfile();
         clearErrorLabel();
         showCategoryChoiceBox();
@@ -153,7 +156,7 @@ public class AdminCreateOfficerAccountPageController {
 
     public void handleBackButton(ActionEvent actionEvent){
         try {
-            com.github.saacsos.FXRouter.goTo("student_login_page");
+            com.github.saacsos.FXRouter.goTo("admin_main_page", adminUser);
         } catch (IOException e) {
             System.err.println("ไปทีหน้า student_login_report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");

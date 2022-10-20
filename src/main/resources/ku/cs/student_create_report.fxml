@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1168.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.CreatorPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1168.0" style="-fx-background-color: #FFFFF;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.StudentCreateReportController">
    <children>
       <AnchorPane layoutX="541.0" layoutY="89.0" prefHeight="674.0" prefWidth="574.0" style="-fx-background-color: #FFFFF; -fx-background-radius: 20;">
          <children>
@@ -21,7 +21,7 @@
                   <Font name="Cambria Bold" size="24.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="categoryChoiceBox" layoutX="37.0" layoutY="216.0" prefHeight="30.0" prefWidth="346.0" style="-fx-background-radius: 20;" />
+
             <Label layoutX="37.0" layoutY="164.0" text="INSTITUTE">
                <font>
                   <Font name="Cambria Bold" size="24.0" />
@@ -31,6 +31,7 @@
                <font>
                   <Font size="18.0" />
                </font></TextField>
+            <ChoiceBox fx:id="categoryChoiceBox" layoutX="37.0" layoutY="216.0" prefHeight="30.0" prefWidth="346.0" style="-fx-background-radius: 20;" />
             <TextArea fx:id="contentTextArea" layoutX="33.0" layoutY="316.0" prefHeight="233.0" prefWidth="478.0">
                <font>
                   <Font size="18.0" />

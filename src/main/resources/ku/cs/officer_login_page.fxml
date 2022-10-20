@@ -25,14 +25,15 @@
             <String fx:value="shadow" />
          </styleClass>
       </Button>
-      <PasswordField fx:id="officerPasswordTextField" layoutX="808.0" layoutY="471.0" prefHeight="38.0" prefWidth="226.0" promptText="password" style="-fx-background-radius: 20;">
-         <font>
-            <Font size="16.0" />
-         </font></PasswordField>
+
       <TextField fx:id="officerUsernameTextField" layoutX="806.0" layoutY="378.0" prefHeight="38.0" prefWidth="226.0" promptText="username" style="-fx-background-radius: 20;">
          <font>
             <Font size="16.0" />
          </font></TextField>
+      <PasswordField fx:id="officerPasswordTextField" layoutX="808.0" layoutY="471.0" prefHeight="38.0" prefWidth="226.0" promptText="password" style="-fx-background-radius: 20;">
+         <font>
+            <Font size="16.0" />
+         </font></PasswordField>
       <Label fx:id="officerErrorLabel" layoutX="832.0" layoutY="546.0" text="errorLabel" textFill="#e80808">
          <font>
             <Font size="14.0" />
