@@ -4,6 +4,7 @@ import ku.cs.ku_help.models.AdminList;
 import ku.cs.ku_help.models.Admin;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class AdminListFileDataSource implements DataSource<AdminList>{
 
@@ -40,7 +41,7 @@ public class AdminListFileDataSource implements DataSource<AdminList>{
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file , StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -78,7 +79,7 @@ public class AdminListFileDataSource implements DataSource<AdminList>{
         BufferedWriter buffer = null;
 
         try {
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for(Admin admin : adminList.getAllAdmin()){

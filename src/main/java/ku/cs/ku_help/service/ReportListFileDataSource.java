@@ -4,6 +4,7 @@ import ku.cs.ku_help.models.Report;
 import ku.cs.ku_help.models.ReportList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class ReportListFileDataSource implements DataSource<ReportList> {
     private String directoryName;
@@ -45,7 +46,7 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file, StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -97,7 +98,7 @@ public class ReportListFileDataSource implements DataSource<ReportList> {
         BufferedWriter buffer = null;
 
         try {
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for(Report r : reportList.getAllReport()){

@@ -4,6 +4,7 @@ import ku.cs.ku_help.models.Officer;
 import ku.cs.ku_help.models.OfficerList;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 public class OfficerListFileDataSource implements DataSource<OfficerList>{
     private String directoryName;
@@ -40,7 +41,7 @@ public class OfficerListFileDataSource implements DataSource<OfficerList>{
         BufferedReader buffer = null;
 
         try {
-            reader = new FileReader(file);
+            reader = new FileReader(file, StandardCharsets.UTF_8);
             buffer = new BufferedReader(reader);
 
             String line = "";
@@ -86,7 +87,7 @@ public class OfficerListFileDataSource implements DataSource<OfficerList>{
         BufferedWriter buffer = null;
 
         try {
-            writer = new FileWriter(file);
+            writer = new FileWriter(file, StandardCharsets.UTF_8);
             buffer = new BufferedWriter(writer);
 
             for(String username : officerList.getAllOfficers()){
