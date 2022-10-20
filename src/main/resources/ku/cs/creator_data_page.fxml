@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #333335;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.CreaterPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #333335;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ku.cs.ku_help.controllers.CreatorPageController">
    <children>
-      <Label layoutX="157.0" layoutY="30.0" prefHeight="60.0" prefWidth="230.0" stylesheets="@style_page/stylee.css" text="Creater" textFill="WHITE">
+      <Label fx:id="createrLabel" layoutX="157.0" layoutY="30.0" prefHeight="60.0" prefWidth="230.0" stylesheets="@style_page/stylee.css" text="Creater" textFill="WHITE">
          <font>
             <Font name="Cambria Bold" size="48.0" />
          </font>
@@ -20,7 +20,7 @@
             <Image url="@kuuni/S__5038110.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="1075.0" layoutY="42.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="77.0" stylesheets="@style_page/stylee.css" text="Back" textFill="#fffdfd">
+      <Button layoutX="1075.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="35.0" prefWidth="77.0" stylesheets="@style_page/stylee.css" text="Back" textFill="#fffdfd">
          <font>
             <Font name="Cambria" size="18.0" />
          </font>
