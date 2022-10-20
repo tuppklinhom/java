@@ -93,7 +93,7 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="1094.0" layoutY="36.0" onAction="#handleCreatorPage" text="Creater" textFill="#333335">
+      <Hyperlink layoutX="1094.0" layoutY="36.0" onAction="#handleCreatorPage" text="Creator" textFill="#333335">
          <font>
             <Font name="Cambria Bold" size="14.0" />
          </font>
