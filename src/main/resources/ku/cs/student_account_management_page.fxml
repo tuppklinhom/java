@@ -41,7 +41,7 @@
          <font>
             <Font name="Cambria" size="18.0" />
          </font></Button>
-      <Label fx:id="errorLabel" layoutX="732.0" layoutY="515.0" text="errorLabel" textFill="RED">
+      <Label fx:id="errorLabel" layoutX="779.0" layoutY="517.0" text="errorLabel" textFill="RED">
          <font>
             <Font size="14.0" />
          </font></Label>
@@ -64,6 +64,9 @@
             <Font name="Cambria Bold" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="successLabel" layoutX="729.0" layoutY="517.0" text="succeseLabel" textFill="#19da00" />
+      <Label fx:id="successLabel" layoutX="783.0" layoutY="517.0" text="succeseLabel" textFill="#19da00">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
    </children>
 </AnchorPane>
