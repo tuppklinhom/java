@@ -35,7 +35,7 @@
             <DropShadow />
          </effect>
       </Pane>
-      <Pane layoutX="679.0" layoutY="22.0" prefHeight="64.0" prefWidth="217.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
+      <Pane layoutX="648.0" layoutY="22.0" prefHeight="64.0" prefWidth="305.0" style="-fx-background-color: #f1f8e9; -fx-background-radius: 20;" styleClass="shadow" stylesheets="@style_page/stylee.css">
          <children>
             <Label fx:id="usernameLabel" layoutX="87.0" layoutY="23.0" text="usernameLabel" textFill="#05592f">
                <font>
@@ -190,7 +190,7 @@
       <ComboBox fx:id="categoryComboBox" layoutX="44.0" layoutY="211.0" prefWidth="150.0" promptText="Select category" style="-fx-background-radius: 20;" />
       <ComboBox fx:id="voteSortComboBox" layoutX="44.0" layoutY="270.0" prefHeight="25.0" prefWidth="150.0" promptText="Sort by votes " style="-fx-background-radius: 20;" />
       <ComboBox fx:id="dateSortComboBox" layoutX="229.0" layoutY="270.0" prefHeight="25.0" prefWidth="164.0" promptText="Sort by date" style="-fx-background-radius: 20;" />
-      <Button layoutX="1068.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleLogoutButton" stylesheets="@style_page/stylee.css" text="Log out" textFill="WHITE">
+      <Button layoutX="1107.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleLogoutButton" stylesheets="@style_page/stylee.css" text="Log out" textFill="WHITE">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
@@ -201,7 +201,7 @@
             <String fx:value="shadow" />
          </styleClass>
       </Button>
-      <Button layoutX="935.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButton" prefHeight="30.0" prefWidth="116.0" stylesheets="@style_page/stylee.css" text="Manage account" textFill="WHITE">
+      <Button layoutX="974.0" layoutY="39.0" mnemonicParsing="false" onAction="#handleAccountButton" prefHeight="30.0" prefWidth="116.0" stylesheets="@style_page/stylee.css" text="Manage account" textFill="WHITE">
          <font>
             <Font name="Cambria Italic" size="14.0" />
          </font>
