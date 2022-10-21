@@ -37,16 +37,18 @@ public class AdminChangePasswordPageController {
     private DataSource<AdminList> dataSource;
     private AdminList adminList;
 
+    private Admin adminLogin;
     private Admin admin;
     private String adminUsernameInput;
     private String adminPasswordInput;
     private String adminNewPassInput;
     private String adminNewConPassInput;
 
+
     public void initialize() {
         dataSource = new AdminListFileDataSource("data", "admin.csv");
         adminList = dataSource.readData();
-        admin = (Admin) com.github.saacsos.FXRouter.getData();
+        adminLogin = (Admin) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
         clearSuccessLabel();
     }
@@ -80,7 +82,9 @@ public class AdminChangePasswordPageController {
         adminNewPassInput = newPassAdminPasswordField.getText();
         adminNewConPassInput = conNewPassAdminPasswordField.getText();
 
-        if (admin.isPassword(adminPasswordInput) || admin.isUsername(adminUsernameInput)) {
+        admin = adminList.findByUsername(adminLogin.getUsername());
+
+        if (admin.isPassword(adminPasswordInput)) {
             if (adminNewPassInput.equals(adminNewConPassInput)){
                 clearErrorLabel();
                 clearSuccessLabel();
@@ -99,5 +103,6 @@ public class AdminChangePasswordPageController {
             clearSuccessLabel();
             errorLabel.setText("Username or Password Incorrect.");
         }
+        adminList = dataSource.readData();
     }
 }

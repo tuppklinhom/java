@@ -35,12 +35,14 @@ public class OfficerChangePasswordPageController {
 
     private OfficerList officerList;
 
+    private Officer officerLogin;
+
     private Officer officer;
 
     public void initialize() {
         dataSource = new OfficerListFileDataSource("data", "Officer.csv");
         officerList = dataSource.readData();
-        officer = (Officer) com.github.saacsos.FXRouter.getData();
+        officerLogin = (Officer) com.github.saacsos.FXRouter.getData();
         clearErrorLabel();
         clearSuccessLabel();
     }
@@ -68,7 +70,9 @@ public class OfficerChangePasswordPageController {
         String officerNewPasswordInput = newPassOfficerPasswordField.getText();
         String officerConfirmNewPasswordInput = conFirmNewPassOfficerPasswordField.getText();
 
-        if (officer.isPassword(officerOldPasswordInput) || officer.isUsername(officerOldUsernameInput)) {
+        officer = officerList.findOfficer(officerLogin.getUsername());
+
+        if (officer.isPassword(officerOldPasswordInput)) {
             if (officerNewPasswordInput.equals(officerConfirmNewPasswordInput)){
                 clearErrorLabel();
                 clearSuccessLabel();
@@ -87,5 +91,6 @@ public class OfficerChangePasswordPageController {
             clearSuccessLabel();
             errorLabel.setText("Username or Password Incorrect.");
         }
+        officerList = dataSource.readData();
     }
 }

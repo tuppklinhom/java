@@ -78,10 +78,9 @@ public class StudentCreateReportController {
         try {
             com.github.saacsos.FXRouter.goTo("student_main_page",user);
         } catch (IOException e) {
-            System.err.println("ไปทีหน้า student_create_report ไม่ได้");
+            System.err.println("ไปทีหน้า student main page ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
 
     }
-
 }

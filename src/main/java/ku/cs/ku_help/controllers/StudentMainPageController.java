@@ -299,7 +299,6 @@ public class StudentMainPageController {
             System.err.println("ไปทีหน้า student_create_report ไม่ได้");
             System.err.println("ให้ตรวจสอบการกําหนด route");
         }
-
     }
 
     public void handleLogoutButton(ActionEvent actionEvent){
